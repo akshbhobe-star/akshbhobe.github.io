@@ -2,25 +2,27 @@
    TOKENS
    ============================================ */
 :root {
-  --ink: #23260F;
-  --ink-soft: #5C6142;
-  --olive: #484D24;
-  --olive-deep: #363A1A;
-  --paper: #DED4CA;
-  --paper-raised: #E9E2D8;
-  --line: #C9BCAA;
-  --amber: #C98A3E;
-  --amber-soft: rgba(201, 138, 62, 0.30);
-  --blue: #8B5E45;
-  --blue-soft: #A47454;
-  --red: #8B3A2B;
+  --ink: #241311;
+  --ink-soft: #612019;
+  --olive: #9F2230;
+  --olive-deep: #7A1A25;
+  --paper: #F7EEEC;
+  --paper-raised: #ECCFCB;
+  --line: #DD9D97;
+  --amber: #D05B62;
+  --amber-soft: rgba(208, 91, 98, 0.30);
+  --blue: #C43B48;
+  --blue-soft: #B23440;
+  --red: #9F2230;
+  --highlight: #ECCFCB;
 
   --font-display: 'Fraunces', serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
 
   --max-width: 1120px;
-  --radius: 3px;
+  --radius: 20px;
+  --radius-sm: 10px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -156,6 +158,29 @@ ul { list-style: none; }
   padding: 170px 32px 100px;
   max-width: var(--max-width);
   margin: 0 auto;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -10%;
+  width: 640px;
+  height: 640px;
+  background: radial-gradient(circle, rgba(208,91,98,0.22), rgba(221,157,151,0.12) 45%, transparent 70%);
+  border-radius: 50%;
+  z-index: -1;
+  animation: driftGlow 26s ease-in-out infinite;
+}
+
+@keyframes driftGlow {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-30px, 24px) scale(1.06); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before { animation: none; }
 }
 
 .hero-inner { max-width: 780px; }
@@ -213,18 +238,22 @@ ul { list-style: none; }
   padding: 14px 26px;
   border-radius: var(--radius);
   display: inline-block;
-  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
 }
 .btn-primary {
   background: var(--olive);
   color: var(--paper);
 }
-.btn-primary:hover { background: var(--olive-deep); transform: translateY(-1px); }
+.btn-primary:hover {
+  background: var(--olive-deep);
+  transform: scale(1.03);
+  box-shadow: 0 8px 24px rgba(159, 34, 48, 0.25);
+}
 .btn-ghost {
   border: 1px solid var(--olive);
   color: var(--olive);
 }
-.btn-ghost:hover { background: var(--olive); color: var(--paper); }
+.btn-ghost:hover { background: var(--olive); color: var(--paper); transform: scale(1.03); }
 
 /* ---- signature transcript element ---- */
 .transcript-block {
@@ -292,7 +321,7 @@ ul { list-style: none; }
 }
 .strategy-label {
   font-size: 11px;
-  color: var(--amber);
+  color: var(--highlight);
   margin-bottom: 14px;
   letter-spacing: 0.08em;
 }
@@ -432,10 +461,10 @@ ul { list-style: none; }
 .case-body strong { color: var(--ink); font-weight: 600; }
 
 .contribution {
-  background: rgba(44, 74, 94, 0.06);
+  background: rgba(196, 59, 72, 0.07);
   border-left: 2px solid var(--blue);
   padding: 14px 18px;
-  border-radius: 0 var(--radius) var(--radius) 0;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 
 /* ============================================
@@ -476,7 +505,7 @@ ul { list-style: none; }
 .contact {
   padding: 140px 0 60px;
   border-top: 1px solid var(--line);
-  background: var(--olive);
+  background: var(--ink);
   color: var(--paper);
 }
 
@@ -503,25 +532,26 @@ ul { list-style: none; }
 }
 
 .contact-link {
-  border: 1px solid #6D7250;
+  border: 1px solid #4A2B27;
   padding: 14px 26px;
   border-radius: var(--radius);
   font-size: 14px;
   font-weight: 600;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 .contact-link:hover {
   background: var(--amber);
   border-color: var(--amber);
-  color: var(--ink);
+  color: var(--paper);
+  transform: scale(1.04);
 }
 
 .footer-note {
   font-size: 12px;
-  color: #9AA07A;
+  color: #8A5F58;
 }
 
-.contact-sub { color: #C7C6AE; }
+.contact-sub { color: #C99B94; }
 
 /* ============================================
    RESPONSIVE
