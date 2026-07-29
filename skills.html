@@ -37,57 +37,21 @@
   <div class="section-inner">
     <p class="mono eyebrow">METHODOLOGY</p>
     <h1 class="page-title">How the work gets done</h1>
+    <p class="page-sub">Tap a seedhead to explore each area.</p>
   </div>
 </header>
 
 <section class="skills">
   <div class="section-inner">
-    <div class="skills-grid">
-      <div class="skill-col">
-        <h4 class="mono">QUALITATIVE RESEARCH</h4>
-        <ul>
-          <li>Depth interviews &amp; extended groups</li>
-          <li>Longitudinal digital diary studies</li>
-          <li>Ethnographic immersion</li>
-          <li>Projective &amp; stimulus-led techniques</li>
-          <li>Concept &amp; product testing</li>
-          <li>Emic/etic coding</li>
-          <li>Recollective</li>
-        </ul>
+    <div class="flower-stage" id="flowerStage">
+      <div class="hub">
+        <span class="hub-mark">SKILLS</span>
       </div>
-      <div class="skill-col">
-        <h4 class="mono">QUANTITATIVE RESEARCH</h4>
-        <ul>
-          <li>TAM / SAM / SOM sizing</li>
-          <li>Kano model analysis</li>
-          <li>Survey design &amp; purchase-driver analysis</li>
-          <li>Social listening (BrandWatch, Mention)</li>
-          <li>SPSS / STATA / R</li>
-          <li>Gephi / VOSviewer</li>
-        </ul>
-      </div>
-      <div class="skill-col">
-        <h4 class="mono">SHOPPER MARKETING</h4>
-        <ul>
-          <li>Category management &amp; space planning</li>
-          <li>Category leadership principles</li>
-          <li>Retailer-specific activation strategy</li>
-          <li>Shopper insight translation</li>
-          <li>Full-funnel measurement planning</li>
-        </ul>
-      </div>
-      <div class="skill-col">
-        <h4 class="mono">BRAND &amp; PRODUCT STRATEGY</h4>
-        <ul>
-          <li>Brand audit methodology</li>
-          <li>Brand &amp; product extension strategy</li>
-          <li>Keller CBBE pyramid</li>
-          <li>Whitespace &amp; opportunity mapping</li>
-          <li>Jobs-to-be-Done (JTBD)</li>
-          <li>PESTLE &amp; Porter's Five Forces</li>
-          <li>Customer journey mapping</li>
-        </ul>
-      </div>
+    </div>
+
+    <div class="flower-panel" id="flowerPanel">
+      <p class="flower-panel-title" id="flowerPanelTitle"></p>
+      <ul class="flower-panel-list" id="flowerPanelList"></ul>
     </div>
   </div>
 </section>
@@ -98,14 +62,222 @@
     <h2 class="contact-title">Let's talk strategy.</h2>
     <p class="contact-sub">Open to roles in consulting, brand strategy, and consumer insights.</p>
     <div class="contact-links">
-      <a href="mailto:youremail@example.com" class="contact-link">Email</a>
-      <a href="https://linkedin.com/in/yourprofile" class="contact-link" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:akshbhobe@gmail.com" class="contact-link">Email</a>
+      <a href="https://linkedin.com/in/aksharaa-bhobe" class="contact-link" target="_blank" rel="noopener">LinkedIn</a>
       <a href="resume.pdf" class="contact-link" target="_blank" rel="noopener">Resume ↓</a>
     </div>
-    <p class="footer-note mono">Built &amp; coded from scratch · Chicago, IL</p>
+    <p class="footer-note mono">Built with Claude · Chicago, IL</p>
   </div>
 </footer>
 
+<!-- AI NOTE MODAL -->
+<div class="ai-modal-overlay" id="aiModalOverlay" aria-hidden="true">
+  <div class="ai-modal" role="dialog" aria-modal="true" aria-labelledby="aiModalTitle">
+    <button type="button" class="ai-modal-close" id="aiModalClose" aria-label="Close">✕</button>
+    <p class="mono eyebrow ai-modal-eyebrow">A NOTE ON AI</p>
+    <h2 id="aiModalTitle" class="ai-modal-title">You're looking at the proof.</h2>
+    <div class="ai-modal-body">
+      <p>I can read R output myself — the syntax, the coefficients, what a p-value is and isn't telling you. AI didn't replace that; it changed how fast I can move once I already know what I'm looking at. I know enough to prompt precisely, catch when an output looks wrong, and work through the rest myself instead of stalling. That's the transferable part — knowing when a problem needs a machine, when it needs a person, and being resourceful enough either way.</p>
+      <p>This site is the same instinct applied somewhere I had less built-in fluency. I directed the build end to end — described the design, caught when the copy read like a robot had written it, pushed back on layouts that didn't work, and knew when a piece of research was being oversimplified. I didn't need to know JavaScript already. I needed to know what good looked like and how to get there.</p>
+      <p>It's the same thing I'd bring into a room with a data scientist and a room with a C-suite — reading a model's output well enough to know what survives contact with a real business decision, and moving fast enough with AI to get there without waiting on someone else to translate it for me.</p>
+      <p class="ai-modal-closer">This website is that argument, made literal.</p>
+    </div>
+  </div>
+</div>
+
 <script src="script.js"></script>
+<script>
+(function () {
+  var categories = [
+    {
+      label: "Qualitative",
+      title: "Qualitative Research",
+      gradient: "linear-gradient(165deg, var(--line), var(--amber))",
+      icon: '<path d="M4 5.5A1.5 1.5 0 015.5 4h13A1.5 1.5 0 0120 5.5v9A1.5 1.5 0 0118.5 16H10l-4.2 3.4V16H5.5A1.5 1.5 0 014 14.5v-9z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/><circle cx="8.5" cy="10" r="0.9" fill="currentColor" stroke="none"/><circle cx="12" cy="10" r="0.9" fill="currentColor" stroke="none"/><circle cx="15.5" cy="10" r="0.9" fill="currentColor" stroke="none"/>',
+      items: ["Depth interviews &amp; extended groups","Longitudinal digital diary studies","Ethnographic immersion","Projective &amp; stimulus-led techniques","Concept &amp; product testing","Emic/etic coding","Recollective"]
+    },
+    {
+      label: "Quantitative",
+      title: "Quantitative Research",
+      gradient: "linear-gradient(165deg, var(--amber), var(--olive))",
+      icon: '<path d="M5 20V13M12 20V8M19 20V4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
+      items: ["TAM / SAM / SOM sizing","Kano model analysis","Survey design &amp; purchase-driver analysis","Social listening (BrandWatch, Mention)","K-means cluster analysis &amp; segmentation","Factor analysis","Translating business questions into research questions — and back","SPSS / STATA / R","Gephi / VOSviewer"]
+    },
+    {
+      label: "Shopper Mktg",
+      title: "Shopper Marketing",
+      gradient: "linear-gradient(165deg, var(--blue), var(--olive-deep))",
+      icon: '<path d="M12.5 3H20v7.5L11 19.5a1.5 1.5 0 01-2.1 0l-6.4-6.4a1.5 1.5 0 010-2.1L11.5 2h1z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round" transform="translate(0.3,0.5)"/><circle cx="15" cy="8" r="1.3" fill="currentColor" stroke="none"/>',
+      items: ["Category management &amp; space planning","Category leadership principles","Retailer-specific activation strategy","Shopper insight translation","Full-funnel measurement planning"]
+    },
+    {
+      label: "Brand Strategy",
+      title: "Brand &amp; Product Strategy",
+      icon: '<circle cx="12" cy="12" r="7.5" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="12" cy="12" r="0.9" fill="currentColor" stroke="none"/>',
+      gradient: "linear-gradient(165deg, var(--olive), var(--blue))",
+      items: ["Brand audit methodology","Brand &amp; product extension strategy","Keller CBBE pyramid","Whitespace &amp; opportunity mapping","Jobs-to-be-Done (JTBD)","PESTLE &amp; Porter's Five Forces","Customer journey mapping"]
+    },
+    {
+      label: "AI & Tools",
+      title: "AI &amp; Technical Tools",
+      gradient: "linear-gradient(165deg, var(--line), var(--olive))",
+      icon: '<path d="M12 3L14 10L21 12L14 14L12 21L10 14L3 12L10 10Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" fill="none"/>',
+      isAi: true,
+      items: []
+    }
+  ];
+
+  var stage = document.getElementById('flowerStage');
+  var panel = document.getElementById('flowerPanel');
+  var panelTitle = document.getElementById('flowerPanelTitle');
+  var panelList = document.getElementById('flowerPanelList');
+  if (!stage || !panel) return;
+
+  var R_PETAL_ICON = 138;
+  var R_LABEL = 198;
+  var CENTER = 210;
+  var BOX = 420;
+
+  var selectedIndex = null;
+  var petalOriginalBg = [];
+
+  categories.forEach(function (cat, i) {
+    var angleDeg = i * (360 / categories.length);
+    var rad = (angleDeg * Math.PI) / 180;
+
+    var petal = document.createElement('div');
+    petal.className = 'petal';
+    petal.dataset.index = i;
+    petal.style.setProperty('--angle', angleDeg + 'deg');
+    petal.style.transform = 'rotate(' + angleDeg + 'deg)';
+    var bgImage = cat.gradient + ', radial-gradient(rgba(36,19,17,0.14) 1px, transparent 1.3px), radial-gradient(rgba(36,19,17,0.10) 1px, transparent 1.3px)';
+    var bgSize = '100% 100%, 7px 7px, 11px 11px';
+    var bgPosition = '0 0, 0 0, 3px 5px';
+    petal.style.backgroundImage = bgImage;
+    petal.style.backgroundSize = bgSize;
+    petal.style.backgroundPosition = bgPosition;
+    petalOriginalBg.push({ bgImage: bgImage, bgSize: bgSize, bgPosition: bgPosition });
+    stage.appendChild(petal);
+
+    var ix = CENTER + R_PETAL_ICON * Math.sin(rad);
+    var iy = CENTER - R_PETAL_ICON * Math.cos(rad);
+    var knob = document.createElement('div');
+    knob.className = 'icon-knob';
+    knob.dataset.index = i;
+    knob.style.left = (ix / BOX * 100) + '%';
+    knob.style.top = (iy / BOX * 100) + '%';
+    knob.innerHTML = '<svg viewBox="0 0 24 24" fill="none">' + cat.icon + '</svg>';
+    stage.appendChild(knob);
+
+    var lx = CENTER + R_LABEL * Math.sin(rad);
+    var ly = CENTER - R_LABEL * Math.cos(rad);
+    var label = document.createElement('button');
+    label.type = 'button';
+    label.className = 'petal-label';
+    label.textContent = cat.label;
+    label.dataset.index = i;
+    label.style.left = (lx / BOX * 100) + '%';
+    label.style.top = (ly / BOX * 100) + '%';
+    stage.appendChild(label);
+  });
+
+  function renderPanelItems(cat) {
+    if (cat.isAi) {
+      return '<li><button type="button" class="ai-note-trigger-panel">AI &amp; Website Development ↗</button></li>';
+    }
+    return cat.items.map(function (it) { return '<li>' + it + '</li>'; }).join('');
+  }
+
+  function selectCategory(i) {
+    selectedIndex = i;
+    var cat = categories[i];
+
+    document.querySelectorAll('.petal').forEach(function (el, idx) {
+      if (idx === i) {
+        el.style.backgroundImage = 'none';
+        el.classList.add('active');
+        el.classList.remove('dimmed');
+      } else {
+        el.classList.remove('active');
+        el.classList.add('dimmed');
+      }
+    });
+    document.querySelectorAll('.icon-knob, .petal-label').forEach(function (el) {
+      var idx = parseInt(el.dataset.index, 10);
+      el.classList.toggle('active', idx === i);
+      el.classList.toggle('dimmed', idx !== i);
+    });
+
+    panelTitle.innerHTML = cat.title;
+    panelList.innerHTML = renderPanelItems(cat);
+    panel.classList.add('visible');
+  }
+
+  function resetSelection() {
+    if (selectedIndex === null) return;
+    selectedIndex = null;
+
+    document.querySelectorAll('.petal').forEach(function (el, idx) {
+      var orig = petalOriginalBg[idx];
+      el.style.backgroundImage = orig.bgImage;
+      el.style.backgroundSize = orig.bgSize;
+      el.style.backgroundPosition = orig.bgPosition;
+      el.classList.remove('active', 'dimmed');
+    });
+    document.querySelectorAll('.icon-knob, .petal-label').forEach(function (el) {
+      el.classList.remove('active', 'dimmed');
+    });
+
+    panel.classList.remove('visible');
+  }
+
+  stage.addEventListener('click', function (e) {
+    var target = e.target.closest('.petal, .petal-label, .icon-knob');
+    if (target) {
+      var idx = parseInt(target.dataset.index, 10);
+      if (selectedIndex === idx) {
+        resetSelection();
+      } else {
+        selectCategory(idx);
+      }
+    }
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('#flowerStage')) {
+      resetSelection();
+    }
+  });
+
+  // ---- AI note modal (trigger is re-rendered inside the panel, so use delegation) ----
+  var aiOverlay = document.getElementById('aiModalOverlay');
+  var aiClose = document.getElementById('aiModalClose');
+
+  function openAiModal() {
+    aiOverlay.classList.add('open');
+    aiOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    aiClose.focus();
+  }
+  function closeAiModal() {
+    aiOverlay.classList.remove('open');
+    aiOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('.ai-note-trigger-panel')) openAiModal();
+  });
+  if (aiClose) {
+    aiClose.addEventListener('click', closeAiModal);
+    aiOverlay.addEventListener('click', function (e) {
+      if (e.target === aiOverlay) closeAiModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && aiOverlay.classList.contains('open')) closeAiModal();
+    });
+  }
+})();
+</script>
 </body>
 </html>
