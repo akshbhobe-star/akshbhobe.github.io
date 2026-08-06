@@ -55,26 +55,5 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Filter bar logic (Strategy & Consulting / Consumer Research pages)
-const filterBar = document.getElementById('filterBar');
-if (filterBar) {
-  const pills = filterBar.querySelectorAll('.filter-pill');
-  const cases = document.querySelectorAll('.case');
-
-  pills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      pills.forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-      const filter = pill.dataset.filter;
-
-      cases.forEach(card => {
-        const tags = (card.dataset.tags || '').split(' ');
-        if (filter === 'all' || tags.includes(filter)) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
-    });
-  });
-}
+// Note: research.html's project filtering now lives in its own page-specific
+// script (the accordion component), since it replaced the tile-grid/filter-bar UI.
