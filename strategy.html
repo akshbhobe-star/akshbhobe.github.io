@@ -60,7 +60,7 @@
 (function () {
   var categories = [
     {
-      key: "swissgear", name: "SwissGear",
+      key: "swissgear", name: "SwissGear", industry: "Travel Gear",
       gradient: "linear-gradient(135deg, var(--olive), var(--olive-deep))",
       cases: [
         {
@@ -73,20 +73,7 @@
       ]
     },
     {
-      key: "dyson", name: "Dyson",
-      gradient: "linear-gradient(135deg, var(--blue), var(--olive))",
-      cases: [
-        {
-          tag: "GROUP PROJECT — BRAND MANAGEMENT", title: "Dyson — Brand Audit &amp; Extension Strategy", pills: ["Brand Audit", "Extension Strategy"],
-          problem: "Dyson's brand equity is built almost entirely on vacuums and engineering credibility. The question: is that equity coherent enough to extend, and into what?",
-          solution: "Ran a full brand audit — stated identity vs. real consumer perception (reviews, Reddit, TikTok) — then tested extension categories via survey and depth interviews. Landed on kitchen appliances: absent from the portfolio, consistent with the engineering identity, backed by category growth.",
-          impact: "A dual-horizon recommendation: kitchen appliances short-term, a broader home-ecosystem vision long-term — grounded in stated identity and consumer-validated data, not a guess.",
-          contribution: "Owned the audit framework and its Goal/Purpose framing; designed the primary research instruments (survey + depth-interview guide probing brand-equity transfer and true purchase intent); tied the workstreams together into the final recommendation, evaluation strategy, and synthesis."
-        }
-      ]
-    },
-    {
-      key: "pinterest", name: "Pinterest",
+      key: "pinterest", name: "Pinterest", industry: "Tech",
       gradient: "linear-gradient(135deg, var(--amber), var(--blue))",
       cases: [
         {
@@ -99,7 +86,7 @@
       ]
     },
     {
-      key: "molson-coors", name: "Molson Coors",
+      key: "molson-coors", name: "Molson Coors", industry: "CPG",
       gradient: "linear-gradient(135deg, var(--olive-deep), var(--blue))",
       cases: [
         {
@@ -108,6 +95,19 @@
           solution: "Built a shopper insight rooted in identity tension — self-assured men in an uncertain world, resolved by Banquet's constancy — using a Holt cultural-branding lens, translated into differentiated retailer strategies.",
           impact: "A full-funnel shopper measurement plan, pre-shop email through in-store display through digital engagement, with retailer-specific KPIs proving a \"triple win\" for shopper, manufacturer, and retailer.",
           contribution: "Led the upfront insight and strategy work; wrote the core \"Because\" statement tying the cultural insight to a shopper reason-to-switch. Translated shopper insights into customer-facing recommendations for Jewel-Osco — connecting category management, space planning, and category leadership principles into a retailer strategy that ran end-to-end from insight to tactic to KPI."
+        }
+      ]
+    },
+    {
+      key: "dyson", name: "Dyson", industry: "Electronics",
+      gradient: "linear-gradient(135deg, var(--blue), var(--olive))",
+      cases: [
+        {
+          tag: "GROUP PROJECT — BRAND MANAGEMENT", title: "Dyson — Brand Audit &amp; Extension Strategy", pills: ["Brand Audit", "Extension Strategy"],
+          problem: "Dyson's brand equity is built almost entirely on vacuums and engineering credibility. The question: is that equity coherent enough to extend, and into what?",
+          solution: "Ran a full brand audit — stated identity vs. real consumer perception (reviews, Reddit, TikTok) — then tested extension categories via survey and depth interviews. Landed on kitchen appliances: absent from the portfolio, consistent with the engineering identity, backed by category growth.",
+          impact: "A dual-horizon recommendation: kitchen appliances short-term, a broader home-ecosystem vision long-term — grounded in stated identity and consumer-validated data, not a guess.",
+          contribution: "Owned the audit framework and its Goal/Purpose framing; designed the primary research instruments (survey + depth-interview guide probing brand-equity transfer and true purchase intent); tied the workstreams together into the final recommendation, evaluation strategy, and synthesis."
         }
       ]
     }
@@ -169,7 +169,7 @@
     tile.className = 'tile';
     tile.style.background = cat.gradient;
     tile.dataset.key = cat.key;
-    tile.innerHTML = '<span class="tile-name">' + cat.name + '</span>';
+    tile.innerHTML = '<span class="tile-name">' + cat.name + '</span><span class="tile-industry">' + cat.industry + '</span>';
     tileGrid.appendChild(tile);
 
     tile.addEventListener('click', function () {
