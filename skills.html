@@ -66,7 +66,6 @@
       <a href="https://www.linkedin.com/in/aksharaa-bhobe" class="contact-link" target="_blank" rel="noopener">LinkedIn</a>
       <a href="resume.pdf" class="contact-link" target="_blank" rel="noopener">Resume ↓</a>
     </div>
-    <p class="footer-note mono">Built with Claude · Chicago, IL</p>
   </div>
 </footer>
 
@@ -94,14 +93,14 @@
       title: "Qualitative Research",
       gradient: "linear-gradient(165deg, var(--line), var(--amber))",
       icon: '<path d="M4 5.5A1.5 1.5 0 015.5 4h13A1.5 1.5 0 0120 5.5v9A1.5 1.5 0 0118.5 16H10l-4.2 3.4V16H5.5A1.5 1.5 0 014 14.5v-9z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/><circle cx="8.5" cy="10" r="0.9" fill="currentColor" stroke="none"/><circle cx="12" cy="10" r="0.9" fill="currentColor" stroke="none"/><circle cx="15.5" cy="10" r="0.9" fill="currentColor" stroke="none"/>',
-      items: ["Depth interviews &amp; extended groups","Longitudinal digital diary studies","Ethnographic immersion","Projective &amp; stimulus-led techniques","Concept &amp; product testing","Emic/etic coding","Recollective"]
+      items: ["Discussion guide design &amp; moderation","Recruitment design, screening &amp; backchecks","Depth interviews &amp; extended groups","Longitudinal digital diary studies","Ethnographic immersion","Projective &amp; stimulus-led techniques","Concept &amp; product testing","Emic/etic coding"]
     },
     {
       label: "Quantitative",
       title: "Quantitative Research",
       gradient: "linear-gradient(165deg, var(--amber), var(--olive))",
       icon: '<path d="M5 20V13M12 20V8M19 20V4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
-      items: ["TAM / SAM / SOM sizing","Kano model analysis","Survey design &amp; purchase-driver analysis","Social listening (BrandWatch, Mention)","K-means cluster analysis &amp; segmentation","Factor analysis","Translating business questions into research questions — and back","SPSS / STATA / R","Gephi / VOSviewer"]
+      items: ["TAM / SAM / SOM sizing","Kano model analysis","Survey design &amp; purchase-driver analysis","Social listening analysis (BrandWatch, Mention)","K-means cluster analysis &amp; segmentation","Factor analysis","Translating business questions into research questions — and back"]
     },
     {
       label: "Shopper Mktg",
@@ -118,12 +117,12 @@
       items: ["Brand audit methodology","Brand &amp; product extension strategy","Keller CBBE pyramid","Whitespace &amp; opportunity mapping","Jobs-to-be-Done (JTBD)","PESTLE &amp; Porter's Five Forces","Customer journey mapping"]
     },
     {
-      label: "AI & Tools",
-      title: "AI &amp; Technical Tools",
+      label: "Tools",
+      title: "Tools &amp; Platforms",
       gradient: "linear-gradient(165deg, var(--line), var(--olive))",
       icon: '<path d="M12 3L14 10L21 12L14 14L12 21L10 14L3 12L10 10Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" fill="none"/>',
-      isAi: true,
-      items: []
+      hasAiTrigger: true,
+      items: ["Qualtrics","Recollective","SPSS / STATA / R","Gephi / VOSviewer"]
     }
   ];
 
@@ -182,10 +181,11 @@
   });
 
   function renderPanelItems(cat) {
-    if (cat.isAi) {
-      return '<li><button type="button" class="ai-note-trigger-panel">AI &amp; Website Development ↗</button></li>';
+    var html = cat.items.map(function (it) { return '<li>' + it + '</li>'; }).join('');
+    if (cat.hasAiTrigger) {
+      html += '<li><button type="button" class="ai-note-trigger-panel">AI &amp; Website Development ↗</button></li>';
     }
-    return cat.items.map(function (it) { return '<li>' + it + '</li>'; }).join('');
+    return html;
   }
 
   function selectCategory(i) {
