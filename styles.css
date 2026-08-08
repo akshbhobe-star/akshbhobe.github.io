@@ -336,7 +336,32 @@ ul { list-style: none; }
   .hero::before { animation: none; }
 }
 
-.hero-inner { max-width: 780px; }
+.hero-inner { max-width: 620px; }
+
+.hero-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.hero-photo {
+  flex-shrink: 0;
+  width: 260px;
+}
+.hero-photo img {
+  width: 100%;
+  aspect-ratio: 514 / 564;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  display: block;
+}
+
+@media (max-width: 860px) {
+  .hero-flex { flex-direction: column-reverse; gap: 32px; }
+  .hero-photo { width: 200px; }
+}
 
 .eyebrow.mono { font-size: 12px; }
 
