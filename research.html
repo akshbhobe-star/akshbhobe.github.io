@@ -15,7 +15,7 @@
 
 <nav class="nav" id="nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-mark">AB</a>
+    <a href="index.html" class="nav-mark"><img src="assets/logo.png" alt="Aksharaa Bhobe" class="nav-logo"></a>
     <div class="nav-links">
       <a href="index.html#about">What Drives Me</a>
       <div class="nav-dropdown">
@@ -43,7 +43,8 @@
 
 <section class="projects">
   <div class="section-inner">
-    <div class="accordion-list" id="accordionList"></div>
+    <div class="tile-grid" id="tileGrid"></div>
+    <div class="tile-panel" id="tilePanel"><div class="tile-panel-inner" id="tilePanelInner"></div></div>
   </div>
 </section>
 
@@ -194,108 +195,86 @@
     }
   ];
 
-  var list = document.getElementById('accordionList');
-  if (!list) return;
+  var tileGrid = document.getElementById('tileGrid');
+  var panel = document.getElementById('tilePanel');
+  var panelInner = document.getElementById('tilePanelInner');
+  if (!tileGrid || !panel) return;
 
-  categories.forEach(function (cat, catIndex) {
-    var row = document.createElement('div');
-    row.className = 'acc-row';
+  var activeKey = null;
+  var currentIndex = 0;
 
-    var header = document.createElement('button');
-    header.type = 'button';
-    header.className = 'acc-row-header';
-    header.style.background = cat.gradient;
-    header.innerHTML =
-      '<span class="acc-row-name">' + cat.name + '</span>' +
-      '<span class="acc-row-chevron">⌄</span>';
-
-    var body = document.createElement('div');
-    body.className = 'acc-row-body';
-
-    var inner = document.createElement('div');
-    inner.className = 'acc-row-inner';
-    body.appendChild(inner);
-
-    row.appendChild(header);
-    row.appendChild(body);
-    list.appendChild(row);
-
-    var currentIndex = 0;
-    var isOpen = false;
-
-    function renderCase() {
-      var c = cat.cases[currentIndex];
-      var pillsHtml = c.pills.map(function (p) { return '<span class="tag-pill">' + p + '</span>'; }).join('');
-      var navHtml = '';
-      if (cat.cases.length > 1) {
-        navHtml =
-          '<div class="acc-nav">' +
-            '<button type="button" class="acc-nav-btn acc-prev" ' + (currentIndex === 0 ? 'disabled' : '') + ' aria-label="Previous case">←</button>' +
-            '<span class="acc-index mono">' + (currentIndex + 1) + ' / ' + cat.cases.length + '</span>' +
-            '<button type="button" class="acc-nav-btn acc-next" ' + (currentIndex === cat.cases.length - 1 ? 'disabled' : '') + ' aria-label="Next case">→</button>' +
-          '</div>';
-      }
-      inner.innerHTML =
-        '<div class="acc-case">' +
-          '<p class="case-tag mono">' + c.tag + '</p>' +
-          '<h3>' + c.title + '</h3>' +
-          '<div class="pill-row">' + pillsHtml + '</div>' +
-          '<div class="case-body">' +
-            '<p><strong>The problem —</strong> ' + c.problem + '</p>' +
-            '<p><strong>The solution —</strong> ' + c.solution + '</p>' +
-            '<p><strong>The impact —</strong> ' + c.impact + '</p>' +
-            '<p class="contribution"><strong>My contribution —</strong> ' + c.contribution + '</p>' +
-          '</div>' +
-          navHtml +
+  function renderCase(cat) {
+    var c = cat.cases[currentIndex];
+    var pillsHtml = c.pills.map(function (p) { return '<span class="tag-pill">' + p + '</span>'; }).join('');
+    var navHtml = '';
+    if (cat.cases.length > 1) {
+      navHtml =
+        '<div class="acc-nav">' +
+          '<button type="button" class="acc-nav-btn acc-prev" ' + (currentIndex === 0 ? 'disabled' : '') + ' aria-label="Previous case">←</button>' +
+          '<span class="acc-index mono">' + (currentIndex + 1) + ' / ' + cat.cases.length + '</span>' +
+          '<button type="button" class="acc-nav-btn acc-next" ' + (currentIndex === cat.cases.length - 1 ? 'disabled' : '') + ' aria-label="Next case">→</button>' +
         '</div>';
-
-      if (cat.cases.length > 1) {
-        inner.querySelector('.acc-prev').addEventListener('click', function (e) {
-          e.stopPropagation();
-          if (currentIndex > 0) { currentIndex--; renderCase(); syncHeight(); }
-        });
-        inner.querySelector('.acc-next').addEventListener('click', function (e) {
-          e.stopPropagation();
-          if (currentIndex < cat.cases.length - 1) { currentIndex++; renderCase(); syncHeight(); }
-        });
-      }
     }
+    panelInner.innerHTML =
+      '<div class="acc-case">' +
+        '<p class="case-tag mono">' + c.tag + '</p>' +
+        '<h3>' + c.title + '</h3>' +
+        '<div class="pill-row">' + pillsHtml + '</div>' +
+        '<div class="case-body">' +
+          '<p><strong>The problem —</strong> ' + c.problem + '</p>' +
+          '<p><strong>The solution —</strong> ' + c.solution + '</p>' +
+          '<p><strong>The impact —</strong> ' + c.impact + '</p>' +
+          '<p class="contribution"><strong>My contribution —</strong> ' + c.contribution + '</p>' +
+        '</div>' +
+        navHtml +
+      '</div>';
 
-    function syncHeight() {
-      if (isOpen) {
-        body.style.maxHeight = inner.scrollHeight + 'px';
-      }
+    if (cat.cases.length > 1) {
+      panelInner.querySelector('.acc-prev').addEventListener('click', function () {
+        if (currentIndex > 0) { currentIndex--; renderCase(cat); syncHeight(); }
+      });
+      panelInner.querySelector('.acc-next').addEventListener('click', function () {
+        if (currentIndex < cat.cases.length - 1) { currentIndex++; renderCase(cat); syncHeight(); }
+      });
     }
+  }
 
-    renderCase();
+  function syncHeight() {
+    panel.style.maxHeight = panelInner.scrollHeight + 'px';
+  }
 
-    header.addEventListener('click', function () {
-      var wasOpen = isOpen;
-      // collapse all rows first
-      list.querySelectorAll('.acc-row-body').forEach(function (b) { b.style.maxHeight = '0px'; });
-      list.querySelectorAll('.acc-row-header').forEach(function (h) { h.classList.remove('active'); });
+  categories.forEach(function (cat) {
+    var tile = document.createElement('button');
+    tile.type = 'button';
+    tile.className = 'tile';
+    tile.style.background = cat.gradient;
+    tile.dataset.key = cat.key;
+    tile.innerHTML = '<span class="tile-name">' + cat.name + '</span>';
+    tileGrid.appendChild(tile);
 
-      if (!wasOpen) {
-        isOpen = true;
-        header.classList.add('active');
-        syncHeight();
-      } else {
-        isOpen = false;
+    tile.addEventListener('click', function () {
+      var tiles = tileGrid.querySelectorAll('.tile');
+
+      if (activeKey === cat.key) {
+        // clicking the active tile again closes it
+        activeKey = null;
+        tiles.forEach(function (t) { t.classList.remove('active'); });
+        panel.classList.remove('visible');
+        panel.style.maxHeight = '0px';
+        return;
       }
 
-      // any other row that was open is now closed
-      categories.forEach(function (_, i) { if (i !== catIndex) { /* handled via shared DOM query above */ } });
+      activeKey = cat.key;
+      currentIndex = 0;
+      tiles.forEach(function (t) { t.classList.toggle('active', t.dataset.key === cat.key); });
+      renderCase(cat);
+      panel.classList.add('visible');
+      syncHeight();
+      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
-
-    // keep this row's isOpen flag in sync if another row's header is clicked
-    list.addEventListener('click', function (e) {
-      if (e.target.closest('.acc-row-header') && e.target.closest('.acc-row-header') !== header) {
-        isOpen = false;
-      }
-    });
-
-    window.addEventListener('resize', function () { if (isOpen) syncHeight(); });
   });
+
+  window.addEventListener('resize', function () { if (activeKey) syncHeight(); });
 })();
 </script>
 </body>
