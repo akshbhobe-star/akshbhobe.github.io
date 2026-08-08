@@ -31,8 +31,8 @@
 <header class="page-header">
   <div class="section-inner">
     <p class="mono eyebrow">STRATEGY &amp; CONSULTING</p>
-    <h1 class="page-title">Where fieldwork becomes a boardroom call</h1>
-    <p class="page-sub">Brand audit &amp; extension strategy · Digital brand &amp; product strategy · Shopper marketing</p>
+    <h1 class="page-title">Projects</h1>
+    <p class="page-sub page-sub-blurb">Applied brand strategy work — live consulting engagements with SwissGear and Pinterest, plus class projects for Dyson and Molson Coors — spanning brand audits, digital strategy, and shopper marketing.</p>
   </div>
 </header>
 
@@ -65,7 +65,7 @@
       gradient: "linear-gradient(135deg, var(--olive), var(--olive-deep))",
       cases: [
         {
-          tag: "CLIENT — SWISSGEAR × GROUP III INTERNATIONAL", title: "Whitespace Opportunity &amp; Brand Strategy", pills: ["Brand Audit", "Strategy"],
+          tag: "CLIENT — SWISSGEAR × GROUP III INTERNATIONAL", status: "LIVE ENGAGEMENT · NORTHWESTERN IQ CONSULTING", title: "Whitespace Opportunity &amp; Brand Strategy", pills: ["Brand Audit", "Strategy"],
           problem: "SWISSGEAR needed to find an underserved whitespace in the mobility/travel gear category, where most competitor innovation is built narrowly around air travel.",
           solution: "Built a whitespace framework mapping mobility along two axes — scarcity-driven vs. optionality-driven need states, single-occasion vs. cross-occasion adaptability — layered with TAM/SAM/SOM sizing and a category PESTLE scan.",
           impact: "Gave the client a sharper, non-obvious lens for evaluating whitespace, grounded in U.S. consumer and market sentiment rather than a standard profit-driven competitor grid — surfacing a core cultural tension the client hadn't previously considered.",
@@ -91,7 +91,7 @@
       gradient: "linear-gradient(135deg, var(--amber), var(--blue))",
       cases: [
         {
-          tag: "GROUP PROJECT — BRAND COMMUNICATION DECISIONS", title: "Pinterest — Collage Ads Digital Brand Strategy", pills: ["Digital Strategy", "Brand Positioning"],
+          tag: "CLIENT — PINTEREST", status: "LIVE ENGAGEMENT · BRAND COMMUNICATION DECISIONS", title: "Pinterest — Collage Ads Digital Brand Strategy", pills: ["Digital Strategy", "Brand Positioning"],
           problem: "Pinterest needed to prove feasibility for a new native ad format — Collage Ads — and that meant solving a three-way fit problem at once: which category could genuinely work on the platform, which specific brand within that category fit both Pinterest and the new format, and whether the format made sense for that category at all. Alc-bev brands don't naturally think of Pinterest as a media channel, which made the case even harder to build.",
           solution: "Ran a category-wide scan of the alcoholic beverage industry — effectively a SWOT across the entire vertical — to map where a genuine \"right to play\" existed for Pinterest, paired with a consumer-trend read on how people are actually drinking today and what they're looking for in the occasion.",
           impact: "The category scan surfaced intentionality as the trend actually driving consumer behavior right now, and it shows up directly in drinking behavior: Gen Z and younger cohorts are leading their lives — and their social occasions — with intentionality, seeking customization and curation over habit. That pointed straight at ready-to-drink as the category with the strongest fit, since its entire value proposition is curated, deliberate drinking — which lined up with Pinterest's brand equity and the new ad format at the same time, using Angry Orchard as the lead example. The result was one unifying equity statement — occasion ownership — that turned three separate fit questions (category, brand, format) into a single, defensible pitch instead of a media buy pitched on hope.",
@@ -134,10 +134,12 @@
           '<button type="button" class="acc-nav-btn acc-next" ' + (currentIndex === cat.cases.length - 1 ? 'disabled' : '') + ' aria-label="Next case">→</button>' +
         '</div>';
     }
+    var statusHtml = c.status ? '<p class="case-status mono">' + c.status + '</p>' : '';
     panelInner.innerHTML =
       '<div class="acc-case">' +
         '<p class="case-tag mono">' + c.tag + '</p>' +
         '<h3>' + c.title + '</h3>' +
+        statusHtml +
         '<div class="pill-row">' + pillsHtml + '</div>' +
         '<div class="case-body">' +
           '<p><strong>The problem —</strong> ' + c.problem + '</p>' +
