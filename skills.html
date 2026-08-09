@@ -80,21 +80,21 @@
 (function () {
   var categories = [
     {
-      label: "Qualitative",
+      label: "Qualitative Skills",
       title: "Qualitative Research",
       gradient: "linear-gradient(165deg, var(--line), var(--amber))",
       icon: '<path d="M4 5.5A1.5 1.5 0 015.5 4h13A1.5 1.5 0 0120 5.5v9A1.5 1.5 0 0118.5 16H10l-4.2 3.4V16H5.5A1.5 1.5 0 014 14.5v-9z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/><circle cx="8.5" cy="10" r="0.9" fill="currentColor" stroke="none"/><circle cx="12" cy="10" r="0.9" fill="currentColor" stroke="none"/><circle cx="15.5" cy="10" r="0.9" fill="currentColor" stroke="none"/>',
       items: ["Discussion guide design &amp; moderation","Recruitment design, screening &amp; backchecks","Depth interviews &amp; extended groups","Longitudinal digital diary studies","Ethnographic immersion","Projective &amp; stimulus-led techniques","Concept &amp; product testing","Emic/etic coding"]
     },
     {
-      label: "Quantitative",
+      label: "Quantitative Skills",
       title: "Quantitative Research",
       gradient: "linear-gradient(165deg, var(--amber), var(--olive))",
       icon: '<path d="M5 20V13M12 20V8M19 20V4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
       items: ["TAM / SAM / SOM sizing","Kano model analysis","Survey design &amp; purchase-driver analysis","Social listening analysis (BrandWatch, Mention)","K-means cluster analysis &amp; segmentation","Factor analysis","Translating business questions into research questions — and back"]
     },
     {
-      label: "Shopper Mktg",
+      label: "Shopper Marketing",
       title: "Shopper Marketing",
       gradient: "linear-gradient(165deg, var(--blue), var(--olive-deep))",
       icon: '<path d="M12.5 3H20v7.5L11 19.5a1.5 1.5 0 01-2.1 0l-6.4-6.4a1.5 1.5 0 010-2.1L11.5 2h1z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round" transform="translate(0.3,0.5)"/><circle cx="15" cy="8" r="1.3" fill="currentColor" stroke="none"/>',
@@ -140,9 +140,8 @@
     petal.dataset.index = i;
     petal.style.setProperty('--angle', angleDeg + 'deg');
     petal.style.transform = 'rotate(' + angleDeg + 'deg)';
-    petal.style.backgroundImage = 'none';
-    petal.style.backgroundColor = '#820108';
-    petalOriginalBg.push({ bgColor: '#820108' });
+    petal.innerHTML = '<svg viewBox="0 0 100 220" preserveAspectRatio="none"><path class="petal-shape" d="M50,218 C20,180 6,120 16,62 C23,26 38,6 50,0 C62,6 77,26 84,62 C94,120 80,180 50,218 Z"/></svg>';
+    petalOriginalBg.push({});
     stage.appendChild(petal);
 
     var ix = CENTER + R_PETAL_ICON * Math.sin(rad);
@@ -181,7 +180,6 @@
 
     document.querySelectorAll('.petal').forEach(function (el, idx) {
       if (idx === i) {
-        el.style.backgroundImage = 'none';
         el.classList.add('active');
         el.classList.remove('dimmed');
       } else {
@@ -204,10 +202,7 @@
     if (selectedIndex === null) return;
     selectedIndex = null;
 
-    document.querySelectorAll('.petal').forEach(function (el, idx) {
-      var orig = petalOriginalBg[idx];
-      el.style.backgroundImage = 'none';
-      el.style.backgroundColor = orig.bgColor;
+    document.querySelectorAll('.petal').forEach(function (el) {
       el.classList.remove('active', 'dimmed');
     });
     document.querySelectorAll('.icon-knob, .petal-label').forEach(function (el) {
