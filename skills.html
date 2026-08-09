@@ -55,7 +55,7 @@
   <div class="section-inner contact-inner">
     <p class="mono eyebrow">GET IN TOUCH</p>
     <h2 class="contact-title">Let's talk strategy.</h2>
-    <p class="contact-sub">Open to roles in consulting, brand strategy, and consumer insights.</p>
+    <p class="contact-sub">I am open to roles in consulting, brand strategy, and consumer insights.</p>
     <div class="contact-links">
       <a href="mailto:akshbhobe@gmail.com" class="contact-link">Email</a>
       <a href="https://www.linkedin.com/in/aksharaa-bhobe" class="contact-link" target="_blank" rel="noopener">LinkedIn</a>
@@ -70,7 +70,7 @@
     <p class="mono eyebrow ai-modal-eyebrow">A NOTE ON AI</p>
     <h2 id="aiModalTitle" class="ai-modal-title">"How do I make the most of AI?" You're looking at the proof.</h2>
     <div class="ai-modal-body">
-      <p>I used AI to build this website, but not by giving it free rein. While AI handled the syntax, I directed it by describing the design I wanted, catching when copy sounded like a robot had written it, pushing back on layouts that didn't fit, and flagging when a research finding was being oversimplified. This is meant to exemplify how I use it as part of my workflow — supplementing the mechanical parts of a process so there's more time for the parts that require creativity, thought, and the strategic inference I bring to the table. That's my thought on how AI should be used in our lives, and I want this website to be that literal argument.</p>
+      <p>I used AI to build this website, but not by giving it free rein. While AI handled the syntax, I directed it by describing the design I wanted, catching when copy sounded like a robot had written it, pushing back on layouts that didn't fit, and flagging when a research finding was being oversimplified. It demonstrates how I use AI as part of my workflow: facilitating the mechanical parts of a process so there's more time for the parts that require creativity, thought, and the strategic inference that I bring to the table. That's my thought on how AI should be used in our lives, and I want this website to be that literal argument.</p>
     </div>
   </div>
 </div>
@@ -140,13 +140,9 @@
     petal.dataset.index = i;
     petal.style.setProperty('--angle', angleDeg + 'deg');
     petal.style.transform = 'rotate(' + angleDeg + 'deg)';
-    var bgImage = cat.gradient + ', radial-gradient(rgba(36,19,17,0.14) 1px, transparent 1.3px), radial-gradient(rgba(36,19,17,0.10) 1px, transparent 1.3px)';
-    var bgSize = '100% 100%, 7px 7px, 11px 11px';
-    var bgPosition = '0 0, 0 0, 3px 5px';
-    petal.style.backgroundImage = bgImage;
-    petal.style.backgroundSize = bgSize;
-    petal.style.backgroundPosition = bgPosition;
-    petalOriginalBg.push({ bgImage: bgImage, bgSize: bgSize, bgPosition: bgPosition });
+    petal.style.backgroundImage = 'none';
+    petal.style.backgroundColor = '#820108';
+    petalOriginalBg.push({ bgColor: '#820108' });
     stage.appendChild(petal);
 
     var ix = CENTER + R_PETAL_ICON * Math.sin(rad);
@@ -210,9 +206,8 @@
 
     document.querySelectorAll('.petal').forEach(function (el, idx) {
       var orig = petalOriginalBg[idx];
-      el.style.backgroundImage = orig.bgImage;
-      el.style.backgroundSize = orig.bgSize;
-      el.style.backgroundPosition = orig.bgPosition;
+      el.style.backgroundImage = 'none';
+      el.style.backgroundColor = orig.bgColor;
       el.classList.remove('active', 'dimmed');
     });
     document.querySelectorAll('.icon-knob, .petal-label').forEach(function (el) {
