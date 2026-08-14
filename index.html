@@ -138,32 +138,35 @@
   </div>
 </section>
 
-<!-- WHO AM I -->
-<section class="about" id="about">
-  <div class="section-inner about-grid">
-    <div class="about-tag">
-      <p class="mono eyebrow">03 — WHO AM I?</p>
-    </div>
-    <div class="about-content">
-      <p class="about-lead">
-        Beyond research, I'm an athlete — a former competitive gymnast, equestrian, and
-        powerlifter. None of it came naturally to me. I improved at each one by showing
-        up on the days it would've been easier to quit. It's taught me that passion and
-        talent make success look easy, but it's the work you put in that actually
-        builds you. I carry that into everything I do, and I get real satisfaction from
-        helping a business, or a person, reach somewhere they couldn't have reached
-        alone.
-      </p>
-      <p>
-        I bring to the table 3+ years of qualitative research experience — agency-side
-        across CPG, tech, healthcare, and beauty clients, and academic-side researching
-        into how multicultural audiences engage with American sports, with direct
-        implications for sports marketers building audience strategy. I decided to
-        pursue an MS in Integrated Marketing Communications at Northwestern's Medill
-        School as a deliberate investment in turning fieldwork instinct and my passion
-        for uncovering consumer truths into helping brands that prioritize serving real
-        consumer and market needs.
-      </p>
+<!-- WHO AM I — scroll-scrubbed zoom into full burgundy reveal -->
+<div id="about"></div>
+<section class="who-scroll-block" id="whoScrollBlock">
+  <div class="who-sticky" id="whoSticky">
+    <h2 class="who-heading" id="whoHeading">Who Am I?</h2>
+    <div class="who-content" id="whoContent">
+      <div class="who-content-inner">
+        <p>
+          Beyond research, I'm an athlete — a former competitive gymnast, equestrian, and
+          powerlifter. None of it came naturally to me. I improved at each one by showing
+          up on the days it would've been easier to quit. It's taught me that passion and
+          talent make success look easy, but it's the work you put in that actually
+          builds you.
+        </p>
+        <p class="who-highlight">
+          I carry that into everything I do, and I get real satisfaction from helping a
+          business, or a person, reach somewhere they couldn't have reached alone.
+        </p>
+        <p>
+          I bring to the table 3+ years of qualitative research experience — agency-side
+          across CPG, tech, healthcare, and beauty clients, and academic-side researching
+          into how multicultural audiences engage with American sports, with direct
+          implications for sports marketers building audience strategy. I decided to
+          pursue an MS in Integrated Marketing Communications at Northwestern's Medill
+          School as a deliberate investment in turning fieldwork instinct and my passion
+          for uncovering consumer truths into helping brands that prioritize serving real
+          consumer and market needs.
+        </p>
+      </div>
     </div>
   </div>
 </section>
@@ -276,6 +279,40 @@
   });
 
   renderProcessStage(0);
+})();
+
+// ---- Who Am I: scroll-scrubbed zoom into burgundy reveal ----
+(function () {
+  var block = document.getElementById('whoScrollBlock');
+  var sticky = document.getElementById('whoSticky');
+  var heading = document.getElementById('whoHeading');
+  if (!block || !sticky || !heading) return;
+
+  var flipPoint = 0.55; // fraction of scroll progress where burgundy reveal triggers
+  var isFlipped = false;
+
+  function update() {
+    var rect = block.getBoundingClientRect();
+    var scrollableDistance = block.offsetHeight - window.innerHeight;
+    if (scrollableDistance <= 0) return;
+    var scrolled = -rect.top;
+    var progress = Math.min(Math.max(scrolled / scrollableDistance, 0), 1);
+
+    var maxScale = window.innerWidth <= 700 ? 2.4 : 4.6;
+    var scaleProgress = Math.min(progress / flipPoint, 1);
+    var scale = 1 + scaleProgress * (maxScale - 1);
+    heading.style.transform = 'scale(' + scale.toFixed(3) + ')';
+
+    var shouldFlip = progress > flipPoint;
+    if (shouldFlip !== isFlipped) {
+      isFlipped = shouldFlip;
+      sticky.classList.toggle('burgundy', isFlipped);
+    }
+  }
+
+  window.addEventListener('scroll', function () { requestAnimationFrame(update); }, { passive: true });
+  window.addEventListener('resize', function () { requestAnimationFrame(update); });
+  update();
 })();
 </script>
 </body>
