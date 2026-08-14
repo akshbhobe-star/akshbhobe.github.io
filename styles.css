@@ -2010,3 +2010,80 @@ ul { list-style: none; }
   .tile-name { font-size: 16px; }
   .tile-grid.docked { top: 66px; padding: 8px 20px; }
 }
+
+/* ============================================
+   WHO AM I — scroll-scrubbed zoom into a full
+   burgundy reveal
+   ============================================ */
+.who-scroll-block {
+  position: relative;
+  height: 260vh;
+}
+
+.who-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--paper);
+  transition: background-color 0.6s ease;
+}
+.who-sticky.burgundy {
+  background: #820108;
+}
+
+.who-heading {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(32px, 5vw, 56px);
+  color: var(--ink);
+  will-change: transform, opacity;
+  transition: opacity 0.4s ease;
+}
+.who-sticky.burgundy .who-heading {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.who-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 32px;
+  opacity: 0;
+  transform: translateY(24px);
+  pointer-events: none;
+  transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
+}
+.who-sticky.burgundy .who-content {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.who-content-inner {
+  max-width: 720px;
+}
+.who-content-inner p {
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.65;
+  color: var(--paper);
+  margin-bottom: 26px;
+}
+.who-content-inner p:last-child { margin-bottom: 0; }
+.who-content-inner p.who-highlight {
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+@media (max-width: 700px) {
+  .who-scroll-block { height: 220vh; }
+  .who-content { padding: 28px 24px; }
+  .who-content-inner p { font-size: 16px; margin-bottom: 20px; }
+}
