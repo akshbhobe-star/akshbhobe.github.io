@@ -517,6 +517,8 @@ ul { list-style: none; }
   border-top: 1px solid var(--line);
 }
 
+#process { padding-bottom: 50px; }
+
 .about-grid {
   display: grid;
   grid-template-columns: 200px 1fr;
@@ -2039,9 +2041,12 @@ ul { list-style: none; }
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 500;
-  font-size: clamp(32px, 5vw, 56px);
+  font-size: clamp(40px, 6vw, 68px);
   color: var(--ink);
-  will-change: transform, opacity;
+  text-align: center;
+  white-space: nowrap;
+  width: 100%;
+  will-change: font-size, opacity;
   transition: opacity 0.4s ease;
 }
 .who-sticky.burgundy .who-heading {
