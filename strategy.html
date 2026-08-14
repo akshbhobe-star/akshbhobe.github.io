@@ -134,12 +134,18 @@
           '<button type="button" class="acc-nav-btn acc-next" ' + (currentIndex === cat.cases.length - 1 ? 'disabled' : '') + ' aria-label="Next case">→</button>' +
         '</div>';
     }
+    var navHtmlTop = cat.cases.length > 1 ? '<div class="acc-nav acc-nav-top">' +
+        '<button type="button" class="acc-nav-btn acc-prev" ' + (currentIndex === 0 ? 'disabled' : '') + ' aria-label="Previous case">←</button>' +
+        '<span class="acc-index mono">' + (currentIndex + 1) + ' / ' + cat.cases.length + ' studies in this category</span>' +
+        '<button type="button" class="acc-nav-btn acc-next" ' + (currentIndex === cat.cases.length - 1 ? 'disabled' : '') + ' aria-label="Next case">→</button>' +
+      '</div>' : '';
     var statusHtml = c.status ? '<p class="case-status mono">' + c.status + '</p>' : '';
     panelInner.innerHTML =
       '<div class="acc-case">' +
         '<p class="case-tag mono">' + c.tag + '</p>' +
         '<h3>' + c.title + '</h3>' +
         statusHtml +
+        navHtmlTop +
         '<div class="pill-row">' + pillsHtml + '</div>' +
         '<div class="case-body">' +
           '<p><strong>The problem —</strong> ' + c.problem + '</p>' +
@@ -151,11 +157,15 @@
       '</div>';
 
     if (cat.cases.length > 1) {
-      panelInner.querySelector('.acc-prev').addEventListener('click', function () {
-        if (currentIndex > 0) { currentIndex--; renderCase(cat); syncHeight(); }
+      panelInner.querySelectorAll('.acc-prev').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          if (currentIndex > 0) { currentIndex--; renderCase(cat); syncHeight(); }
+        });
       });
-      panelInner.querySelector('.acc-next').addEventListener('click', function () {
-        if (currentIndex < cat.cases.length - 1) { currentIndex++; renderCase(cat); syncHeight(); }
+      panelInner.querySelectorAll('.acc-next').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          if (currentIndex < cat.cases.length - 1) { currentIndex++; renderCase(cat); syncHeight(); }
+        });
       });
     }
   }
