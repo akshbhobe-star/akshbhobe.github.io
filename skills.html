@@ -44,9 +44,12 @@
       </div>
     </div>
 
-    <div class="flower-panel" id="flowerPanel">
-      <p class="flower-panel-title" id="flowerPanelTitle"></p>
-      <ul class="flower-panel-list" id="flowerPanelList"></ul>
+    <div class="flower-panel-overlay" id="flowerPanelOverlay">
+      <div class="flower-panel" id="flowerPanel">
+        <button type="button" class="flower-panel-close" id="flowerPanelClose" aria-label="Close">✕</button>
+        <p class="flower-panel-title" id="flowerPanelTitle"></p>
+        <ul class="flower-panel-list" id="flowerPanelList"></ul>
+      </div>
     </div>
   </div>
 </section>
@@ -126,10 +129,12 @@
   ];
 
   var stage = document.getElementById('flowerStage');
+  var panelOverlay = document.getElementById('flowerPanelOverlay');
   var panel = document.getElementById('flowerPanel');
+  var panelClose = document.getElementById('flowerPanelClose');
   var panelTitle = document.getElementById('flowerPanelTitle');
   var panelList = document.getElementById('flowerPanelList');
-  if (!stage || !panel) return;
+  if (!stage || !panel || !panelOverlay) return;
 
   var R_PETAL_ICON = 138;
   var R_LABEL = 198;
@@ -214,7 +219,9 @@
 
     panelTitle.innerHTML = cat.title;
     panelList.innerHTML = renderPanelItems(cat);
-    panel.classList.add('visible');
+    panelOverlay.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+    if (panelClose) panelClose.focus();
   }
 
   function resetSelection() {
@@ -228,7 +235,8 @@
       el.classList.remove('active', 'dimmed');
     });
 
-    panel.classList.remove('visible');
+    panelOverlay.classList.remove('visible');
+    document.body.style.overflow = '';
   }
 
   stage.addEventListener('click', function (e) {
@@ -244,9 +252,17 @@
   });
 
   document.addEventListener('click', function (e) {
-    if (!e.target.closest('#flowerStage') && !e.target.closest('#flowerBud') && !e.target.closest('#flowerFan')) {
+    if (!e.target.closest('#flowerStage') && !e.target.closest('#flowerBud') && !e.target.closest('#flowerFan') && !e.target.closest('#flowerPanelOverlay')) {
       resetSelection();
     }
+  });
+
+  if (panelClose) panelClose.addEventListener('click', resetSelection);
+  panelOverlay.addEventListener('click', function (e) {
+    if (e.target === panelOverlay) resetSelection();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && panelOverlay.classList.contains('visible')) resetSelection();
   });
 
   // ---- Bloom-in entrance animation, triggered once when the flower scrolls into view ----
@@ -283,7 +299,6 @@
         selectCategory(idx);
         fanOpen = false;
         fan.classList.remove('open');
-        panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
 
