@@ -125,20 +125,24 @@
   function renderCase(cat) {
     var c = cat.cases[currentIndex];
     var pillsHtml = c.pills.map(function (p) { return '<span class="tag-pill">' + p + '</span>'; }).join('');
-    var navHtml = '';
-    if (cat.cases.length > 1) {
-      navHtml =
-        '<div class="acc-nav">' +
-          '<button type="button" class="acc-nav-btn acc-prev" ' + (currentIndex === 0 ? 'disabled' : '') + ' aria-label="Previous case">←</button>' +
-          '<span class="acc-index mono">' + (currentIndex + 1) + ' / ' + cat.cases.length + '</span>' +
-          '<button type="button" class="acc-nav-btn acc-next" ' + (currentIndex === cat.cases.length - 1 ? 'disabled' : '') + ' aria-label="Next case">→</button>' +
-        '</div>';
-    }
-    var navHtmlTop = cat.cases.length > 1 ? '<div class="acc-nav acc-nav-top">' +
-        '<button type="button" class="acc-nav-btn acc-prev" ' + (currentIndex === 0 ? 'disabled' : '') + ' aria-label="Previous case">←</button>' +
-        '<span class="acc-index mono">' + (currentIndex + 1) + ' / ' + cat.cases.length + ' studies in this category</span>' +
-        '<button type="button" class="acc-nav-btn acc-next" ' + (currentIndex === cat.cases.length - 1 ? 'disabled' : '') + ' aria-label="Next case">→</button>' +
+    var hasMultiple = cat.cases.length > 1;
+    var isLast = currentIndex === cat.cases.length - 1;
+    var nextCase = hasMultiple ? cat.cases[isLast ? 0 : currentIndex + 1] : null;
+
+    var navHtmlTop = hasMultiple ? '<div class="acc-nav-top">' +
+        '<button type="button" class="acc-nav-btn acc-prev" ' + (currentIndex === 0 ? 'disabled' : '') + ' aria-label="Previous case">‹</button>' +
+        '<span class="acc-index mono">' + (currentIndex + 1) + ' of ' + cat.cases.length + '</span>' +
+        '<button type="button" class="acc-nav-btn acc-next-step" ' + (isLast ? 'disabled' : '') + ' aria-label="Next case">›</button>' +
       '</div>' : '';
+
+    var navHtmlBottom = hasMultiple ? '<button type="button" class="acc-next-teaser acc-next-wrap" aria-label="' + (isLast ? 'Back to first study' : 'Next study') + '">' +
+        '<span class="acc-next-teaser-text">' +
+          '<span class="acc-next-teaser-label mono">' + (isLast ? 'Back to the first study' : 'Next in ' + cat.name) + '</span>' +
+          '<span class="acc-next-teaser-title">' + nextCase.title + '</span>' +
+        '</span>' +
+        '<span class="acc-next-teaser-arrow">→</span>' +
+      '</button>' : '';
+
     var statusHtml = c.status ? '<p class="case-status mono">' + c.status + '</p>' : '';
     panelInner.innerHTML =
       '<div class="acc-case">' +
@@ -153,18 +157,25 @@
           '<p><strong>The impact —</strong> ' + c.impact + '</p>' +
           '<p class="contribution"><strong>My contribution —</strong> ' + c.contribution + '</p>' +
         '</div>' +
-        navHtml +
+        navHtmlBottom +
       '</div>';
 
-    if (cat.cases.length > 1) {
+    if (hasMultiple) {
       panelInner.querySelectorAll('.acc-prev').forEach(function (btn) {
         btn.addEventListener('click', function () {
           if (currentIndex > 0) { currentIndex--; renderCase(cat); syncHeight(); }
         });
       });
-      panelInner.querySelectorAll('.acc-next').forEach(function (btn) {
+      panelInner.querySelectorAll('.acc-next-step').forEach(function (btn) {
         btn.addEventListener('click', function () {
           if (currentIndex < cat.cases.length - 1) { currentIndex++; renderCase(cat); syncHeight(); }
+        });
+      });
+      panelInner.querySelectorAll('.acc-next-wrap').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          currentIndex = (currentIndex + 1) % cat.cases.length;
+          renderCase(cat); syncHeight();
+          panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         });
       });
     }
