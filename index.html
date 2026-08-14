@@ -298,10 +298,12 @@
     var scrolled = -rect.top;
     var progress = Math.min(Math.max(scrolled / scrollableDistance, 0), 1);
 
-    var maxScale = window.innerWidth <= 700 ? 2.4 : 4.6;
+    var isMobile = window.innerWidth <= 700;
+    var baseFontSize = isMobile ? 40 : 68;
+    var maxFontSize = isMobile ? 84 : 220;
     var scaleProgress = Math.min(progress / flipPoint, 1);
-    var scale = 1 + scaleProgress * (maxScale - 1);
-    heading.style.transform = 'scale(' + scale.toFixed(3) + ')';
+    var fontSize = baseFontSize + scaleProgress * (maxFontSize - baseFontSize);
+    heading.style.fontSize = fontSize.toFixed(1) + 'px';
 
     var shouldFlip = progress > flipPoint;
     if (shouldFlip !== isFlipped) {
