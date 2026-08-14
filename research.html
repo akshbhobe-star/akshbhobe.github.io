@@ -39,6 +39,7 @@
 <section class="projects">
   <div class="section-inner">
     <div class="tile-grid" id="tileGrid"></div>
+    <div class="tile-grid-spacer" id="tileGridSpacer"></div>
     <div class="tile-panel" id="tilePanel"><div class="tile-panel-inner" id="tilePanelInner"></div></div>
   </div>
 </section>
@@ -266,6 +267,31 @@
       panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
   });
+
+  // ---- Scroll-morph: tile grid docks into a sticky pill bar once scrolled past ----
+  var spacer = document.getElementById('tileGridSpacer');
+  if (spacer) {
+    var gridNaturalHeight = tileGrid.offsetHeight;
+    var gridInitialTop = tileGrid.getBoundingClientRect().top + (window.scrollY || window.pageYOffset);
+    var isDocked = false;
+
+    function updateDockState() {
+      var scrollY = window.scrollY || window.pageYOffset;
+      var shouldDock = scrollY > gridInitialTop - 78;
+      if (shouldDock && !isDocked) {
+        isDocked = true;
+        tileGrid.classList.add('docked');
+        spacer.style.height = gridNaturalHeight + 'px';
+      } else if (!shouldDock && isDocked) {
+        isDocked = false;
+        tileGrid.classList.remove('docked');
+        spacer.style.height = '0px';
+      }
+    }
+
+    window.addEventListener('scroll', function () { requestAnimationFrame(updateDockState); }, { passive: true });
+    updateDockState();
+  }
 
   window.addEventListener('resize', function () { if (activeKey) syncHeight(); });
 })();
