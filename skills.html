@@ -63,6 +63,14 @@
   </div>
 </footer>
 
+<!-- DOCKED FLOWER BUD (appears once the full flower scrolls out of view) -->
+<button type="button" class="flower-bud" id="flowerBud" aria-label="Jump to a skill category">
+  <svg viewBox="0 0 100 100">
+    <path class="flower-bud-shape" d="M50,88 C30,80 18,60 18,42 C18,20 32,8 50,8 C68,8 82,20 82,42 C82,60 70,80 50,88 Z"/>
+  </svg>
+</button>
+<div class="flower-fan" id="flowerFan"></div>
+
 <!-- AI NOTE MODAL -->
 <div class="ai-modal-overlay" id="aiModalOverlay" aria-hidden="true">
   <div class="ai-modal" role="dialog" aria-modal="true" aria-labelledby="aiModalTitle">
@@ -140,7 +148,18 @@
     petal.dataset.index = i;
     petal.style.setProperty('--angle', angleDeg + 'deg');
     petal.style.transform = 'rotate(' + angleDeg + 'deg)';
-    petal.innerHTML = '<svg viewBox="0 0 100 220" preserveAspectRatio="none"><path class="petal-shape" d="M50,218 C20,180 6,120 16,62 C23,26 38,6 50,0 C62,6 77,26 84,62 C94,120 80,180 50,218 Z"/></svg>';
+    petal.innerHTML =
+      '<svg viewBox="0 0 100 220" preserveAspectRatio="none">' +
+        '<defs><linearGradient id="petalGrad' + i + '" x1="0" y1="1" x2="0" y2="0">' +
+          '<stop offset="0%" stop-color="#6a0106"/>' +
+          '<stop offset="55%" stop-color="#8f0d15"/>' +
+          '<stop offset="100%" stop-color="#ac2029"/>' +
+        '</linearGradient></defs>' +
+        '<path class="petal-shape" fill="url(#petalGrad' + i + ')" d="M50,218 C18,180 3,122 13,63 C20,27 35,6 50,0 C65,7 83,25 91,58 C100,108 93,168 63,204 C58,210 54,214 50,218 Z"/>' +
+        '<path class="petal-vein" d="M50,208 C45,160 46,88 50,8" stroke="rgba(36,19,17,0.32)" stroke-width="1.6" fill="none" stroke-linecap="round"/>' +
+        '<path class="petal-vein petal-vein-side" d="M50,150 C42,130 34,108 30,86" stroke="rgba(36,19,17,0.2)" stroke-width="1.2" fill="none" stroke-linecap="round"/>' +
+        '<path class="petal-vein petal-vein-side" d="M50,150 C58,130 66,108 70,86" stroke="rgba(36,19,17,0.2)" stroke-width="1.2" fill="none" stroke-linecap="round"/>' +
+      '</svg>';
     petalOriginalBg.push({});
     stage.appendChild(petal);
 
@@ -225,10 +244,66 @@
   });
 
   document.addEventListener('click', function (e) {
-    if (!e.target.closest('#flowerStage')) {
+    if (!e.target.closest('#flowerStage') && !e.target.closest('#flowerBud') && !e.target.closest('#flowerFan')) {
       resetSelection();
     }
   });
+
+  // ---- Bloom-in entrance animation, triggered once when the flower scrolls into view ----
+  if ('IntersectionObserver' in window) {
+    var bloomObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          document.querySelectorAll('.petal').forEach(function (el, idx) {
+            el.style.animationDelay = (idx * 0.09) + 's';
+            el.classList.add('blooming');
+          });
+          bloomObserver.unobserve(stage);
+        }
+      });
+    }, { threshold: 0.3 });
+    bloomObserver.observe(stage);
+  }
+
+  // ---- Docked bud: appears once the flower has scrolled out of view, fans open to jump categories ----
+  var bud = document.getElementById('flowerBud');
+  var fan = document.getElementById('flowerFan');
+  var fanOpen = false;
+
+  if (bud && fan && 'IntersectionObserver' in window) {
+    fan.innerHTML = categories.map(function (cat, idx) {
+      return '<button type="button" class="flower-fan-btn" data-index="' + idx + '">' +
+        '<span class="flower-fan-dot" style="background:' + cat.gradient + '"></span>' + cat.label +
+        '</button>';
+    }).join('');
+
+    fan.querySelectorAll('.flower-fan-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var idx = parseInt(btn.dataset.index, 10);
+        selectCategory(idx);
+        fanOpen = false;
+        fan.classList.remove('open');
+        panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    bud.addEventListener('click', function () {
+      fanOpen = !fanOpen;
+      fan.classList.toggle('open', fanOpen);
+    });
+
+    var budObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var scrolledPast = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+        bud.classList.toggle('visible', scrolledPast);
+        if (!scrolledPast) {
+          fanOpen = false;
+          fan.classList.remove('open');
+        }
+      });
+    }, { threshold: 0 });
+    budObserver.observe(stage);
+  }
 
   // ---- AI note modal (trigger is re-rendered inside the panel, so use delegation) ----
   var aiOverlay = document.getElementById('aiModalOverlay');
