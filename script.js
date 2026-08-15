@@ -27,33 +27,17 @@ navLinks.querySelectorAll('a').forEach(link => {
   });
 });
 
-// Scroll-triggered reveal for case study cards
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.15 });
-
-document.querySelectorAll('.case').forEach(card => {
-  card.style.opacity = '0';
-  card.style.transform = 'translateY(18px)';
-  card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-  observer.observe(card);
-});
-
-// Nav background solidify on scroll
+// Nav background solidify on scroll (rAF-throttled + passive so it never blocks scrolling)
 const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 40) {
-    nav.style.boxShadow = '0 1px 0 rgba(36,19,17,0.08)';
-  } else {
-    nav.style.boxShadow = 'none';
-  }
-});
+let navScrolled = null;
+function updateNavShadow() {
+  const shouldShow = window.scrollY > 40;
+  if (shouldShow === navScrolled) return;
+  navScrolled = shouldShow;
+  nav.style.boxShadow = shouldShow ? '0 1px 0 rgba(36,19,17,0.08)' : 'none';
+}
+window.addEventListener('scroll', () => { requestAnimationFrame(updateNavShadow); }, { passive: true });
+updateNavShadow();
 
 // Note: research.html's project filtering now lives in its own page-specific
 // script (the accordion component), since it replaced the tile-grid/filter-bar UI.
