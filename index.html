@@ -192,35 +192,36 @@
 (function () {
   var skillCategories = [
     {
-      label: "Qualitative Research Methods",
-      gradient: "linear-gradient(135deg, var(--line), var(--amber))",
-      icon: '<path d="M4 5.5A1.5 1.5 0 015.5 4h13A1.5 1.5 0 0120 5.5v9A1.5 1.5 0 0118.5 16H10l-4.2 3.4V16H5.5A1.5 1.5 0 014 14.5v-9z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/><circle cx="8.5" cy="10" r="0.9" fill="currentColor" stroke="none"/><circle cx="12" cy="10" r="0.9" fill="currentColor" stroke="none"/><circle cx="15.5" cy="10" r="0.9" fill="currentColor" stroke="none"/>',
-      items: ["Discussion guide design & moderation", "Recruitment design, screening & backchecks", "Depth interviews & extended groups", "Longitudinal digital diary studies", "Ethnographic immersion", "Projective & stimulus-led techniques", "Concept & product testing", "Emic/etic coding"]
+      label: "Brand & Product Strategy",
+      gradient: "linear-gradient(135deg, var(--olive), var(--blue))",
+      icon: '<circle cx="12" cy="12" r="7.5" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="12" cy="12" r="0.9" fill="currentColor" stroke="none"/>',
+      items: ["Market sizing (TAM / SAM / SOM)", "Brand audit methodology", "Brand & product extension strategy", "Keller CBBE pyramid", "Whitespace & opportunity mapping", "Jobs-to-be-Done (JTBD)", "PESTLE & Porter's Five Forces", "McKinsey Customer Journey Mapping"]
     },
     {
       label: "Quantitative Research & Analytics",
       gradient: "linear-gradient(135deg, var(--amber), var(--olive))",
       icon: '<path d="M5 20V13M12 20V8M19 20V4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
-      items: ["Kano model analysis", "Survey design & purchase-driver analysis", "Social listening analysis", "K-means cluster analysis & segmentation", "Factor analysis", "Translating business questions into research questions — and back"]
+      note: "Translating business questions into research questions and implementing the following:",
+      items: ["Survey design & purchase-driver analysis", "Social listening analysis", "K-means cluster analysis & segmentation", "Factor analysis", "Regression modeling (logit / ordered logit)", "Survival analysis", "Cross-tabulation & chi-square testing", "Kano model analysis", "Churn rate analysis & customer lifetime value (CLV) calculation"]
+    },
+    {
+      label: "Tools & Platforms",
+      gradient: "linear-gradient(135deg, var(--line), var(--olive))",
+      icon: '<path d="M12 3L14 10L21 12L14 14L12 21L10 14L3 12L10 10Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" fill="none"/>',
+      items: ["Qualtrics", "Recollective", "SPSS / Stata / R / Radiant", "Excel (pivot tables, data collation, dashboards)", "Gephi / VOSviewer", "Brandwatch", "Tableau"],
+      hasAiTrigger: true
+    },
+    {
+      label: "Qualitative Research Methods",
+      gradient: "linear-gradient(135deg, var(--line), var(--amber))",
+      icon: '<path d="M4 5.5A1.5 1.5 0 015.5 4h13A1.5 1.5 0 0120 5.5v9A1.5 1.5 0 0118.5 16H10l-4.2 3.4V16H5.5A1.5 1.5 0 014 14.5v-9z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/><circle cx="8.5" cy="10" r="0.9" fill="currentColor" stroke="none"/><circle cx="12" cy="10" r="0.9" fill="currentColor" stroke="none"/><circle cx="15.5" cy="10" r="0.9" fill="currentColor" stroke="none"/>',
+      items: ["Discussion guide design & moderation", "Recruitment design, screening & backchecks", "Depth interviews & extended groups", "Longitudinal digital diary studies", "Ethnographic immersion", "Projective & stimulus-led techniques, including Zaltman Metaphor Elicitation", "Concept & product testing", "Emic/etic coding", "Collaborative digital facilitation (Miro)"]
     },
     {
       label: "Shopper Marketing",
       gradient: "linear-gradient(135deg, var(--blue), var(--olive-deep))",
       icon: '<path d="M12.5 3H20v7.5L11 19.5a1.5 1.5 0 01-2.1 0l-6.4-6.4a1.5 1.5 0 010-2.1L11.5 2h1z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round" transform="translate(0.3,0.5)"/><circle cx="15" cy="8" r="1.3" fill="currentColor" stroke="none"/>',
       items: ["Category management & space planning", "Category leadership principles", "Retailer-specific activation strategy", "Shopper insight translation", "Full-funnel measurement planning"]
-    },
-    {
-      label: "Brand & Product Strategy",
-      gradient: "linear-gradient(135deg, var(--olive), var(--blue))",
-      icon: '<circle cx="12" cy="12" r="7.5" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="12" cy="12" r="0.9" fill="currentColor" stroke="none"/>',
-      items: ["TAM / SAM / SOM sizing", "Brand audit methodology", "Brand & product extension strategy", "Keller CBBE pyramid", "Whitespace & opportunity mapping", "Jobs-to-be-Done (JTBD)", "PESTLE & Porter's Five Forces", "Customer journey mapping"]
-    },
-    {
-      label: "Tools & Platforms",
-      gradient: "linear-gradient(135deg, var(--line), var(--olive))",
-      icon: '<path d="M12 3L14 10L21 12L14 14L12 21L10 14L3 12L10 10Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" fill="none"/>',
-      items: ["Qualtrics", "Recollective", "SPSS", "Stata", "R", "Gephi", "VOSviewer", "Brandwatch", "Tableau"],
-      hasAiTrigger: true
     }
   ];
 
@@ -230,12 +231,14 @@
   groupsEl.innerHTML = skillCategories.map(function (cat) {
     var chips = cat.items.map(function (item) { return '<span class="skill-chip">' + item + '</span>'; }).join('');
     var aiNote = cat.hasAiTrigger ? '<button type="button" class="skill-ai-note ai-note-trigger-panel">A note on how I used AI to build this site ↗</button>' : '';
+    var catNote = cat.note ? '<p class="skill-category-note">' + cat.note + '</p>' : '';
     return (
       '<div class="skill-category">' +
         '<div class="skill-category-head">' +
           '<span class="skill-category-icon" style="background:' + cat.gradient + '"><svg viewBox="0 0 24 24" fill="none">' + cat.icon + '</svg></span>' +
           '<h3 class="skill-category-label">' + cat.label + '</h3>' +
         '</div>' +
+        catNote +
         '<div class="skill-chip-row">' + chips + '</div>' +
         aiNote +
       '</div>'
