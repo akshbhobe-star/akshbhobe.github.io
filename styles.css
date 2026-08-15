@@ -2064,7 +2064,8 @@ ul { list-style: none; }
 
 /* ---- Back-to-index link at the top of a case detail ---- */
 .case-index-back {
-  display: inline-flex;
+  display: flex;
+  width: fit-content;
   align-items: center;
   gap: 6px;
   border: none;
@@ -2266,12 +2267,13 @@ ul { list-style: none; }
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 500;
-  font-size: clamp(40px, 6vw, 68px);
+  font-size: 68px;
   color: var(--ink);
   text-align: center;
   white-space: nowrap;
   width: 100%;
-  will-change: font-size, opacity;
+  transform-origin: center center;
+  will-change: transform, opacity;
   transition: opacity 0.4s ease;
 }
 .who-sticky.burgundy .who-heading {

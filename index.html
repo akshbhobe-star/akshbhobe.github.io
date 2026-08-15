@@ -86,7 +86,7 @@
     </div>
     <div class="about-content">
       <div class="clients-block clients-first">
-        <p class="mono eyebrow" style="margin-bottom:20px;">CLIENTS &amp; PARTNERS</p>
+        <p class="mono eyebrow" style="margin-bottom:20px;">Brands served during my consulting and agency tenure</p>
         <div class="logo-wall">
           <div class="logo-tile"><span class="logo-cat mono">Tech</span><span class="logo-name v2">Google</span></div>
           <div class="logo-tile"><span class="logo-cat mono">Tech</span><span class="logo-name v3">amazon</span></div>
@@ -280,6 +280,19 @@
 
   var flipPoint = 0.55; // fraction of scroll progress where burgundy reveal triggers
   var isFlipped = false;
+  var baseFontSize, sizeRatio;
+
+  // Set the actual font-size ONCE (on load/resize only) — changing font-size on every
+  // scroll tick forces a layout reflow every frame, which is what made scrolling feel
+  // clunky on lower-powered Android devices. The grow effect itself is now done purely
+  // with a GPU-composited transform: scale(), which never touches layout.
+  function setBaseSize() {
+    var isMobile = window.innerWidth <= 700;
+    baseFontSize = isMobile ? 40 : 68;
+    var maxFontSize = isMobile ? 84 : 220;
+    sizeRatio = maxFontSize / baseFontSize;
+    heading.style.fontSize = baseFontSize + 'px';
+  }
 
   function update() {
     var rect = block.getBoundingClientRect();
@@ -288,12 +301,9 @@
     var scrolled = -rect.top;
     var progress = Math.min(Math.max(scrolled / scrollableDistance, 0), 1);
 
-    var isMobile = window.innerWidth <= 700;
-    var baseFontSize = isMobile ? 40 : 68;
-    var maxFontSize = isMobile ? 84 : 220;
     var scaleProgress = Math.min(progress / flipPoint, 1);
-    var fontSize = baseFontSize + scaleProgress * (maxFontSize - baseFontSize);
-    heading.style.fontSize = fontSize.toFixed(1) + 'px';
+    var scale = 1 + scaleProgress * (sizeRatio - 1);
+    heading.style.transform = 'scale(' + scale.toFixed(3) + ')';
 
     var shouldFlip = progress > flipPoint;
     if (shouldFlip !== isFlipped) {
@@ -302,8 +312,9 @@
     }
   }
 
+  setBaseSize();
   window.addEventListener('scroll', function () { requestAnimationFrame(update); }, { passive: true });
-  window.addEventListener('resize', function () { requestAnimationFrame(update); });
+  window.addEventListener('resize', function () { requestAnimationFrame(function () { setBaseSize(); update(); }); });
   update();
 })();
 </script>
