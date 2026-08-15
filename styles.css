@@ -581,7 +581,7 @@ ul { list-style: none; }
    PROJECTS
    ============================================ */
 .projects {
-  padding: 120px 0;
+  padding: 56px 0 120px;
   border-top: 1px solid var(--line);
 }
 
@@ -1277,6 +1277,76 @@ ul { list-style: none; }
 }
 
 /* ============================================
+   SKILLS (homepage) — scannable chip clusters,
+   deliberately not another tile grid like Clients
+   ============================================ */
+.skills-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.skill-category-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.skill-category-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--paper);
+  flex: none;
+}
+.skill-category-icon svg { width: 16px; height: 16px; }
+
+.skill-category-label {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 19px;
+  color: var(--ink);
+}
+
+.skill-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-chip {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 14px;
+  line-height: 1.3;
+}
+
+.skill-ai-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.03em;
+  color: var(--olive);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ============================================
    AI NOTE MODAL
    ============================================ */
 .ai-note-trigger {
@@ -1803,31 +1873,61 @@ ul { list-style: none; }
 .acc-row-inner { padding: 0; }
 
 .acc-case {
-  padding: 32px 28px 28px;
+  padding: 52px 56px 48px;
 }
-.acc-case .case-tag { margin-bottom: 8px; }
+.acc-cat-chip {
+  display: inline-block;
+  padding: 5px 13px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--paper);
+  margin-bottom: 18px;
+  box-shadow: 0 2px 8px rgba(36,19,17,0.12);
+}
+.acc-case .case-tag { margin-bottom: 10px; }
 .acc-case h3 {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 22px;
-  line-height: 1.25;
-  margin-bottom: 10px;
+  font-size: clamp(24px, 2.6vw, 30px);
+  line-height: 1.2;
+  margin-bottom: 8px;
   color: var(--ink);
+  max-width: 34ch;
 }
-.acc-case .pill-row { margin-bottom: 18px; }
-.acc-case .case-body p {
-  font-size: 15px;
+.acc-case .pill-row { margin-bottom: 30px; }
+
+/* ---- Case body: quiet eyebrow labels instead of inline bold prefixes ---- */
+.case-section { margin-bottom: 28px; }
+.case-section:last-of-type { margin-bottom: 0; }
+.case-section-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--olive);
+  margin-bottom: 9px;
+}
+.case-section-text {
+  font-size: 15.5px;
   color: var(--ink-soft);
-  line-height: 1.6;
-  margin-bottom: 14px;
+  line-height: 1.75;
 }
-.acc-case .case-body p:last-child { margin-bottom: 0; }
+
 .acc-case .contribution {
-  background: rgba(196, 59, 72, 0.07);
-  border-left: 2px solid var(--blue);
-  padding: 12px 16px;
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin-top: 36px;
+  background: #820108;
+  border: none;
+  padding: 24px 26px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 14px 32px rgba(130,1,8,0.28);
 }
+.acc-case .contribution .case-section-label { color: rgba(247,238,236,0.68); }
+.acc-case .contribution .case-section-text { color: var(--paper); }
 
 /* ---- Apple-style case nav: one quiet control under the title, no boxed pill ---- */
 .acc-nav-top {
@@ -1861,23 +1961,28 @@ ul { list-style: none; }
   color: var(--ink-soft);
 }
 
-/* ---- Apple-style "keep browsing" teaser: replaces the second, easy-to-miss nav row ---- */
+/* ---- Apple-style "keep browsing" teaser: a distinct card, not a trailing line of text ---- */
 .acc-next-teaser {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   width: 100%;
-  margin-top: 26px;
+  margin-top: 28px;
   padding: 18px 20px;
-  border: none;
-  border-top: 1px solid var(--line);
-  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
   cursor: pointer;
   text-align: left;
-  transition: background 0.2s ease, padding-left 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
-.acc-next-teaser:hover { background: rgba(122,140,85,0.06); padding-left: 26px; }
+.acc-next-teaser:hover {
+  background: rgba(122,140,85,0.07);
+  border-color: var(--olive);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(36,19,17,0.08);
+}
 .acc-next-teaser-text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .acc-next-teaser-label {
   font-size: 10.5px;
@@ -1904,10 +2009,84 @@ ul { list-style: none; }
 }
 .acc-next-teaser:hover .acc-next-teaser-arrow { transform: translateX(4px); }
 
+/* ---- Case index: shown first when a category has more than one study ---- */
+.case-index {
+  padding: 52px 56px 48px;
+}
+.case-index .acc-cat-chip {
+  margin-bottom: 24px;
+}
+.case-index-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.case-index-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  padding: 18px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+.case-index-row:hover {
+  background: rgba(122,140,85,0.07);
+  border-color: var(--olive);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(36,19,17,0.08);
+}
+.case-index-row-text { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.case-index-row-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 16.5px;
+  line-height: 1.3;
+  color: var(--ink);
+}
+.case-index-row-hook {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.case-index-row-arrow {
+  flex: none;
+  font-size: 16px;
+  color: var(--olive);
+  transition: transform 0.2s ease;
+}
+.case-index-row:hover .case-index-row-arrow { transform: translateX(4px); }
+
+/* ---- Back-to-index link at the top of a case detail ---- */
+.case-index-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0 0 16px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.case-index-back:hover { color: var(--olive); }
+
 @media (max-width: 700px) {
   .acc-row-header { padding: 18px 18px; }
   .acc-row-name { font-size: 18px; }
   .acc-case { padding: 24px 18px 22px; }
+  .case-index { padding: 24px 18px 22px; }
+  .case-index-row { padding: 14px 16px; }
 }
 
 /* ============================================
@@ -2011,31 +2190,42 @@ ul { list-style: none; }
 }
 
 .tile-panel-inner {
-  background: var(--paper-raised);
-  border-radius: var(--radius);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 26px;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 24px 64px rgba(36,19,17,0.10), 0 4px 16px rgba(36,19,17,0.05);
 }
 .tile-panel-inner::before {
   content: '';
   position: absolute;
   top: 0; left: 0;
-  width: 3px;
+  width: 4px;
   height: 100%;
-  background: var(--olive);
+  background: var(--tile-panel-accent, var(--olive));
 }
 
 .tile-panel-inner .acc-case > * {
   opacity: 0;
   animation: caseReveal 0.45s ease forwards;
 }
+.tile-panel-inner .acc-case .case-index-back { animation-delay: 0.02s; }
 .tile-panel-inner .acc-case .case-tag { animation-delay: 0.02s; }
 .tile-panel-inner .acc-case h3 { animation-delay: 0.08s; }
 .tile-panel-inner .acc-case .case-status { animation-delay: 0.08s; }
 .tile-panel-inner .acc-case .acc-nav-top { animation-delay: 0.12s; }
 .tile-panel-inner .acc-case .pill-row { animation-delay: 0.16s; }
 .tile-panel-inner .acc-case .case-body { animation-delay: 0.22s; }
-.tile-panel-inner .acc-case .acc-next-teaser { animation-delay: 0.32s; }
+.tile-panel-inner .acc-case .contribution { animation-delay: 0.28s; }
+.tile-panel-inner .acc-case .acc-next-teaser { animation-delay: 0.34s; }
+
+.tile-panel-inner .case-index > * {
+  opacity: 0;
+  animation: caseReveal 0.45s ease forwards;
+}
+.tile-panel-inner .case-index .acc-cat-chip { animation-delay: 0.02s; }
+.tile-panel-inner .case-index .case-index-list { animation-delay: 0.1s; }
 
 @keyframes caseReveal {
   from { opacity: 0; transform: translateY(8px); }
@@ -2054,7 +2244,7 @@ ul { list-style: none; }
    ============================================ */
 .who-scroll-block {
   position: relative;
-  height: 260vh;
+  height: 170vh;
 }
 
 .who-sticky {
@@ -2123,7 +2313,7 @@ ul { list-style: none; }
 }
 
 @media (max-width: 700px) {
-  .who-scroll-block { height: 220vh; }
+  .who-scroll-block { height: 150vh; }
   .who-content { padding: 28px 24px; }
   .who-content-inner p { font-size: 16px; margin-bottom: 20px; }
 }

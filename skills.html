@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Skills — Aksharaa Bhobe</title>
-<meta name="description" content="Qualitative research, quantitative analysis, shopper marketing, and brand strategy skills.">
+<title>My Process — Aksharaa Bhobe</title>
+<meta name="description" content="How I owned the research process end-to-end, from the client brief to the final deliverable.">
 
 <!-- Favicon -->
 <link rel="icon" href="assets/favicon.ico" sizes="any">
@@ -18,8 +18,8 @@
 <!-- TODO: swap REPLACE_WITH_LIVE_URL for your live site URL once GitHub Pages is confirmed -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://REPLACE_WITH_LIVE_URL/skills.html" />
-<meta property="og:title" content="Skills — Aksharaa Bhobe" />
-<meta property="og:description" content="Qualitative research, quantitative analysis, shopper marketing, and brand strategy skills." />
+<meta property="og:title" content="My Process — Aksharaa Bhobe" />
+<meta property="og:description" content="How I owned the research process end-to-end, from the client brief to the final deliverable." />
 <meta property="og:image" content="https://REPLACE_WITH_LIVE_URL/assets/og-image.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -27,8 +27,8 @@
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:url" content="https://REPLACE_WITH_LIVE_URL/skills.html" />
-<meta name="twitter:title" content="Skills — Aksharaa Bhobe" />
-<meta name="twitter:description" content="Qualitative research, quantitative analysis, shopper marketing, and brand strategy skills." />
+<meta name="twitter:title" content="My Process — Aksharaa Bhobe" />
+<meta name="twitter:description" content="How I owned the research process end-to-end, from the client brief to the final deliverable." />
 <meta name="twitter:image" content="https://REPLACE_WITH_LIVE_URL/assets/og-image.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,7 +47,7 @@
       <a href="index.html#about">What Drives Me</a>
       <a href="research.html">Consumer Insights</a>
       <a href="strategy.html">Strategy &amp; Consulting</a>
-      <a href="skills.html" class="active">Skills</a>
+      <a href="skills.html" class="active">My Process</a>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
@@ -58,25 +58,42 @@
 <header class="page-header">
   <div class="section-inner">
     <p class="mono eyebrow">METHODOLOGY</p>
-    <h1 class="page-title">How the work gets done</h1>
-    <p class="page-sub">Tap a petal to explore each area.</p>
+    <h1 class="page-title">I owned the process from the client brief to the <em>final deliverable</em>.</h1>
+    <p class="page-sub page-sub-blurb">Every study meant managing the client relationship, the budget, and the field partners and moderators delivering on it, while protecting the data quality that connected fieldwork back to the client's actual business problem.</p>
   </div>
 </header>
 
-<section class="skills">
+<section class="projects">
   <div class="section-inner">
-    <div class="flower-stage" id="flowerStage">
-      <div class="hub">
-        <span class="hub-mark">SKILLS</span>
-      </div>
-    </div>
+    <div class="process-block" id="processBlock">
+      <div class="process-rail-outer">
+        <div class="process-rail-track">
+          <div class="process-rail-line"><div class="process-rail-fill" id="processRailFill"></div></div>
 
-    <div class="flower-panel-overlay" id="flowerPanelOverlay">
-      <div class="flower-panel" id="flowerPanel">
-        <button type="button" class="flower-panel-close" id="flowerPanelClose" aria-label="Close">✕</button>
-        <p class="flower-panel-title" id="flowerPanelTitle"></p>
-        <ul class="flower-panel-list" id="flowerPanelList"></ul>
+          <button class="process-node active" data-index="0" type="button">
+            <span class="process-node-dot mono">01</span>
+            <span class="process-node-label">Client &amp;<br>Commercial</span>
+          </button>
+          <button class="process-node" data-index="1" type="button">
+            <span class="process-node-dot mono">02</span>
+            <span class="process-node-label">Field &amp; Moderator<br>Selection</span>
+          </button>
+          <button class="process-node" data-index="2" type="button">
+            <span class="process-node-dot mono">03</span>
+            <span class="process-node-label">Instrument &amp;<br>Briefing</span>
+          </button>
+          <button class="process-node" data-index="3" type="button">
+            <span class="process-node-dot mono">04</span>
+            <span class="process-node-label">Fieldwork<br>QC</span>
+          </button>
+          <button class="process-node" data-index="4" type="button">
+            <span class="process-node-dot mono">05</span>
+            <span class="process-node-label">Analysis &amp;<br>Delivery</span>
+          </button>
+        </div>
       </div>
+
+      <div class="process-panel" id="processPanel"></div>
     </div>
   </div>
 </section>
@@ -93,288 +110,101 @@
   </div>
 </footer>
 
-<!-- DOCKED FLOWER BUD (appears once the full flower scrolls out of view) -->
-<button type="button" class="flower-bud" id="flowerBud" aria-label="Jump to a skill category">
-  <svg viewBox="0 0 100 100">
-    <path class="flower-bud-shape" d="M50,88 C30,80 18,60 18,42 C18,20 32,8 50,8 C68,8 82,20 82,42 C82,60 70,80 50,88 Z"/>
-  </svg>
-</button>
-<div class="flower-fan" id="flowerFan"></div>
-
-<!-- AI NOTE MODAL -->
-<div class="ai-modal-overlay" id="aiModalOverlay" aria-hidden="true">
-  <div class="ai-modal" role="dialog" aria-modal="true" aria-labelledby="aiModalTitle">
-    <button type="button" class="ai-modal-close" id="aiModalClose" aria-label="Close">✕</button>
-    <p class="mono eyebrow ai-modal-eyebrow">A NOTE ON AI</p>
-    <h2 id="aiModalTitle" class="ai-modal-title">"How do I make the most of AI?" You're looking at the proof.</h2>
-    <div class="ai-modal-body">
-      <p>I used AI to build this website, but not by giving it free rein. While AI handled the syntax, I directed it by describing the design I wanted, catching when copy sounded like a robot had written it, pushing back on layouts that didn't fit, and flagging when a research finding was being oversimplified. It demonstrates how I use AI as part of my workflow: facilitating the mechanical parts of a process so there's more time for the parts that require creativity, thought, and the strategic inference that I bring to the table. That's my thought on how AI should be used in our lives, and I want this website to be that literal argument.</p>
-    </div>
-  </div>
-</div>
-
 <script src="script.js"></script>
 <script>
 (function () {
-  var categories = [
+  var processStages = [
     {
-      label: "Qualitative Skills",
-      title: "Qualitative Research",
-      gradient: "linear-gradient(165deg, var(--line), var(--amber))",
-      icon: '<path d="M4 5.5A1.5 1.5 0 015.5 4h13A1.5 1.5 0 0120 5.5v9A1.5 1.5 0 0118.5 16H10l-4.2 3.4V16H5.5A1.5 1.5 0 014 14.5v-9z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/><circle cx="8.5" cy="10" r="0.9" fill="currentColor" stroke="none"/><circle cx="12" cy="10" r="0.9" fill="currentColor" stroke="none"/><circle cx="15.5" cy="10" r="0.9" fill="currentColor" stroke="none"/>',
-      items: ["Discussion guide design &amp; moderation","Recruitment design, screening &amp; backchecks","Depth interviews &amp; extended groups","Longitudinal digital diary studies","Ethnographic immersion","Projective &amp; stimulus-led techniques","Concept &amp; product testing","Emic/etic coding"]
+      stage: "STAGE 01",
+      title: "Client & commercial ownership",
+      summary: "Briefed directly by clients, I wrote the approach note or proposal and tracked each project on the team's financial performance tracker from job card through to accounts.",
+      items: [
+        "Received the brief directly from the client",
+        "Wrote the approach note or proposal",
+        "Logged the job on the team's financial performance tracker",
+        "Created the job card and routed it to accounts",
+        "Adapted communication style per client — data-heavy and direct for some, zoomed-out and strategic for others"
+      ]
     },
     {
-      label: "Quantitative Skills",
-      title: "Quantitative Research",
-      gradient: "linear-gradient(165deg, var(--amber), var(--olive))",
-      icon: '<path d="M5 20V13M12 20V8M19 20V4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
-      items: ["TAM / SAM / SOM sizing","Kano model analysis","Survey design &amp; purchase-driver analysis","Social listening analysis (BrandWatch, Mention)","K-means cluster analysis &amp; segmentation","Factor analysis","Translating business questions into research questions — and back"]
+      stage: "STAGE 02",
+      title: "Field partner & moderator selection",
+      summary: "I chose field partners by weighing regional resources and capabilities, and maintained relationships strong enough to get real effort on difficult recruits.",
+      items: [
+        "Selected field partners by region, resources, and capability",
+        "Maintained relationships that determined recruitment quality and effort",
+        "Chose moderators by language fit — including regional-language, lower-SEC studies — and geographic proximity",
+        "Decided when moderation should be outsourced vs. run in-house",
+        "Personally moderated units when the study called for it"
+      ]
     },
     {
-      label: "Shopper Marketing",
-      title: "Shopper Marketing",
-      gradient: "linear-gradient(165deg, var(--blue), var(--olive-deep))",
-      icon: '<path d="M12.5 3H20v7.5L11 19.5a1.5 1.5 0 01-2.1 0l-6.4-6.4a1.5 1.5 0 010-2.1L11.5 2h1z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round" transform="translate(0.3,0.5)"/><circle cx="15" cy="8" r="1.3" fill="currentColor" stroke="none"/>',
-      items: ["Category management &amp; space planning","Category leadership principles","Retailer-specific activation strategy","Shopper insight translation","Full-funnel measurement planning"]
+      stage: "STAGE 03",
+      title: "Instrument design & briefing",
+      summary: "I designed the recruitment questionnaire and discussion guide, then briefed both field teams and moderators on not just the questions, but the reasoning behind them.",
+      items: [
+        "Designed the recruitment questionnaire with respondent guardrails",
+        "Briefed field teams on study intent in plain terms for real audience granularity",
+        "Built discussion guides off the RQ and BQ",
+        "Briefed moderators on the 'why' behind each question, not just the question itself",
+        "Walked clients through the guide and incorporated their feedback before fielding"
+      ]
     },
     {
-      label: "Brand Strategy",
-      title: "Brand &amp; Product Strategy",
-      icon: '<circle cx="12" cy="12" r="7.5" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="12" cy="12" r="0.9" fill="currentColor" stroke="none"/>',
-      gradient: "linear-gradient(165deg, var(--olive), var(--blue))",
-      items: ["Brand audit methodology","Brand &amp; product extension strategy","Keller CBBE pyramid","Whitespace &amp; opportunity mapping","Jobs-to-be-Done (JTBD)","PESTLE &amp; Porter's Five Forces","Customer journey mapping"]
+      stage: "STAGE 04",
+      title: "Fieldwork quality control",
+      summary: "Attended units in person to check moderator quality and respondent fit as fieldwork happened, while running backchecks and coordinating across field partners.",
+      items: [
+        "Attended units to QC moderation and respondent fit in real time",
+        "Took live notes and began analysis on the spot",
+        "Ran backchecks against the RQ — personally for database recruitment and Marathi-language centers",
+        "Briefed and worked with the coordinator team on standard-project backchecks",
+        "Coordinated across multiple field partners at once to secure the strongest respondents",
+        "Owned the respondent schedule sheets sent to clients"
+      ]
     },
     {
-      label: "Tools",
-      title: "Tools &amp; Platforms",
-      gradient: "linear-gradient(165deg, var(--line), var(--olive))",
-      icon: '<path d="M12 3L14 10L21 12L14 14L12 21L10 14L3 12L10 10Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" fill="none"/>',
-      hasAiTrigger: true,
-      items: ["Qualtrics","Recollective","SPSS / STATA / R","Gephi / VOSviewer"]
+      stage: "STAGE 05",
+      title: "Analysis & delivery",
+      summary: "I ran moderator debriefs and led the shift from raw data to a point of view — then built the collation and final deliverable that came out of it.",
+      items: [
+        "Ran post-fieldwork moderator debriefs with senior partners",
+        "Active participant in team huddles — deciding what lens to view the data through",
+        "Connected emerging insight back to the client's business question",
+        "Built data collations manually and with AI-assisted transcript scraping, preserving verbatim consumer language",
+        "Built the final client deliverable coming out of the huddle"
+      ]
     }
   ];
 
-  var stage = document.getElementById('flowerStage');
-  var panelOverlay = document.getElementById('flowerPanelOverlay');
-  var panel = document.getElementById('flowerPanel');
-  var panelClose = document.getElementById('flowerPanelClose');
-  var panelTitle = document.getElementById('flowerPanelTitle');
-  var panelList = document.getElementById('flowerPanelList');
-  if (!stage || !panel || !panelOverlay) return;
+  var panel = document.getElementById('processPanel');
+  var railFill = document.getElementById('processRailFill');
+  var nodes = document.querySelectorAll('.process-node');
+  if (!panel || !railFill || !nodes.length) return;
 
-  var R_PETAL_ICON = 138;
-  var R_LABEL = 198;
-  var CENTER = 210;
-  var BOX = 420;
+  function renderProcessStage(i) {
+    var s = processStages[i];
+    panel.innerHTML =
+      '<p class="process-panel-stage mono">' + s.stage + '</p>' +
+      '<p class="process-panel-title">' + s.title + '</p>' +
+      '<p class="process-panel-summary">' + s.summary + '</p>' +
+      '<ul class="process-panel-list">' +
+        s.items.map(function (item) { return '<li>' + item + '</li>'; }).join('') +
+      '</ul>';
 
-  var selectedIndex = null;
-  var petalOriginalBg = [];
+    nodes.forEach(function (n, idx) {
+      n.classList.toggle('active', idx === i);
+    });
+    railFill.style.width = (i / (processStages.length - 1) * 100) + '%';
+  }
 
-  categories.forEach(function (cat, i) {
-    var angleDeg = i * (360 / categories.length);
-    var rad = (angleDeg * Math.PI) / 180;
-
-    var petal = document.createElement('div');
-    petal.className = 'petal';
-    petal.dataset.index = i;
-    petal.style.setProperty('--angle', angleDeg + 'deg');
-    petal.style.transform = 'rotate(' + angleDeg + 'deg)';
-    petal.innerHTML =
-      '<svg viewBox="0 0 100 220" preserveAspectRatio="none">' +
-        '<defs><linearGradient id="petalGrad' + i + '" x1="0" y1="1" x2="0" y2="0">' +
-          '<stop offset="0%" stop-color="#6a0106"/>' +
-          '<stop offset="55%" stop-color="#8f0d15"/>' +
-          '<stop offset="100%" stop-color="#ac2029"/>' +
-        '</linearGradient></defs>' +
-        '<path class="petal-shape" fill="url(#petalGrad' + i + ')" d="M50,218 C18,180 3,122 13,63 C20,27 35,6 50,0 C65,7 83,25 91,58 C100,108 93,168 63,204 C58,210 54,214 50,218 Z"/>' +
-        '<path class="petal-vein" d="M50,208 C45,160 46,88 50,8" stroke="rgba(36,19,17,0.32)" stroke-width="1.6" fill="none" stroke-linecap="round"/>' +
-        '<path class="petal-vein petal-vein-side" d="M50,150 C42,130 34,108 30,86" stroke="rgba(36,19,17,0.2)" stroke-width="1.2" fill="none" stroke-linecap="round"/>' +
-        '<path class="petal-vein petal-vein-side" d="M50,150 C58,130 66,108 70,86" stroke="rgba(36,19,17,0.2)" stroke-width="1.2" fill="none" stroke-linecap="round"/>' +
-      '</svg>';
-    petalOriginalBg.push({});
-    stage.appendChild(petal);
-
-    var ix = CENTER + R_PETAL_ICON * Math.sin(rad);
-    var iy = CENTER - R_PETAL_ICON * Math.cos(rad);
-    var knob = document.createElement('div');
-    knob.className = 'icon-knob';
-    knob.dataset.index = i;
-    knob.style.left = (ix / BOX * 100) + '%';
-    knob.style.top = (iy / BOX * 100) + '%';
-    knob.innerHTML = '<svg viewBox="0 0 24 24" fill="none">' + cat.icon + '</svg>';
-    stage.appendChild(knob);
-
-    var lx = CENTER + R_LABEL * Math.sin(rad);
-    var ly = CENTER - R_LABEL * Math.cos(rad);
-    var label = document.createElement('button');
-    label.type = 'button';
-    label.className = 'petal-label';
-    label.textContent = cat.label;
-    label.dataset.index = i;
-    label.style.left = (lx / BOX * 100) + '%';
-    label.style.top = (ly / BOX * 100) + '%';
-    stage.appendChild(label);
+  nodes.forEach(function (node) {
+    node.addEventListener('click', function () {
+      renderProcessStage(parseInt(node.getAttribute('data-index'), 10));
+    });
   });
 
-  function renderPanelItems(cat) {
-    var html = cat.items.map(function (it) { return '<li>' + it + '</li>'; }).join('');
-    if (cat.hasAiTrigger) {
-      html += '<li><button type="button" class="ai-note-trigger-panel">AI &amp; Website Development ↗</button></li>';
-    }
-    return html;
-  }
-
-  function selectCategory(i) {
-    selectedIndex = i;
-    var cat = categories[i];
-
-    document.querySelectorAll('.petal').forEach(function (el, idx) {
-      if (idx === i) {
-        el.classList.add('active');
-        el.classList.remove('dimmed');
-      } else {
-        el.classList.remove('active');
-        el.classList.add('dimmed');
-      }
-    });
-    document.querySelectorAll('.icon-knob, .petal-label').forEach(function (el) {
-      var idx = parseInt(el.dataset.index, 10);
-      el.classList.toggle('active', idx === i);
-      el.classList.toggle('dimmed', idx !== i);
-    });
-
-    panelTitle.innerHTML = cat.title;
-    panelList.innerHTML = renderPanelItems(cat);
-    panelOverlay.classList.add('visible');
-    document.body.style.overflow = 'hidden';
-    if (panelClose) panelClose.focus();
-  }
-
-  function resetSelection() {
-    if (selectedIndex === null) return;
-    selectedIndex = null;
-
-    document.querySelectorAll('.petal').forEach(function (el) {
-      el.classList.remove('active', 'dimmed');
-    });
-    document.querySelectorAll('.icon-knob, .petal-label').forEach(function (el) {
-      el.classList.remove('active', 'dimmed');
-    });
-
-    panelOverlay.classList.remove('visible');
-    document.body.style.overflow = '';
-  }
-
-  stage.addEventListener('click', function (e) {
-    var target = e.target.closest('.petal, .petal-label, .icon-knob');
-    if (target) {
-      var idx = parseInt(target.dataset.index, 10);
-      if (selectedIndex === idx) {
-        resetSelection();
-      } else {
-        selectCategory(idx);
-      }
-    }
-  });
-
-  document.addEventListener('click', function (e) {
-    if (!e.target.closest('#flowerStage') && !e.target.closest('#flowerBud') && !e.target.closest('#flowerFan') && !e.target.closest('#flowerPanelOverlay')) {
-      resetSelection();
-    }
-  });
-
-  if (panelClose) panelClose.addEventListener('click', resetSelection);
-  panelOverlay.addEventListener('click', function (e) {
-    if (e.target === panelOverlay) resetSelection();
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && panelOverlay.classList.contains('visible')) resetSelection();
-  });
-
-  // ---- Bloom-in entrance animation, triggered once when the flower scrolls into view ----
-  if ('IntersectionObserver' in window) {
-    var bloomObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          document.querySelectorAll('.petal').forEach(function (el, idx) {
-            el.style.animationDelay = (idx * 0.09) + 's';
-            el.classList.add('blooming');
-          });
-          bloomObserver.unobserve(stage);
-        }
-      });
-    }, { threshold: 0.3 });
-    bloomObserver.observe(stage);
-  }
-
-  // ---- Docked bud: appears once the flower has scrolled out of view, fans open to jump categories ----
-  var bud = document.getElementById('flowerBud');
-  var fan = document.getElementById('flowerFan');
-  var fanOpen = false;
-
-  if (bud && fan && 'IntersectionObserver' in window) {
-    fan.innerHTML = categories.map(function (cat, idx) {
-      return '<button type="button" class="flower-fan-btn" data-index="' + idx + '">' +
-        '<span class="flower-fan-dot" style="background:' + cat.gradient + '"></span>' + cat.label +
-        '</button>';
-    }).join('');
-
-    fan.querySelectorAll('.flower-fan-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var idx = parseInt(btn.dataset.index, 10);
-        selectCategory(idx);
-        fanOpen = false;
-        fan.classList.remove('open');
-      });
-    });
-
-    bud.addEventListener('click', function () {
-      fanOpen = !fanOpen;
-      fan.classList.toggle('open', fanOpen);
-    });
-
-    var budObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        var scrolledPast = !entry.isIntersecting && entry.boundingClientRect.top < 0;
-        bud.classList.toggle('visible', scrolledPast);
-        if (!scrolledPast) {
-          fanOpen = false;
-          fan.classList.remove('open');
-        }
-      });
-    }, { threshold: 0 });
-    budObserver.observe(stage);
-  }
-
-  // ---- AI note modal (trigger is re-rendered inside the panel, so use delegation) ----
-  var aiOverlay = document.getElementById('aiModalOverlay');
-  var aiClose = document.getElementById('aiModalClose');
-
-  function openAiModal() {
-    aiOverlay.classList.add('open');
-    aiOverlay.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    aiClose.focus();
-  }
-  function closeAiModal() {
-    aiOverlay.classList.remove('open');
-    aiOverlay.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  document.addEventListener('click', function (e) {
-    if (e.target.closest('.ai-note-trigger-panel')) openAiModal();
-  });
-  if (aiClose) {
-    aiClose.addEventListener('click', closeAiModal);
-    aiOverlay.addEventListener('click', function (e) {
-      if (e.target === aiOverlay) closeAiModal();
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && aiOverlay.classList.contains('open')) closeAiModal();
-    });
-  }
+  renderProcessStage(0);
 })();
 </script>
 </body>

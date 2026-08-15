@@ -19,7 +19,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://REPLACE_WITH_LIVE_URL/" />
 <meta property="og:title" content="Aksharaa Bhobe — Brand Strategy & Consumer Insights" />
-<meta property="og:description" content="Turning qualitative research into actionable brand impact. Strategy portfolio featuring end-to-end campaign ownership for CPG and Tech brands." />
+<meta property="og:description" content="Turning data into actionable brand impact. Strategy portfolio featuring end-to-end campaign ownership for CPG and Tech brands." />
 <meta property="og:image" content="https://REPLACE_WITH_LIVE_URL/assets/og-image.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -28,7 +28,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:url" content="https://REPLACE_WITH_LIVE_URL/" />
 <meta name="twitter:title" content="Aksharaa Bhobe — Brand Strategy & Consumer Insights" />
-<meta name="twitter:description" content="Turning qualitative research into actionable brand impact. Strategy portfolio featuring end-to-end campaign ownership for CPG and Tech brands." />
+<meta name="twitter:description" content="Turning data into actionable brand impact. Strategy portfolio featuring end-to-end campaign ownership for CPG and Tech brands." />
 <meta name="twitter:image" content="https://REPLACE_WITH_LIVE_URL/assets/og-image.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,7 +48,7 @@
       <a href="index.html#about">What Drives Me</a>
       <a href="research.html">Consumer Insights</a>
       <a href="strategy.html">Strategy &amp; Consulting</a>
-      <a href="skills.html">Skills</a>
+      <a href="skills.html">My Process</a>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
@@ -116,50 +116,15 @@
   </div>
 </section>
 
-<!-- PROCESS / END-TO-END OWNERSHIP -->
-<section class="about" id="process">
+<!-- SKILLS — scannable at a glance, no clicking required -->
+<section class="about" id="skills">
   <div class="section-inner about-grid">
     <div class="about-tag">
-      <p class="mono eyebrow">02 — END-TO-END OWNERSHIP</p>
+      <p class="mono eyebrow">02 — SKILLS</p>
     </div>
     <div class="about-content">
-      <div class="process-block" id="processBlock">
-        <h2 class="process-heading">I owned the process from the client brief to the <em>final deliverable</em>.</h2>
-        <p class="process-intro">
-          Every study meant managing the client relationship, the budget, and the field
-          partners and moderators delivering on it, while protecting the data quality
-          that connected fieldwork back to the client's actual business problem.
-        </p>
-
-        <div class="process-rail-outer">
-          <div class="process-rail-track">
-            <div class="process-rail-line"><div class="process-rail-fill" id="processRailFill"></div></div>
-
-            <button class="process-node active" data-index="0" type="button">
-              <span class="process-node-dot mono">01</span>
-              <span class="process-node-label">Client &amp;<br>Commercial</span>
-            </button>
-            <button class="process-node" data-index="1" type="button">
-              <span class="process-node-dot mono">02</span>
-              <span class="process-node-label">Field &amp; Moderator<br>Selection</span>
-            </button>
-            <button class="process-node" data-index="2" type="button">
-              <span class="process-node-dot mono">03</span>
-              <span class="process-node-label">Instrument &amp;<br>Briefing</span>
-            </button>
-            <button class="process-node" data-index="3" type="button">
-              <span class="process-node-dot mono">04</span>
-              <span class="process-node-label">Fieldwork<br>QC</span>
-            </button>
-            <button class="process-node" data-index="4" type="button">
-              <span class="process-node-dot mono">05</span>
-              <span class="process-node-label">Analysis &amp;<br>Delivery</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="process-panel" id="processPanel"></div>
-      </div>
+      <p class="mono eyebrow" style="margin-bottom:20px;">WHAT I BRING TO THE TABLE</p>
+      <div class="skills-groups" id="skillsGroups"></div>
     </div>
   </div>
 </section>
@@ -197,6 +162,18 @@
   </div>
 </section>
 
+<!-- AI NOTE MODAL -->
+<div class="ai-modal-overlay" id="aiModalOverlay" aria-hidden="true">
+  <div class="ai-modal" role="dialog" aria-modal="true" aria-labelledby="aiModalTitle">
+    <button type="button" class="ai-modal-close" id="aiModalClose" aria-label="Close">✕</button>
+    <p class="mono eyebrow ai-modal-eyebrow">A NOTE ON AI</p>
+    <h2 id="aiModalTitle" class="ai-modal-title">"How do I make the most of AI?" You're looking at the proof.</h2>
+    <div class="ai-modal-body">
+      <p>I used AI to build this website, but not by giving it free rein. While AI handled the syntax, I directed it by describing the design I wanted, catching when copy sounded like a robot had written it, pushing back on layouts that didn't fit, and flagging when a research finding was being oversimplified. It demonstrates how I use AI as part of my workflow: facilitating the mechanical parts of a process so there's more time for the parts that require creativity, thought, and the strategic inference that I bring to the table. That's my thought on how AI should be used in our lives, and I want this website to be that literal argument.</p>
+    </div>
+  </div>
+</div>
+
 <!-- FOOTER (persistent contact) -->
 <footer class="contact" id="contact">
   <div class="section-inner contact-inner">
@@ -213,98 +190,85 @@
 <script src="script.js"></script>
 <script>
 (function () {
-  var processStages = [
+  var skillCategories = [
     {
-      stage: "STAGE 01",
-      title: "Client & commercial ownership",
-      summary: "Briefed directly by clients, I wrote the approach note or proposal and tracked each project on the team's financial performance tracker from job card through to accounts.",
-      items: [
-        "Received the brief directly from the client",
-        "Wrote the approach note or proposal",
-        "Logged the job on the team's financial performance tracker",
-        "Created the job card and routed it to accounts",
-        "Adapted communication style per client — data-heavy and direct for some, zoomed-out and strategic for others"
-      ]
+      label: "Qualitative Research Methods",
+      gradient: "linear-gradient(135deg, var(--line), var(--amber))",
+      icon: '<path d="M4 5.5A1.5 1.5 0 015.5 4h13A1.5 1.5 0 0120 5.5v9A1.5 1.5 0 0118.5 16H10l-4.2 3.4V16H5.5A1.5 1.5 0 014 14.5v-9z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/><circle cx="8.5" cy="10" r="0.9" fill="currentColor" stroke="none"/><circle cx="12" cy="10" r="0.9" fill="currentColor" stroke="none"/><circle cx="15.5" cy="10" r="0.9" fill="currentColor" stroke="none"/>',
+      items: ["Discussion guide design & moderation", "Recruitment design, screening & backchecks", "Depth interviews & extended groups", "Longitudinal digital diary studies", "Ethnographic immersion", "Projective & stimulus-led techniques", "Concept & product testing", "Emic/etic coding"]
     },
     {
-      stage: "STAGE 02",
-      title: "Field partner & moderator selection",
-      summary: "I chose field partners by weighing regional resources and capabilities, and maintained relationships strong enough to get real effort on difficult recruits.",
-      items: [
-        "Selected field partners by region, resources, and capability",
-        "Maintained relationships that determined recruitment quality and effort",
-        "Chose moderators by language fit — including regional-language, lower-SEC studies — and geographic proximity",
-        "Decided when moderation should be outsourced vs. run in-house",
-        "Personally moderated units when the study called for it"
-      ]
+      label: "Quantitative Research & Analytics",
+      gradient: "linear-gradient(135deg, var(--amber), var(--olive))",
+      icon: '<path d="M5 20V13M12 20V8M19 20V4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
+      items: ["Kano model analysis", "Survey design & purchase-driver analysis", "Social listening analysis", "K-means cluster analysis & segmentation", "Factor analysis", "Translating business questions into research questions — and back"]
     },
     {
-      stage: "STAGE 03",
-      title: "Instrument design & briefing",
-      summary: "I designed the recruitment questionnaire and discussion guide, then briefed both field teams and moderators on not just the questions, but the reasoning behind them.",
-      items: [
-        "Designed the recruitment questionnaire with respondent guardrails",
-        "Briefed field teams on study intent in plain terms for real audience granularity",
-        "Built discussion guides off the RQ and BQ",
-        "Briefed moderators on the 'why' behind each question, not just the question itself",
-        "Walked clients through the guide and incorporated their feedback before fielding"
-      ]
+      label: "Shopper Marketing",
+      gradient: "linear-gradient(135deg, var(--blue), var(--olive-deep))",
+      icon: '<path d="M12.5 3H20v7.5L11 19.5a1.5 1.5 0 01-2.1 0l-6.4-6.4a1.5 1.5 0 010-2.1L11.5 2h1z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round" transform="translate(0.3,0.5)"/><circle cx="15" cy="8" r="1.3" fill="currentColor" stroke="none"/>',
+      items: ["Category management & space planning", "Category leadership principles", "Retailer-specific activation strategy", "Shopper insight translation", "Full-funnel measurement planning"]
     },
     {
-      stage: "STAGE 04",
-      title: "Fieldwork quality control",
-      summary: "Attended units in person to check moderator quality and respondent fit as fieldwork happened, while running backchecks and coordinating across field partners.",
-      items: [
-        "Attended units to QC moderation and respondent fit in real time",
-        "Took live notes and began analysis on the spot",
-        "Ran backchecks against the RQ — personally for database recruitment and Marathi-language centers",
-        "Briefed and worked with the coordinator team on standard-project backchecks",
-        "Coordinated across multiple field partners at once to secure the strongest respondents",
-        "Owned the respondent schedule sheets sent to clients"
-      ]
+      label: "Brand & Product Strategy",
+      gradient: "linear-gradient(135deg, var(--olive), var(--blue))",
+      icon: '<circle cx="12" cy="12" r="7.5" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="12" cy="12" r="0.9" fill="currentColor" stroke="none"/>',
+      items: ["TAM / SAM / SOM sizing", "Brand audit methodology", "Brand & product extension strategy", "Keller CBBE pyramid", "Whitespace & opportunity mapping", "Jobs-to-be-Done (JTBD)", "PESTLE & Porter's Five Forces", "Customer journey mapping"]
     },
     {
-      stage: "STAGE 05",
-      title: "Analysis & delivery",
-      summary: "I ran moderator debriefs and led the shift from raw data to a point of view — then built the collation and final deliverable that came out of it.",
-      items: [
-        "Ran post-fieldwork moderator debriefs with senior partners",
-        "Active participant in team huddles — deciding what lens to view the data through",
-        "Connected emerging insight back to the client's business question",
-        "Built data collations manually and with AI-assisted transcript scraping, preserving verbatim consumer language",
-        "Built the final client deliverable coming out of the huddle"
-      ]
+      label: "Tools & Platforms",
+      gradient: "linear-gradient(135deg, var(--line), var(--olive))",
+      icon: '<path d="M12 3L14 10L21 12L14 14L12 21L10 14L3 12L10 10Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" fill="none"/>',
+      items: ["Qualtrics", "Recollective", "SPSS", "Stata", "R", "Gephi", "VOSviewer", "Brandwatch", "Tableau"],
+      hasAiTrigger: true
     }
   ];
 
-  var panel = document.getElementById('processPanel');
-  var railFill = document.getElementById('processRailFill');
-  var nodes = document.querySelectorAll('.process-node');
-  if (!panel || !railFill || !nodes.length) return;
+  var groupsEl = document.getElementById('skillsGroups');
+  if (!groupsEl) return;
 
-  function renderProcessStage(i) {
-    var s = processStages[i];
-    panel.innerHTML =
-      '<p class="process-panel-stage mono">' + s.stage + '</p>' +
-      '<p class="process-panel-title">' + s.title + '</p>' +
-      '<p class="process-panel-summary">' + s.summary + '</p>' +
-      '<ul class="process-panel-list">' +
-        s.items.map(function (item) { return '<li>' + item + '</li>'; }).join('') +
-      '</ul>';
+  groupsEl.innerHTML = skillCategories.map(function (cat) {
+    var chips = cat.items.map(function (item) { return '<span class="skill-chip">' + item + '</span>'; }).join('');
+    var aiNote = cat.hasAiTrigger ? '<button type="button" class="skill-ai-note ai-note-trigger-panel">A note on how I used AI to build this site ↗</button>' : '';
+    return (
+      '<div class="skill-category">' +
+        '<div class="skill-category-head">' +
+          '<span class="skill-category-icon" style="background:' + cat.gradient + '"><svg viewBox="0 0 24 24" fill="none">' + cat.icon + '</svg></span>' +
+          '<h3 class="skill-category-label">' + cat.label + '</h3>' +
+        '</div>' +
+        '<div class="skill-chip-row">' + chips + '</div>' +
+        aiNote +
+      '</div>'
+    );
+  }).join('');
 
-    nodes.forEach(function (n, idx) {
-      n.classList.toggle('active', idx === i);
-    });
-    railFill.style.width = (i / (processStages.length - 1) * 100) + '%';
+  // ---- AI note modal ----
+  var aiOverlay = document.getElementById('aiModalOverlay');
+  var aiClose = document.getElementById('aiModalClose');
+  if (!aiOverlay || !aiClose) return;
+
+  function openAiModal() {
+    aiOverlay.classList.add('open');
+    aiOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    aiClose.focus();
+  }
+  function closeAiModal() {
+    aiOverlay.classList.remove('open');
+    aiOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
   }
 
-  nodes.forEach(function (node) {
-    node.addEventListener('click', function () {
-      renderProcessStage(parseInt(node.getAttribute('data-index'), 10));
-    });
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('.ai-note-trigger-panel')) openAiModal();
   });
-
-  renderProcessStage(0);
+  aiClose.addEventListener('click', closeAiModal);
+  aiOverlay.addEventListener('click', function (e) {
+    if (e.target === aiOverlay) closeAiModal();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && aiOverlay.classList.contains('open')) closeAiModal();
+  });
 })();
 
 // ---- Who Am I: scroll-scrubbed zoom into burgundy reveal ----
