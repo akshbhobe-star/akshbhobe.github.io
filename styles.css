@@ -338,7 +338,7 @@ ul { list-style: none; }
 
 .hero-photo {
   flex-shrink: 0;
-  width: 260px;
+  width: 380px;
 }
 .hero-photo img {
   width: 100%;
@@ -434,10 +434,10 @@ ul { list-style: none; }
   animation: riseIn 0.7s ease 0.48s forwards;
 }
 .hero-seeking-roles {
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 500;
   color: var(--ink);
-  line-height: 1.7;
+  line-height: 1.6;
 }
 .hero-seeking .sep {
   margin: 0 2px;
@@ -2622,6 +2622,11 @@ button:focus-visible {
 .hero-eyebrow,
 .hero-seeking > .eyebrow {
   color: var(--ink-soft);
+}
+
+.hero-seeking > .eyebrow {
+  font-size: 13px;
+  margin-bottom: 12px;
 }
 
 .section .section-title { margin-bottom: 24px; }
