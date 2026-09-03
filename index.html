@@ -39,19 +39,22 @@
 </head>
 <body>
 
-<div class="grain"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <!-- NAV -->
-<nav class="nav" id="nav">
+<nav class="nav" id="nav" aria-label="Primary">
   <div class="nav-inner">
-    <a href="index.html" class="nav-mark"><img src="assets/logo.png" alt="Aksharaa Bhobe" class="nav-logo"></a>
-    <div class="nav-links">
-      <a href="index.html#about">What Drives Me</a>
+    <a href="index.html" class="nav-mark"><img src="assets/logo.png" alt="Aksharaa Bhobe home" class="nav-logo"></a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html#drives">What Drives Me</a>
       <a href="research.html">Consumer Insights</a>
       <a href="strategy.html">Strategy &amp; Consulting</a>
       <a href="skills.html">My Process</a>
+      <a href="index.html#contact">Contact</a>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -63,7 +66,7 @@
     <div class="hero-inner">
       <p class="mono eyebrow hero-eyebrow">Northwestern Medill IMC '26</p>
       <h1 class="hero-greeting">Hi, I'm <span class="hero-accent">Aksharaa Bhobe.</span></h1>
-      <p class="hero-credential">I turn consumer insights into strategy, and strategy into growth.</p>
+      <p class="hero-credential">I turn <span class="accent-term">consumer insights</span> into <span class="accent-term">strategy</span>, and strategy into <span class="accent-term">growth</span>.</p>
       <p class="hero-lede">
         I'm an IMC Master's candidate at Northwestern Medill, graduating this December, with <strong>3+ years of research experience</strong> across agency consulting, client-facing research, and academic work.
       </p>
@@ -71,12 +74,12 @@
         I work at the intersection of consumer understanding and business decision-making, combining qualitative research with quantitative analysis to understand what people need, why they behave the way they do, and what a business should do next.
       </p>
       <p class="hero-lede">
-        For example, at SwissGear, my research identified consumer pain points and opportunity areas that informed a <span class="figure">$36M</span> innovation pipeline.
+        For example, at SwissGear, my research identified consumer pain points and opportunity areas that informed a <strong>$36M innovation pipeline</strong>.
       </p>
 
       <div class="hero-seeking">
         <p class="mono eyebrow">Actively seeking roles in</p>
-        <p class="hero-seeking-roles">Consumer Insights<span class="sep">·</span>Brand Strategy<span class="sep">·</span>Product Marketing<span class="sep">·</span>Innovation Strategy<span class="sep">·</span>Consulting</p>
+        <p class="hero-seeking-roles">Consumer Insights <span class="sep">·</span> Brand Strategy <span class="sep">·</span> Product Marketing <span class="sep">·</span> Innovation Strategy</p>
       </div>
 
       <div class="hero-cta">
@@ -85,117 +88,147 @@
       </div>
     </div>
     <div class="hero-photo">
-      <img src="assets/headshot.jpg" alt="Aksharaa Bhobe">
+      <img src="assets/headshot.jpg" alt="Portrait of Aksharaa Bhobe" width="514" height="564">
     </div>
   </div>
 </header>
 
-<!-- THE GROWTH ENGINE -->
-<section class="about" id="engine">
-  <div class="section-inner about-grid">
-    <div class="about-tag">
-      <p class="mono eyebrow">01 — THE GROWTH ENGINE</p>
-    </div>
-    <div class="about-content">
-      <h2 class="section-title">Insights &rarr; Strategy &rarr; Product &amp; Marketing</h2>
-      <p class="engine-intro">I see these disciplines as connected, not siloed.</p>
-      <ul class="engine-list">
-        <li><span class="engine-name">Consumer Insights</span> uncovers the human need.</li>
-        <li><span class="engine-name">Market Research</span> tests the opportunity.</li>
-        <li><span class="engine-name">Brand Strategy</span> defines the positioning and narrative.</li>
-        <li><span class="engine-name">Product &amp; Marketing</span> turns the opportunity into something people choose.</li>
-      </ul>
-      <p class="engine-closing">
-        My strength is in working across that chain: finding the insight, understanding what it means for the business, and turning it into a clear direction.
-      </p>
-    </div>
-  </div>
-</section>
+<main id="main-content">
 
-<!-- BRANDS -->
-<section class="about" id="clients">
-  <div class="section-inner about-grid">
-    <div class="about-tag">
-      <p class="mono eyebrow">02 — BRANDS</p>
+  <!-- THE GROWTH ENGINE -->
+  <section class="section reveal" id="engine" aria-labelledby="engine-heading">
+    <div class="section-inner section-grid">
+      <div class="section-tag">
+        <p class="mono eyebrow">01 &middot; The Growth Engine</p>
+      </div>
+      <div class="section-content">
+        <h2 class="section-title" id="engine-heading">Insights &rarr; Strategy &rarr; Product &amp; Marketing</h2>
+        <p class="lede-line">I see these disciplines as connected, not siloed.</p>
+        <ul class="engine-list">
+          <li><span class="engine-name">Consumer Insights</span> uncovers the human need.</li>
+          <li><span class="engine-name">Market Research</span> tests the opportunity.</li>
+          <li><span class="engine-name">Brand Strategy</span> defines the positioning and narrative.</li>
+          <li><span class="engine-name">Product &amp; Marketing</span> turns the opportunity into something people choose.</li>
+        </ul>
+        <p class="closing-line">
+          My strength is in working across that chain: finding the insight, understanding what it means for the business, and turning it into a clear direction.
+        </p>
+      </div>
     </div>
-    <div class="about-content">
-      <h2 class="section-title">Brands I've Worked With</h2>
-      <p class="brands-sub">Experience across tech, CPG, healthcare, beauty, media, and finance.</p>
-      <div class="clients-block clients-first">
-        <div class="logo-wall">
-          <div class="logo-tile"><span class="logo-cat mono">Tech</span><span class="logo-name v2">Google</span></div>
-          <div class="logo-tile"><span class="logo-cat mono">Tech</span><span class="logo-name v3">amazon</span></div>
-          <div class="logo-tile"><span class="logo-cat mono">Tech</span><span class="logo-name v1">Flipkart</span></div>
-          <div class="logo-tile"><span class="logo-cat mono">Tech</span><span class="logo-name v2">YouTube</span></div>
-          <div class="logo-tile"><span class="logo-cat mono">CPG</span><span class="logo-name v1">Mondelēz</span></div>
-          <div class="logo-tile"><span class="logo-cat mono">CPG</span><span class="logo-name v3">ITC Foods</span></div>
-          <div class="logo-tile"><span class="logo-cat mono">CPG</span><span class="logo-name v2">Lipton</span></div>
-          <div class="logo-tile"><span class="logo-cat mono">Electronics</span><span class="logo-name v3">vivo</span></div>
-          <div class="logo-tile"><span class="logo-cat mono">Healthcare</span><span class="logo-name v1">Piramal</span></div>
-          <div class="logo-tile"><span class="logo-cat mono">Healthcare</span><span class="logo-name v2">Bayer</span></div>
-          <div class="logo-tile"><span class="logo-cat mono">Healthcare</span><span class="logo-name v3">Allo Health</span></div>
-          <div class="logo-tile"><span class="logo-cat mono">Beauty</span><span class="logo-name v1">L'Oréal</span></div>
-          <div class="logo-tile"><span class="logo-cat mono">Fashion &amp; Retail</span><span class="logo-name v2">Pantaloons</span></div>
-          <div class="logo-tile"><span class="logo-cat mono">Entertainment</span><span class="logo-name v3">Sony Music</span></div>
-          <div class="logo-tile"><span class="logo-cat mono">Entertainment</span><span class="logo-name v1">Spotify</span></div>
-          <div class="logo-tile"><span class="logo-cat mono">Finance</span><span class="logo-name v2">Shriram Finance</span></div>
-          <div class="logo-tile"><span class="logo-cat mono">Hospitality</span><span class="logo-name v3">Club Mahindra</span></div>
-          <div class="logo-tile"><span class="logo-cat mono">Travel</span><span class="logo-name v1">Cleartrip</span></div>
-          <div class="logo-tile"><span class="logo-cat mono">Travel Gear</span><span class="logo-name v2">SwissGear</span></div>
-          <div class="logo-tile"><span class="logo-cat mono">Electronics</span><span class="logo-name v3">Dyson</span></div>
-          <div class="logo-tile"><span class="logo-cat mono">Tech</span><span class="logo-name v1">Pinterest</span></div>
-          <div class="logo-tile"><span class="logo-cat mono">CPG</span><span class="logo-name v2">Molson Coors</span></div>
-          <div class="logo-tile"><span class="logo-cat mono">Mobility</span><span class="logo-name v3">Uber</span></div>
+  </section>
+
+  <!-- BRANDS -->
+  <section class="section reveal" id="clients" aria-labelledby="brands-heading">
+    <div class="section-inner section-grid">
+      <div class="section-tag">
+        <p class="mono eyebrow">02 &middot; Brands</p>
+      </div>
+      <div class="section-content">
+        <h2 class="section-title" id="brands-heading">Brands I've Worked With</h2>
+        <p class="lede-line">Experience across tech, CPG, healthcare, beauty, media, and finance.</p>
+        <p class="brand-list">Google <span class="sep">·</span> Amazon <span class="sep">·</span> YouTube <span class="sep">·</span> Flipkart <span class="sep">·</span> Mondelēz <span class="sep">·</span> ITC Foods <span class="sep">·</span> Lipton <span class="sep">·</span> Vivo <span class="sep">·</span> Piramal <span class="sep">·</span> Bayer <span class="sep">·</span> Allo Health <span class="sep">·</span> L'Oréal <span class="sep">·</span> Pantaloons <span class="sep">·</span> Sony Music <span class="sep">·</span> Spotify <span class="sep">·</span> Shriram Finance <span class="sep">·</span> Club Mahindra <span class="sep">·</span> Cleartrip <span class="sep">·</span> SwissGear <span class="sep">·</span> Dyson <span class="sep">·</span> Pinterest <span class="sep">·</span> Molson Coors <span class="sep">·</span> Sprite</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT DRIVES ME — deliberately breaks the label+content grid used
+       by the other three sections: a wider, larger pull-quote moment
+       for the most personal section on the page. -->
+  <section class="section drives-section reveal" id="drives" aria-labelledby="drives-heading">
+    <div class="section-inner section-grid">
+      <div class="section-tag">
+        <p class="mono eyebrow">03 &middot; What Drives Me</p>
+      </div>
+      <div class="section-content">
+        <h2 class="drives-title" id="drives-heading">I am curious enough to ask why, and disciplined enough to find the answer.</h2>
+        <div class="drives-body">
+          <p class="prose">
+            People often look at my Northwestern degree and see a consumer researcher. The deeper story is my background as a lifelong athlete.
+          </p>
+          <p class="prose">
+            I started young as a competitive gymnast and that taught me <em class="emphasis-word">discipline</em> at an early age. I moved to equestrian sports that taught me <em class="emphasis-word">adaptability</em>. And I competed as a national level powerlifter, that taught me <em class="emphasis-word">grit</em> and how to persevere under pressure.
+          </p>
+          <p class="prose">
+            These experiences have shaped how I work. I care about getting the details right, I'm comfortable working through hard situations when the answer isn't obvious, and I can look at a problem from different lenses to understand what is really going on.
+          </p>
+          <p class="prose">
+            I also use AI and LLMs as part of my workflow, particularly for synthesis, prototyping, and repetitive tasks. I still own the research, the analysis, and the judgment behind the final recommendation. Used well, technology gives me more time to focus on asking better questions, challenging assumptions, and finding connections others might miss.
+          </p>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- WHO AM I / WHAT DRIVES ME — scroll-scrubbed reveal -->
-<div id="about"></div>
-<section class="who-scroll-block" id="whoScrollBlock">
-  <div class="who-sticky" id="whoSticky">
-    <h2 class="who-heading" id="whoHeading">Who Am I?</h2>
-    <div class="who-content" id="whoContent">
-      <div class="who-content-inner">
-        <p class="who-highlight">
-          I am curious enough to ask why, and disciplined enough to find the answer.
-        </p>
-        <p>
-          People often look at my Northwestern degree and see a consumer researcher. The deeper story is my background as a lifelong athlete.
-        </p>
-        <p>
-          Gymnastics taught me precision. Being an equestrian taught me adaptability. Powerlifting taught me discipline under pressure.
-        </p>
-        <p>
-          Those lessons shape how I work. I care about getting the details right, I'm comfortable when the answer isn't obvious, and I stay with a problem long enough to find the insight underneath it.
-        </p>
-        <p>
-          I also use AI and LLMs as part of my workflow, particularly for synthesis, prototyping, and repetitive tasks. I still own the research, the analysis, and the judgment behind the final recommendation. Used well, technology gives me more time to focus on asking better questions, challenging assumptions, and finding connections others might miss.
-        </p>
+  <!-- WHAT I BRING TO THE TABLE -->
+  <section class="section reveal" id="skills" aria-labelledby="skills-heading">
+    <div class="section-inner section-grid">
+      <div class="section-tag">
+        <p class="mono eyebrow">04 &middot; What I Bring to the Table</p>
+      </div>
+      <div class="section-content">
+        <h2 class="section-title" id="skills-heading">What I Bring to the Table</h2>
+
+        <div class="capability">
+          <h3 class="capability-title">Quantitative Rigor &amp; Analytics</h3>
+          <p class="capability-desc">I use data to understand consumer behavior, identify meaningful segments, and test what drives decisions.</p>
+          <ul class="capability-list">
+            <li>Survey design &amp; purchase-driver analysis</li>
+            <li>K-means clustering &amp; advanced segmentation</li>
+            <li>Regression modeling</li>
+            <li>Data interpretation &amp; insight development</li>
+          </ul>
+          <p class="capability-tools"><span class="mono">Tools</span> R &middot; SPSS &middot; STATA &middot; Tableau &middot; Excel &middot; Qualtrics</p>
+        </div>
+
+        <div class="capability">
+          <h3 class="capability-title">Qualitative Empathy &amp; Fieldwork</h3>
+          <p class="capability-desc">I look beyond what consumers say to understand the motivations, tensions, and contexts behind their behavior.</p>
+          <ul class="capability-list">
+            <li>Discussion guide design &amp; moderation</li>
+            <li>In-depth interviews</li>
+            <li>Ethnographic immersion</li>
+            <li>Longitudinal digital diaries</li>
+            <li>Projective techniques, including ZMET</li>
+            <li>Emic / etic coding &amp; thematic analysis</li>
+          </ul>
+          <p class="capability-tools"><span class="mono">Tools</span> Digital diaries (Recollective, WhatsApp) &middot; Miro &middot; Qualtrics</p>
+        </div>
+
+        <div class="capability">
+          <h3 class="capability-title">Brand &amp; Product Strategy</h3>
+          <p class="capability-desc">I translate consumer understanding into decisions about where a brand can play and how it can grow.</p>
+          <ul class="capability-list">
+            <li>Whitespace &amp; opportunity mapping</li>
+            <li>Market sizing: TAM / SAM / SOM</li>
+            <li>Brand audits</li>
+            <li>Product extension strategy</li>
+            <li>Jobs-to-be-Done</li>
+            <li>Customer journey mapping</li>
+          </ul>
+        </div>
+
+        <div class="capability">
+          <h3 class="capability-title">Shopper &amp; Commercial Strategy</h3>
+          <p class="capability-desc">I connect consumer insight to the realities of the marketplace.</p>
+          <ul class="capability-list">
+            <li>Category management</li>
+            <li>Retail space planning</li>
+            <li>Full-funnel measurement</li>
+            <li>Shopper insight translation</li>
+            <li>Activation strategy</li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- WHAT I BRING TO THE TABLE -->
-<section class="about" id="skills">
-  <div class="section-inner about-grid">
-    <div class="about-tag">
-      <p class="mono eyebrow">03 — WHAT I BRING TO THE TABLE</p>
-    </div>
-    <div class="about-content">
-      <div class="skills-groups" id="skillsGroups"></div>
-    </div>
-  </div>
-</section>
+</main>
 
 <!-- FOOTER (persistent contact) -->
-<footer class="contact" id="contact">
+<footer class="contact" id="contact" aria-labelledby="contact-heading">
   <div class="section-inner contact-inner">
-    <p class="mono eyebrow">GET IN TOUCH</p>
-    <h2 class="contact-title">Let's talk strategy.</h2>
+    <p class="mono eyebrow">Get In Touch</p>
+    <h2 class="contact-title" id="contact-heading">Let's Talk Strategy.</h2>
     <p class="contact-sub">
       I'm looking for opportunities where consumer understanding meets business decision-making, particularly in consumer insights, brand strategy, product marketing, innovation, and consulting.
     </p>
@@ -210,104 +243,5 @@
 </footer>
 
 <script src="script.js"></script>
-<script>
-(function () {
-  var skillCategories = [
-    {
-      label: "Quantitative Rigor & Analytics",
-      gradient: "linear-gradient(135deg, var(--olive), var(--blue))",
-      icon: '<path d="M5 20V13M12 20V8M19 20V4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
-      note: "I use data to understand consumer behavior, identify meaningful segments, and test what drives decisions.",
-      items: ["Survey design & purchase-driver analysis", "K-means clustering & advanced segmentation", "Regression modeling", "Data interpretation & insight development"],
-      tools: "R · SPSS · STATA · Tableau · Excel · Qualtrics"
-    },
-    {
-      label: "Qualitative Empathy & Fieldwork",
-      gradient: "linear-gradient(135deg, var(--amber), var(--olive))",
-      icon: '<path d="M4 5.5A1.5 1.5 0 015.5 4h13A1.5 1.5 0 0120 5.5v9A1.5 1.5 0 0118.5 16H10l-4.2 3.4V16H5.5A1.5 1.5 0 014 14.5v-9z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/><circle cx="8.5" cy="10" r="0.9" fill="currentColor" stroke="none"/><circle cx="12" cy="10" r="0.9" fill="currentColor" stroke="none"/><circle cx="15.5" cy="10" r="0.9" fill="currentColor" stroke="none"/>',
-      note: "I look beyond what consumers say to understand the motivations, tensions, and contexts behind their behavior.",
-      items: ["Discussion guide design & moderation", "In-depth interviews", "Ethnographic immersion", "Longitudinal digital diaries", "Projective techniques, including ZMET", "Emic / etic coding & thematic analysis"],
-      tools: "Digital diaries (Recollective, WhatsApp) · Miro · Qualtrics"
-    },
-    {
-      label: "Brand & Product Strategy",
-      gradient: "linear-gradient(135deg, var(--olive), var(--olive-deep))",
-      icon: '<circle cx="12" cy="12" r="7.5" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="12" cy="12" r="0.9" fill="currentColor" stroke="none"/>',
-      note: "I translate consumer understanding into decisions about where a brand can play and how it can grow.",
-      items: ["Whitespace & opportunity mapping", "Market sizing: TAM / SAM / SOM", "Brand audits", "Product extension strategy", "Jobs-to-be-Done", "Customer journey mapping"]
-    },
-    {
-      label: "Shopper & Commercial Strategy",
-      gradient: "linear-gradient(135deg, var(--blue), var(--olive-deep))",
-      icon: '<path d="M12.5 3H20v7.5L11 19.5a1.5 1.5 0 01-2.1 0l-6.4-6.4a1.5 1.5 0 010-2.1L11.5 2h1z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round" transform="translate(0.3,0.5)"/><circle cx="15" cy="8" r="1.3" fill="currentColor" stroke="none"/>',
-      note: "I connect consumer insight to the realities of the marketplace.",
-      items: ["Category management", "Retail space planning", "Full-funnel measurement", "Shopper insight translation", "Activation strategy"]
-    }
-  ];
-
-  var groupsEl = document.getElementById('skillsGroups');
-  if (!groupsEl) return;
-
-  groupsEl.innerHTML = skillCategories.map(function (cat) {
-    var chips = cat.items.map(function (item) { return '<span class="skill-chip">' + item + '</span>'; }).join('');
-    var catNote = cat.note ? '<p class="skill-category-note">' + cat.note + '</p>' : '';
-    var tools = cat.tools ? '<p class="skill-tools"><span class="mono">Tools</span> ' + cat.tools + '</p>' : '';
-    return (
-      '<div class="skill-category">' +
-        '<div class="skill-category-head">' +
-          '<span class="skill-category-icon" style="background:' + cat.gradient + '"><svg viewBox="0 0 24 24" fill="none">' + cat.icon + '</svg></span>' +
-          '<h3 class="skill-category-label">' + cat.label + '</h3>' +
-        '</div>' +
-        catNote +
-        '<div class="skill-chip-row">' + chips + '</div>' +
-        tools +
-      '</div>'
-    );
-  }).join('');
-})();
-
-// ---- Who Am I: scroll-scrubbed zoom into burgundy reveal ----
-(function () {
-  var block = document.getElementById('whoScrollBlock');
-  var sticky = document.getElementById('whoSticky');
-  var heading = document.getElementById('whoHeading');
-  if (!block || !sticky || !heading) return;
-
-  var flipPoint = 0.55;
-  var isFlipped = false;
-  var baseFontSize, sizeRatio;
-
-  function setBaseSize() {
-    var isMobile = window.innerWidth <= 700;
-    baseFontSize = isMobile ? 40 : 68;
-    var maxFontSize = isMobile ? 84 : 220;
-    sizeRatio = maxFontSize / baseFontSize;
-    heading.style.fontSize = baseFontSize + 'px';
-  }
-
-  function update() {
-    var rect = block.getBoundingClientRect();
-    var scrollableDistance = block.offsetHeight - window.innerHeight;
-    if (scrollableDistance <= 0) return;
-    var scrolled = -rect.top;
-    var progress = Math.min(Math.max(scrolled / scrollableDistance, 0), 1);
-
-    var scaleProgress = Math.min(progress / flipPoint, 1);
-    var scale = 1 + scaleProgress * (sizeRatio - 1);
-    heading.style.transform = 'scale(' + scale.toFixed(3) + ')';
-
-    var shouldFlip = progress > flipPoint;
-    if (shouldFlip !== isFlipped) {
-      isFlipped = shouldFlip;
-      sticky.classList.toggle('burgundy', isFlipped);
-    }
-  }
-
-  setBaseSize();
-  window.addEventListener('scroll', function () { requestAnimationFrame(update); }, { passive: true });
-  window.addEventListener('resize', function () { requestAnimationFrame(function () { setBaseSize(); update(); }); });
-  update();
-})();
-</script>
 </body>
 </html>
