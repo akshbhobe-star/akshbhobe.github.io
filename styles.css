@@ -20,7 +20,7 @@
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
 
-  --max-width: 1120px;
+  --max-width: 1200px;
   --radius: 20px;
   --radius-sm: 10px;
 }
@@ -312,6 +312,7 @@ ul { list-style: none; }
   max-width: var(--max-width);
   margin: 0 auto;
   position: relative;
+  overflow: hidden;
 }
 
 .hero::before {
@@ -321,19 +322,9 @@ ul { list-style: none; }
   right: -10%;
   width: 640px;
   height: 640px;
-  background: radial-gradient(circle, rgba(208,91,98,0.22), rgba(221,157,151,0.12) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(208,91,98,0.16), rgba(221,157,151,0.08) 45%, transparent 70%);
   border-radius: 50%;
   z-index: -1;
-  animation: driftGlow 26s ease-in-out infinite;
-}
-
-@keyframes driftGlow {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-30px, 24px) scale(1.06); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero::before { animation: none; }
 }
 
 .hero-inner { max-width: 620px; }
@@ -365,10 +356,16 @@ ul { list-style: none; }
 
 .eyebrow.mono { font-size: 12px; }
 
-/* ---- Hero intro: two acts — "who I am" (personal, name in red) then
-   "what I do" (positioning, in red again) — each followed by a quieter
-   black/ink line, giving scrolling recruiters more to read than a name
-   and a one-liner. ---- */
+/* ---- Hero intro: a single confident statement, staggered in one clean
+   pass from eyebrow down to the CTAs. Recruiters get a clear read order:
+   credential → headline claim → proof (experience, then the SwissGear
+   figure) → target roles → action. ---- */
+.hero-eyebrow {
+  margin-bottom: 18px;
+  opacity: 0;
+  animation: riseIn 0.7s ease 0s forwards;
+}
+
 .hero-greeting {
   font-family: var(--font-display);
   font-weight: 500;
@@ -378,9 +375,9 @@ ul { list-style: none; }
   color: var(--ink);
   margin-bottom: 8px;
   opacity: 0;
-  animation: riseIn 0.8s ease 0.1s forwards;
+  animation: riseIn 0.7s ease 0.08s forwards;
 }
-.hero-accent { color: var(--blue); }
+.hero-accent { color: var(--olive); }
 
 .hero-credential {
   font-family: var(--font-display);
@@ -391,8 +388,9 @@ ul { list-style: none; }
   max-width: 640px;
   margin-bottom: 22px;
   opacity: 0;
-  animation: riseIn 0.8s ease 0.22s forwards;
+  animation: riseIn 0.7s ease 0.16s forwards;
 }
+.accent-term { color: var(--olive); }
 
 .hero-tagline {
   font-size: clamp(15px, 1.8vw, 17px);
@@ -401,7 +399,7 @@ ul { list-style: none; }
   max-width: 540px;
   margin-bottom: 38px;
   opacity: 0;
-  animation: riseIn 0.8s ease 0.34s forwards;
+  animation: riseIn 0.7s ease 0.32s forwards;
 }
 
 .hero-position {
@@ -411,8 +409,6 @@ ul { list-style: none; }
   font-size: clamp(20px, 3vw, 28px);
   color: var(--blue);
   margin-bottom: 16px;
-  opacity: 0;
-  animation: riseIn 0.8s ease 0.46s forwards;
 }
 
 .hero-lede {
@@ -422,19 +418,37 @@ ul { list-style: none; }
   max-width: 620px;
   margin-bottom: 40px;
   opacity: 0;
-  animation: riseIn 0.8s ease 0.58s forwards;
+  animation: riseIn 0.7s ease 0.24s forwards;
 }
+.hero-tagline + .hero-lede { animation-delay: 0.4s; }
+.hero-lede strong { color: var(--olive); font-weight: 700; }
 
 @keyframes riseIn {
-  from { opacity: 0; transform: translateY(14px); }
+  from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-seeking {
+  margin-bottom: 30px;
+  opacity: 0;
+  animation: riseIn 0.7s ease 0.48s forwards;
+}
+.hero-seeking-roles {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.7;
+}
+.hero-seeking .sep {
+  margin: 0 2px;
+  color: var(--line);
 }
 
 .hero-cta {
   display: flex;
   gap: 16px;
   opacity: 0;
-  animation: riseIn 0.8s ease 0.7s forwards;
+  animation: riseIn 0.7s ease 0.56s forwards;
 }
 
 .btn {
@@ -785,7 +799,7 @@ ul { list-style: none; }
 
 .footer-note {
   font-size: 12px;
-  color: #8A5F58;
+  color: #B08078;
 }
 
 .contact-sub { color: #C99B94; }
@@ -2277,8 +2291,10 @@ ul { list-style: none; }
 }
 
 /* ============================================
-   WHO AM I — scroll-scrubbed zoom into a full
-   burgundy reveal
+   WHO AM I — legacy scroll-scrubbed section styles.
+   No longer used on the homepage (replaced by the
+   static "Engine" section) but left here in case
+   any other page still references these classes.
    ============================================ */
 .who-scroll-block {
   position: relative;
@@ -2358,65 +2374,279 @@ ul { list-style: none; }
 }
 
 /* ============================================================
-   CONTENT ADDITIONS — styling for sections added after the
-   Aug 15 base (Growth Engine, Brands heading, hero eyebrow/
-   seeking-roles, skill tools line, inline stat highlight).
-   Kept in the same visual language as the rest of the file;
-   nothing below is animated via scroll-hijacking.
+   HOMEPAGE REFACTOR ADDITIONS — hero roles, marquee, engine,
+   methodology grid. Appended so nothing above needed editing.
    ============================================================ */
 
-/* ---- Hero: eyebrow ---- */
-.hero-eyebrow {
-  margin-bottom: 18px;
+/* ---- Hero: eyebrow + bolded value statements ---- */
+.hero-eyebrow { margin-bottom: 18px; }
+.hero-lede strong { color: var(--olive); font-weight: 700; }
+.about-content strong { color: var(--olive); font-weight: 700; }
+
+/* ---- Hero: target-roles chip row ---- */
+.hero-roles {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 36px;
   opacity: 0;
-  animation: riseIn 0.8s ease 0.02s forwards;
+  animation: riseIn 0.8s ease 0.46s forwards;
 }
-
-/* ---- Hero: inline emphasis (bolded stat lines, $ figures) ---- */
-.hero-lede strong,
-.about-content strong,
-.figure {
-  color: var(--olive);
-  font-weight: 700;
-}
-
-/* ---- Hero: re-sequenced fade-in stagger for today's line-up
-   (eyebrow → greeting → credential → lede 1 → tagline → lede 2 →
-   seeking → cta). Targeted by DOM position since both hero-lede
-   paragraphs share one class. ---- */
-.hero-credential + .hero-lede { animation-delay: 0.34s; }
-.hero-tagline { animation-delay: 0.46s; }
-.hero-tagline + .hero-lede { animation-delay: 0.58s; }
-.hero-cta { animation-delay: 0.82s; }
-
-.hero-seeking {
-  margin-bottom: 28px;
-  opacity: 0;
-  animation: riseIn 0.8s ease 0.7s forwards;
-}
-.hero-seeking-roles {
-  font-size: 15px;
+.hero-roles-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
   color: var(--ink-soft);
-  line-height: 1.6;
+  flex-shrink: 0;
 }
-.hero-seeking .sep {
-  margin: 0 8px;
-  color: var(--line);
+.hero-roles-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.role-chip {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--olive);
+  background: rgba(159, 34, 48, 0.08);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 14px;
+  white-space: nowrap;
 }
 
-/* ---- Growth Engine section ---- */
-.engine-intro {
+/* ---- Hero: re-sequenced fade-in stagger (tagline/position lines removed) ---- */
+.hero-lede { animation: riseIn 0.8s ease 0.34s forwards; }
+.hero-cta { animation: riseIn 0.8s ease 0.58s forwards; }
+
+/* ---- Credibility marquee ---- */
+.marquee-section {
+  padding: 70px 0 80px;
+  border-top: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.marquee {
+  position: relative;
+  margin-top: 32px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  width: max-content;
+  animation: marqueeScroll 36s linear infinite;
+}
+
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+.marquee-logo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  filter: grayscale(1);
+  opacity: 0.45;
+  white-space: nowrap;
+  transition: opacity 0.25s ease, filter 0.25s ease;
+}
+.marquee-logo:hover { filter: grayscale(0); opacity: 1; color: var(--olive); }
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; overflow-x: auto; }
+}
+
+@media (max-width: 700px) {
+  .marquee-logo { font-size: 17px; }
+  .marquee-track { gap: 40px; }
+}
+
+/* ---- The Engine section heading ---- */
+.engine-heading {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(28px, 3.4vw, 40px);
+  line-height: 1.2;
+  margin-bottom: 24px;
+  color: var(--ink);
+  max-width: 16ch;
+}
+
+/* ---- Methodology grid (executive-dashboard styling) ---- */
+.methodology { padding: 100px 0 120px; border-top: 1px solid var(--line); }
+
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-top: 40px;
+}
+
+.method-card {
+  background: var(--paper);
+  padding: 32px 34px;
+  display: flex;
+  flex-direction: column;
+}
+
+.method-card-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--ink);
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.method-list {
+  display: grid;
+  gap: 10px;
+  margin-bottom: auto;
+}
+.method-list li {
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  padding-left: 18px;
+  position: relative;
+}
+.method-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--olive);
+}
+
+.method-toolkit {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--line);
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+.method-toolkit .mono {
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  color: var(--blue);
+  margin-right: 8px;
+}
+
+@media (max-width: 700px) {
+  .method-grid { grid-template-columns: 1fr; }
+  .method-card { padding: 26px 22px; }
+}
+
+/* ============================================================
+   EDITORIAL REBUILD — Growth Engine, Brands, What Drives Me,
+   What I Bring to the Table. Typography- and whitespace-led;
+   deliberately no cards, pills, or decorative UI blocks. Shares
+   .section-inner / .eyebrow / .mono / .contact* / .btn* / nav
+   styles already defined above so other pages are unaffected.
+   ============================================================ */
+
+/* ---- Accessibility: skip link + focus states ---- */
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 16px;
+  z-index: 1000;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 16px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---- Gentle on-scroll reveal (replaces the old scroll-hijacked
+   "Who Am I" pin/zoom effect). Respects the sitewide
+   prefers-reduced-motion rule above, which already zeroes out
+   transition-duration. ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- Section shell (Growth Engine / Brands / What I Bring to
+   the Table share a label+content grid; What Drives Me breaks
+   the pattern deliberately, see below) ---- */
+.section {
+  padding: 110px 0;
+  border-top: 1px solid var(--line);
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 60px;
+  min-width: 0;
+}
+.section-grid > * { min-width: 0; }
+
+.section-tag { padding-top: 6px; }
+
+/* Structural eyebrows (section + capability labels) are muted, not
+   accented — understated wayfinding, not content emphasis. The one
+   accent color (olive) is reserved for the hero's key terms, the
+   SwissGear/experience figures, engine names, and the emphasis
+   words in "What Drives Me". */
+.section-tag .eyebrow,
+.hero-eyebrow,
+.hero-seeking > .eyebrow {
+  color: var(--ink-soft);
+}
+
+.section .section-title { margin-bottom: 24px; }
+
+.lede-line {
   font-size: 17px;
   color: var(--ink-soft);
-  margin-bottom: 20px;
-  max-width: 640px;
+  margin-bottom: 24px;
+  max-width: 700px;
 }
+
+.closing-line {
+  font-size: 17px;
+  color: var(--ink-soft);
+  max-width: 700px;
+  margin-top: 4px;
+}
+
+/* ---- Growth Engine: four lines, not four cards ---- */
 .engine-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   margin-bottom: 28px;
-  max-width: 640px;
+  max-width: 700px;
 }
 .engine-list li {
   font-size: 17px;
@@ -2427,32 +2657,110 @@ ul { list-style: none; }
   color: var(--olive);
   font-weight: 700;
 }
-.engine-closing {
-  font-size: 17px;
-  color: var(--ink-soft);
-  max-width: 640px;
+
+/* ---- Brands: one flowing editorial line, not a logo grid ---- */
+.brand-list {
+  font-size: clamp(17px, 1.6vw, 20px);
+  line-height: 2.1;
+  color: var(--ink);
+  max-width: 900px;
+}
+.brand-list .sep {
+  margin: 0 4px;
+  color: var(--line);
 }
 
-/* ---- Brands section heading ---- */
-.brands-sub {
-  font-size: 15px;
+/* ---- What Drives Me: the one section that breaks the label+
+   content grid on purpose. It's the most personal section on the
+   page, so its heading and body run wider within the shared content
+   column instead of matching the ~640px measure used elsewhere —
+   more presence without breaking the left edge every section shares. ---- */
+.drives-title {
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(30px, 3.6vw, 46px);
+  line-height: 1.25;
+  max-width: 20em;
+  margin-bottom: 40px;
+}
+
+.drives-body { max-width: 760px; }
+
+.prose {
+  font-size: 17px;
+  line-height: 1.75;
   color: var(--ink-soft);
-  margin: -8px 0 28px;
-  max-width: 640px;
+  max-width: 660px;
+  margin-bottom: 22px;
+}
+.prose:last-child { margin-bottom: 0; }
+.emphasis-word {
+  font-style: italic;
+  color: var(--olive);
+  font-weight: 600;
+}
+
+/* ---- What I Bring to the Table: thin rules only, no numbers,
+   no rounded pill chips ---- */
+.capability {
+  padding: 32px 0;
+  border-top: 1px solid var(--line);
+}
+.capability:first-child {
+  border-top: none;
+  padding-top: 4px;
+}
+
+.capability-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 21px;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.capability-desc {
+  font-size: 15.5px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  max-width: 62ch;
+  margin-bottom: 16px;
+}
+
+.capability-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.capability-list li {
+  font-size: 15.5px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+.capability-tools {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+.capability-tools .mono {
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+  margin-right: 8px;
 }
 
 /* ---- Footer: second paragraph sits closer to the first ---- */
 .contact-sub-2 { margin-top: -24px; }
 
-/* ---- Skills: tools line under each chip row ---- */
-.skill-tools {
-  margin-top: 14px;
-  font-size: 13px;
-  color: var(--ink-soft);
+@media (max-width: 860px) {
+  .section-grid { grid-template-columns: 1fr; gap: 16px; }
 }
-.skill-tools .mono {
-  font-size: 10.5px;
-  letter-spacing: 0.1em;
-  color: var(--blue);
-  margin-right: 8px;
+
+@media (max-width: 700px) {
+  .section { padding: 76px 0; }
+  .brand-list { line-height: 2; }
+  .drives-title { margin-bottom: 32px; }
 }
