@@ -785,7 +785,7 @@ ul { list-style: none; }
 
 .footer-note {
   font-size: 12px;
-  color: #B08078;
+  color: #8A5F58;
 }
 
 .contact-sub { color: #C99B94; }
@@ -2277,10 +2277,8 @@ ul { list-style: none; }
 }
 
 /* ============================================
-   WHO AM I — legacy scroll-scrubbed section styles.
-   No longer used on the homepage (replaced by the
-   static "Engine" section) but left here in case
-   any other page still references these classes.
+   WHO AM I — scroll-scrubbed zoom into a full
+   burgundy reveal
    ============================================ */
 .who-scroll-block {
   position: relative;
@@ -2360,176 +2358,101 @@ ul { list-style: none; }
 }
 
 /* ============================================================
-   HOMEPAGE REFACTOR ADDITIONS — hero roles, marquee, engine,
-   methodology grid. Appended so nothing above needed editing.
+   CONTENT ADDITIONS — styling for sections added after the
+   Aug 15 base (Growth Engine, Brands heading, hero eyebrow/
+   seeking-roles, skill tools line, inline stat highlight).
+   Kept in the same visual language as the rest of the file;
+   nothing below is animated via scroll-hijacking.
    ============================================================ */
 
-/* ---- Hero: eyebrow + bolded value statements ---- */
-.hero-eyebrow { margin-bottom: 18px; }
-.hero-lede strong { color: var(--olive); font-weight: 700; }
-.about-content strong { color: var(--olive); font-weight: 700; }
-
-/* ---- Hero: target-roles chip row ---- */
-.hero-roles {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-bottom: 36px;
+/* ---- Hero: eyebrow ---- */
+.hero-eyebrow {
+  margin-bottom: 18px;
   opacity: 0;
-  animation: riseIn 0.8s ease 0.46s forwards;
+  animation: riseIn 0.8s ease 0.02s forwards;
 }
-.hero-roles-label {
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  color: var(--ink-soft);
-  flex-shrink: 0;
-}
-.hero-roles-list { display: flex; flex-wrap: wrap; gap: 8px; }
-.role-chip {
-  font-size: 13px;
-  font-weight: 600;
+
+/* ---- Hero: inline emphasis (bolded stat lines, $ figures) ---- */
+.hero-lede strong,
+.about-content strong,
+.figure {
   color: var(--olive);
-  background: rgba(159, 34, 48, 0.08);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 6px 14px;
-  white-space: nowrap;
+  font-weight: 700;
 }
 
-/* ---- Hero: re-sequenced fade-in stagger (tagline/position lines removed) ---- */
-.hero-lede { animation: riseIn 0.8s ease 0.34s forwards; }
-.hero-cta { animation: riseIn 0.8s ease 0.58s forwards; }
+/* ---- Hero: re-sequenced fade-in stagger for today's line-up
+   (eyebrow → greeting → credential → lede 1 → tagline → lede 2 →
+   seeking → cta). Targeted by DOM position since both hero-lede
+   paragraphs share one class. ---- */
+.hero-credential + .hero-lede { animation-delay: 0.34s; }
+.hero-tagline { animation-delay: 0.46s; }
+.hero-tagline + .hero-lede { animation-delay: 0.58s; }
+.hero-cta { animation-delay: 0.82s; }
 
-/* ---- Credibility marquee ---- */
-.marquee-section {
-  padding: 70px 0 80px;
-  border-top: 1px solid var(--line);
-  overflow: hidden;
+.hero-seeking {
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: riseIn 0.8s ease 0.7s forwards;
+}
+.hero-seeking-roles {
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+.hero-seeking .sep {
+  margin: 0 8px;
+  color: var(--line);
 }
 
-.marquee {
-  position: relative;
-  margin-top: 32px;
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+/* ---- Growth Engine section ---- */
+.engine-intro {
+  font-size: 17px;
+  color: var(--ink-soft);
+  margin-bottom: 20px;
+  max-width: 640px;
 }
-
-.marquee-track {
-  display: flex;
-  align-items: center;
-  gap: 64px;
-  width: max-content;
-  animation: marqueeScroll 36s linear infinite;
-}
-
-.marquee:hover .marquee-track { animation-play-state: paused; }
-
-.marquee-logo {
-  font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  color: var(--ink);
-  filter: grayscale(1);
-  opacity: 0.45;
-  white-space: nowrap;
-  transition: opacity 0.25s ease, filter 0.25s ease;
-}
-.marquee-logo:hover { filter: grayscale(0); opacity: 1; color: var(--olive); }
-
-@keyframes marqueeScroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; overflow-x: auto; }
-}
-
-@media (max-width: 700px) {
-  .marquee-logo { font-size: 17px; }
-  .marquee-track { gap: 40px; }
-}
-
-/* ---- The Engine section heading ---- */
-.engine-heading {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(28px, 3.4vw, 40px);
-  line-height: 1.2;
-  margin-bottom: 24px;
-  color: var(--ink);
-  max-width: 16ch;
-}
-
-/* ---- Methodology grid (executive-dashboard styling) ---- */
-.methodology { padding: 100px 0 120px; border-top: 1px solid var(--line); }
-
-.method-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  margin-top: 40px;
-}
-
-.method-card {
-  background: var(--paper);
-  padding: 32px 34px;
+.engine-list {
   display: flex;
   flex-direction: column;
-}
-
-.method-card-title {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 20px;
-  color: var(--ink);
-  margin-bottom: 18px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--line);
-}
-
-.method-list {
-  display: grid;
   gap: 10px;
-  margin-bottom: auto;
+  margin-bottom: 28px;
+  max-width: 640px;
 }
-.method-list li {
-  font-size: 14.5px;
-  line-height: 1.5;
+.engine-list li {
+  font-size: 17px;
   color: var(--ink-soft);
-  padding-left: 18px;
-  position: relative;
+  line-height: 1.5;
 }
-.method-list li::before {
-  content: '—';
-  position: absolute;
-  left: 0;
+.engine-name {
   color: var(--olive);
+  font-weight: 700;
+}
+.engine-closing {
+  font-size: 17px;
+  color: var(--ink-soft);
+  max-width: 640px;
 }
 
-.method-toolkit {
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 1px dashed var(--line);
+/* ---- Brands section heading ---- */
+.brands-sub {
+  font-size: 15px;
+  color: var(--ink-soft);
+  margin: -8px 0 28px;
+  max-width: 640px;
+}
+
+/* ---- Footer: second paragraph sits closer to the first ---- */
+.contact-sub-2 { margin-top: -24px; }
+
+/* ---- Skills: tools line under each chip row ---- */
+.skill-tools {
+  margin-top: 14px;
   font-size: 13px;
   color: var(--ink-soft);
 }
-.method-toolkit .mono {
+.skill-tools .mono {
   font-size: 10.5px;
   letter-spacing: 0.1em;
   color: var(--blue);
   margin-right: 8px;
-}
-
-@media (max-width: 700px) {
-  .method-grid { grid-template-columns: 1fr; }
-  .method-card { padding: 26px 22px; }
 }
