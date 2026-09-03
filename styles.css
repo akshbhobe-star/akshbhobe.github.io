@@ -393,10 +393,10 @@ ul { list-style: none; }
 .accent-term { color: var(--olive); }
 
 .hero-tagline {
-  font-size: clamp(15px, 1.8vw, 17px);
-  line-height: 1.6;
+  font-size: clamp(17px, 2vw, 20px);
+  line-height: 1.55;
   color: var(--ink-soft);
-  max-width: 540px;
+  max-width: 620px;
   margin-bottom: 38px;
   opacity: 0;
   animation: riseIn 0.7s ease 0.32s forwards;
@@ -2663,57 +2663,179 @@ button:focus-visible {
   font-weight: 700;
 }
 
-/* ---- Brands: one flowing editorial line, not a logo grid ---- */
-.brand-list {
-  font-size: clamp(17px, 1.6vw, 20px);
-  line-height: 2.1;
-  color: var(--ink);
+/* ---- Brands: the marks themselves, sitting straight on the page —
+   no tiles, no borders, no card fills. Same paper background as
+   everything else, so each logo just reads as part of the page. ---- */
+.brand-logos {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  justify-items: start;
+  column-gap: 40px;
+  row-gap: 36px;
+  margin: 20px 0 0;
+  padding: 0;
   max-width: 900px;
 }
-.brand-list .sep {
-  margin: 0 4px;
-  color: var(--line);
+.brand-logos li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+.brand-logo {
+  display: block;
+  height: 42px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
 }
 
-/* ---- What Drives Me: the one section that breaks the label+
-   content grid on purpose. It's the most personal section on the
-   page, so its heading and body run wider within the shared content
-   column instead of matching the ~640px measure used elsewhere —
-   more presence without breaking the left edge every section shares. ---- */
-.drives-title {
+@media (max-width: 860px) {
+  .brand-logos { grid-template-columns: repeat(4, 1fr); column-gap: 30px; row-gap: 30px; }
+}
+@media (max-width: 500px) {
+  .brand-logos { grid-template-columns: repeat(3, 1fr); column-gap: 22px; row-gap: 26px; }
+  .brand-logo { height: 32px; }
+}
+
+/* ---- What Drives Me: a pinned scroll moment. The section holds the
+   viewport while a pull-quote gives way to the fuller story, the
+   background shifting from paper to the same red used in the nav.
+   Both layers use the full section width — no narrow centered column. ---- */
+.drives-scroll {
+  position: relative;
+  height: 240vh;
+  border-top: 1px solid var(--line);
+}
+
+.drives-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background: var(--paper);
+  transition: background-color 0.7s ease;
+}
+.drives-sticky.is-active { background: #820108; }
+
+.drives-stage { width: 100%; }
+
+.drives-eyebrow {
+  color: var(--ink-soft);
+  transition: color 0.5s ease;
+}
+.drives-sticky.is-active .drives-eyebrow { color: rgba(247, 238, 236, 0.6); }
+
+.drives-panel {
+  position: relative;
+  height: min(60vh, 620px);
+}
+
+.drives-quote {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-display);
   font-style: italic;
   font-weight: 500;
-  font-size: clamp(30px, 3.6vw, 46px);
+  font-size: clamp(30px, 4vw, 52px);
   line-height: 1.25;
-  max-width: 20em;
-  margin-bottom: 40px;
+  max-width: 18em;
+  color: var(--ink);
+  opacity: 1;
+  transition: opacity 0.5s ease;
 }
+.drives-sticky.is-active .drives-quote { opacity: 0; }
 
-.drives-body { max-width: 760px; }
-
-.prose {
-  font-size: 17px;
-  line-height: 1.75;
-  color: var(--ink-soft);
-  max-width: 660px;
-  margin-bottom: 22px;
+.drives-story {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 64px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
 }
-.prose:last-child { margin-bottom: 0; }
+.drives-sticky.is-active .drives-story {
+  opacity: 1;
+  transform: translateY(0);
+}
+.drives-story-col p {
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: var(--paper);
+  margin-bottom: 20px;
+}
+.drives-story-col p:last-child { margin-bottom: 0; }
+
 .emphasis-word {
   font-style: italic;
-  color: var(--olive);
+  color: #F2C9C0;
   font-weight: 600;
 }
 
-/* ---- What I Bring to the Table: thin rules only, no numbers,
-   no rounded pill chips ---- */
+/* Static fallback — small viewports and prefers-reduced-motion get the
+   full story rendered in flow, on its own red panel, no pinning. */
+@media (max-width: 700px), (prefers-reduced-motion: reduce) {
+  .drives-scroll { height: auto; border-top: none; }
+  .drives-sticky {
+    position: static;
+    height: auto;
+    display: block;
+    padding: 76px 0 0;
+    transition: none;
+  }
+  .drives-stage { padding: 0 32px; max-width: var(--max-width); margin: 0 auto; }
+  .drives-eyebrow { color: var(--ink-soft); margin-bottom: 18px; }
+  .drives-panel { height: auto; }
+  .drives-quote {
+    position: static;
+    display: block;
+    opacity: 1;
+    max-width: none;
+    margin-bottom: 40px;
+  }
+  .drives-story {
+    position: static;
+    display: block;
+    opacity: 1;
+    transform: none;
+    background: #820108;
+    margin: 0 -32px;
+    padding: 44px 32px;
+  }
+  .drives-story-col + .drives-story-col { margin-top: 4px; }
+}
+
+/* ---- What I Bring to the Table: a quiet 2x2, divided by thin
+   rules only — no cards, no fills, no shadows, no rounded chips. ---- */
+.capability-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 64px;
+  row-gap: 0;
+}
+
 .capability {
-  padding: 32px 0;
+  padding: 36px 0;
   border-top: 1px solid var(--line);
 }
-.capability:first-child {
+.capability-grid .capability:nth-child(-n+2) {
   border-top: none;
   padding-top: 4px;
+}
+.capability-grid .capability:nth-child(odd) {
+  padding-right: 32px;
+  border-right: 1px solid var(--line);
+}
+.capability-grid .capability:nth-child(even) {
+  padding-left: 32px;
 }
 
 .capability-title {
@@ -2729,7 +2851,6 @@ button:focus-visible {
   font-size: 15.5px;
   color: var(--ink-soft);
   line-height: 1.55;
-  max-width: 62ch;
   margin-bottom: 16px;
 }
 
@@ -2762,6 +2883,15 @@ button:focus-visible {
 
 @media (max-width: 860px) {
   .section-grid { grid-template-columns: 1fr; gap: 16px; }
+  .capability-grid { grid-template-columns: 1fr; }
+  .capability-grid .capability:nth-child(-n+2) { border-top: 1px solid var(--line); padding-top: 36px; }
+  .capability-grid .capability:first-child { border-top: none; padding-top: 4px; }
+  .capability-grid .capability:nth-child(odd),
+  .capability-grid .capability:nth-child(even) {
+    padding-left: 0;
+    padding-right: 0;
+    border-right: none;
+  }
 }
 
 @media (max-width: 700px) {
