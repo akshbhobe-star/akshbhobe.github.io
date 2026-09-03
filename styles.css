@@ -350,7 +350,7 @@ ul { list-style: none; }
 }
 
 @media (max-width: 860px) {
-  .hero-flex { flex-direction: column-reverse; gap: 32px; }
+  .hero-flex { flex-direction: column; gap: 32px; }
   .hero-photo { width: 200px; }
 }
 
@@ -2699,46 +2699,21 @@ button:focus-visible {
   .brand-logo { height: 32px; }
 }
 
-/* ---- What Drives Me: a pinned scroll moment. The section holds the
-   viewport while a pull-quote gives way to the fuller story, the
-   background shifting from paper to the same red used in the nav.
-   Both layers use the full section width — no narrow centered column. ---- */
+/* ---- What Drives Me: quote first, then the fuller story on its own
+   red panel (same red as the nav) — no scroll-pinning. Rendered
+   in normal document flow so it's the same on every browser and
+   device, just a quiet fade-in like every other section. Both
+   layers use the full section width, no narrow centered column. ---- */
 .drives-scroll {
-  position: relative;
-  height: 240vh;
   border-top: 1px solid var(--line);
+  padding: 100px 0 0;
 }
-
-.drives-sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  background: var(--paper);
-  transition: background-color 0.7s ease;
-}
-.drives-sticky.is-active { background: #820108; }
 
 .drives-stage { width: 100%; }
 
-.drives-eyebrow {
-  color: var(--ink-soft);
-  transition: color 0.5s ease;
-}
-.drives-sticky.is-active .drives-eyebrow { color: rgba(247, 238, 236, 0.6); }
-
-.drives-panel {
-  position: relative;
-  height: min(60vh, 620px);
-}
+.drives-eyebrow { color: var(--ink-soft); margin-bottom: 20px; }
 
 .drives-quote {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 500;
@@ -2746,25 +2721,16 @@ button:focus-visible {
   line-height: 1.25;
   max-width: 18em;
   color: var(--ink);
-  opacity: 1;
-  transition: opacity 0.5s ease;
+  margin-bottom: 48px;
 }
-.drives-sticky.is-active .drives-quote { opacity: 0; }
 
 .drives-story {
-  position: absolute;
-  inset: 0;
   display: grid;
-  align-content: center;
   grid-template-columns: 1fr 1fr;
   gap: 24px 64px;
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
-}
-.drives-sticky.is-active .drives-story {
-  opacity: 1;
-  transform: translateY(0);
+  background: #820108;
+  margin: 0 -32px;
+  padding: 56px 32px;
 }
 .drives-story-col p {
   font-size: 16.5px;
@@ -2780,35 +2746,13 @@ button:focus-visible {
   font-weight: 600;
 }
 
-/* Static fallback — small viewports and prefers-reduced-motion get the
-   full story rendered in flow, on its own red panel, no pinning. */
-@media (max-width: 700px), (prefers-reduced-motion: reduce) {
-  .drives-scroll { height: auto; border-top: none; }
-  .drives-sticky {
-    position: static;
-    height: auto;
-    display: block;
-    padding: 76px 0 0;
-    transition: none;
-  }
-  .drives-stage { padding: 0 32px; max-width: var(--max-width); margin: 0 auto; }
-  .drives-eyebrow { color: var(--ink-soft); margin-bottom: 18px; }
-  .drives-panel { height: auto; }
-  .drives-quote {
-    position: static;
-    display: block;
-    opacity: 1;
-    max-width: none;
-    margin-bottom: 40px;
-  }
+@media (max-width: 700px) {
+  .drives-scroll { padding: 76px 0 0; }
+  .drives-quote { margin-bottom: 40px; }
   .drives-story {
-    position: static;
     display: block;
-    opacity: 1;
-    transform: none;
-    background: #820108;
-    margin: 0 -32px;
-    padding: 44px 32px;
+    margin: 0 -24px;
+    padding: 44px 24px;
   }
   .drives-story-col + .drives-story-col { margin-top: 4px; }
 }
