@@ -342,6 +342,7 @@ ul { list-style: none; }
 }
 .hero-photo img {
   width: 100%;
+  height: auto;
   aspect-ratio: 514 / 564;
   object-fit: cover;
   border-radius: var(--radius);
@@ -2800,14 +2801,19 @@ button:focus-visible {
 
 .capability-list {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-bottom: 4px;
 }
 .capability-list li {
-  font-size: 15.5px;
-  color: var(--ink-soft);
-  line-height: 1.5;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.3;
+  padding: 9px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
 }
 
 .capability-tools {
