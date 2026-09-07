@@ -327,7 +327,7 @@ ul { list-style: none; }
   z-index: -1;
 }
 
-.hero-inner { max-width: 620px; }
+.hero-inner { max-width: 760px; }
 
 .hero-flex {
   display: flex;
@@ -349,10 +349,12 @@ ul { list-style: none; }
   border: 1px solid var(--line);
   display: block;
 }
+.hero-photo-mobile { display: none; }
 
 @media (max-width: 860px) {
   .hero-flex { flex-direction: column; gap: 32px; }
-  .hero-photo { width: 200px; }
+  .hero-photo-desktop { display: none; }
+  .hero-photo-mobile { display: block; width: 100%; max-width: 280px; margin: 20px auto; }
 }
 
 .eyebrow.mono { font-size: 12px; }
@@ -2646,22 +2648,119 @@ button:focus-visible {
   margin-top: 4px;
 }
 
-/* ---- Growth Engine: four lines, not four cards ---- */
-.engine-list {
+/* ---- Growth Engine: icon chain, matching Aksharaa's own design ---- */
+.engine-chain { margin-top: 8px; margin-bottom: 28px; }
+
+.engine-chain-track {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 28px;
-  max-width: 700px;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
 }
-.engine-list li {
-  font-size: 17px;
+
+.engine-node {
+  flex: 1 1 140px;
+  min-width: 120px;
+  text-align: center;
+}
+
+.engine-icon {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.engine-icon svg { width: 32px; height: 32px; }
+
+.engine-icon-1 { background: rgba(159,34,48,0.12); color: var(--olive-deep); }
+.engine-icon-2 { background: rgba(208,91,98,0.18); color: var(--olive-deep); }
+.engine-icon-3 { background: rgba(196,59,72,0.16); color: var(--olive-deep); }
+.engine-icon-4 { background: rgba(122,26,37,0.14); color: var(--olive-deep); }
+
+.engine-node-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.engine-node-desc {
+  font-size: 14px;
   color: var(--ink-soft);
-  line-height: 1.5;
+  line-height: 1.4;
+  max-width: 20ch;
+  margin: 0 auto;
 }
-.engine-name {
-  color: var(--olive);
-  font-weight: 700;
+
+.engine-arrow {
+  flex: 0 0 auto;
+  align-self: center;
+  margin-top: 26px;
+  color: var(--line);
+}
+.engine-arrow svg { width: 22px; height: 22px; }
+.engine-arrow-1 { color: var(--blue-soft); }
+.engine-arrow-2 { color: var(--olive); }
+.engine-arrow-3 { color: var(--amber); }
+
+.engine-chain-bridge {
+  position: relative;
+  margin-top: 6px;
+  height: 46px;
+}
+.engine-bridge-svg {
+  position: absolute;
+  top: -18px;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  color: var(--line);
+}
+.engine-bridge-path { stroke: currentColor; }
+.engine-bridge-svg marker path { fill: var(--line); }
+
+.engine-chain-pill {
+  position: absolute;
+  left: 50%;
+  top: 6px;
+  transform: translateX(-50%);
+  background: var(--paper-raised);
+  color: var(--ink-soft);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.engine-closing {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.engine-closing-icon {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  color: var(--olive-deep);
+  margin-top: 2px;
+}
+.engine-closing-icon svg { width: 100%; height: 100%; }
+.engine-closing strong { color: var(--ink); }
+
+@media (max-width: 700px) {
+  .engine-chain-track { flex-direction: column; align-items: stretch; }
+  .engine-arrow { display: none; }
+  .engine-chain-bridge { display: none; }
+  .engine-node { text-align: left; display: flex; align-items: center; gap: 16px; margin-bottom: 4px; }
+  .engine-icon { margin: 0; flex: 0 0 auto; width: 60px; height: 60px; }
+  .engine-icon svg { width: 26px; height: 26px; }
+  .engine-node-desc { max-width: none; }
 }
 
 /* ---- Brands: the marks themselves, sitting straight on the page —
@@ -2848,4 +2947,221 @@ button:focus-visible {
   .section { padding: 76px 0; }
   .brand-list { line-height: 2; }
   .drives-title { margin-bottom: 32px; }
+}
+
+/* ============================================
+   HERO v2 — value-proposition redesign
+   ============================================ */
+.hero-v2 { padding-bottom: 90px; }
+
+.hero-inner-v2 {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.hero-title-v2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(30px, 4.4vw, 46px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 22px;
+  opacity: 0;
+  animation: riseIn 0.7s ease 0s forwards;
+}
+
+.hero-sub-v2 {
+  font-size: clamp(17px, 2vw, 19px);
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 700px;
+  margin-bottom: 44px;
+  opacity: 0;
+  animation: riseIn 0.7s ease 0.12s forwards;
+}
+.hero-sub-v2 strong { color: var(--olive); font-weight: 700; }
+
+/* ---- Value proposition: Venn diagram + equation ---- */
+.vp-panel {
+  margin-bottom: 48px;
+  padding: 40px 24px;
+  background: var(--paper-raised);
+  border-radius: var(--radius);
+  opacity: 0;
+  animation: riseIn 0.7s ease 0.24s forwards;
+}
+
+.vp-venn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.vp-circle {
+  width: 260px;
+  min-height: 260px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px 30px;
+  color: var(--ink);
+}
+.vp-circle-left {
+  background: rgba(159,34,48,0.14);
+  margin-right: -54px;
+  padding-right: 74px;
+}
+.vp-circle-right {
+  background: rgba(122,26,37,0.12);
+  margin-left: -54px;
+  padding-left: 74px;
+}
+
+.vp-circle-icon {
+  width: 34px;
+  height: 34px;
+  color: var(--olive-deep);
+  margin-bottom: 10px;
+}
+.vp-circle-icon svg { width: 100%; height: 100%; }
+
+.vp-circle-title {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.vp-circle-list {
+  list-style: none;
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+.vp-circle-center {
+  position: relative;
+  z-index: 2;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--paper);
+  box-shadow: 0 4px 18px rgba(36,19,17,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+.vp-center-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--olive-deep);
+  line-height: 1.5;
+}
+
+.vp-equation {
+  text-align: center;
+  margin-top: 28px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(18px, 2.4vw, 22px);
+  color: var(--ink-soft);
+}
+.vp-equation .sep { color: var(--line); margin: 0 4px; }
+.vp-equation .vp-eq-eq { margin: 0 8px; color: var(--ink); font-style: normal; }
+.vp-growth {
+  color: var(--olive-deep);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--amber);
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 620px) {
+  .vp-venn { flex-direction: column; }
+  .vp-circle { margin: 0 0 -40px !important; padding: 24px !important; width: 220px; min-height: 220px; }
+  .vp-circle-center { margin: -20px 0 0; }
+}
+
+/* ---- SwissGear proof bar: smaller, real wordmark ---- */
+.swiss-bar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 28px;
+  padding: 20px 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  margin-bottom: 44px;
+  opacity: 0;
+  animation: riseIn 0.7s ease 0.32s forwards;
+}
+
+.swiss-bar-brand { text-align: left; }
+.swiss-eyebrow { font-size: 11px; margin-bottom: 8px; }
+.swiss-logo { height: 22px; width: auto; display: block; }
+
+.swiss-bar-copy p:first-child {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+.swiss-figure { display: flex; align-items: baseline; gap: 10px; }
+.swiss-figure-amount {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 34px;
+  color: var(--olive-deep);
+}
+.swiss-figure-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.swiss-bar-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-left: 1px solid var(--line);
+  padding-left: 24px;
+}
+.swiss-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+.swiss-step-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--olive-deep);
+  flex: 0 0 auto;
+}
+.swiss-step-icon svg { width: 100%; height: 100%; }
+
+@media (max-width: 760px) {
+  .swiss-bar { grid-template-columns: 1fr; text-align: center; }
+  .swiss-bar-copy p:first-child { text-align: center; }
+  .swiss-figure { justify-content: center; }
+  .swiss-bar-steps { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 16px; align-items: center; }
 }
