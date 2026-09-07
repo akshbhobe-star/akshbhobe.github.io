@@ -2874,19 +2874,26 @@ button:focus-visible {
 .drives-closing-quote {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(26px, 3.6vw, 38px);
-  line-height: 1.35;
+  font-size: clamp(24px, 3.2vw, 34px);
+  line-height: 1.4;
   color: var(--ink);
   text-align: center;
-  max-width: 30ch;
-  margin: 0 auto 40px;
+  max-width: 40ch;
+  margin: 0 auto 44px;
+}
+.drives-amp {
+  display: inline-block;
+  font-style: italic;
+  font-size: 0.6em;
+  color: var(--line);
+  margin: 6px 0;
 }
 
 .drives-followup {
-  font-size: 15.5px;
-  line-height: 1.7;
+  font-size: clamp(16px, 1.6vw, 18px);
+  line-height: 1.75;
   color: var(--ink-soft);
-  max-width: 62ch;
+  max-width: 900px;
   margin: 0 auto;
   text-align: center;
 }
@@ -2899,6 +2906,8 @@ button:focus-visible {
 @media (max-width: 700px) {
   .drives-scroll { padding: 76px 0 64px; }
   .drives-intro { margin-bottom: 40px; }
+  .drives-closing-quote { max-width: 26ch; font-size: clamp(22px, 6vw, 28px); }
+  .drives-followup { font-size: 15.5px; line-height: 1.7; }
 }
 
 /* ---- What I Bring to the Table: a quiet 2x2, divided by thin
@@ -3183,10 +3192,30 @@ button:focus-visible {
 
 @media (max-width: 700px) {
   .vp-panel { padding: 32px 20px; }
-  .vp-venn { flex-direction: column; }
-  .vp-circle { margin: 0 0 -50px !important; padding: 28px !important; width: 240px; height: 240px; }
-  .vp-circle-left, .vp-circle-right { padding-right: 28px; padding-left: 28px; }
-  .vp-circle-center { position: static; transform: none; margin: -30px 0 16px; }
+  .vp-venn {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .vp-circle {
+    width: min(280px, 78vw);
+    height: min(280px, 78vw);
+    margin: 0 !important;
+    padding: 28px !important;
+  }
+  .vp-circle-left { order: 1; padding-right: 28px; }
+  .vp-circle-right { order: 3; padding-left: 28px; }
+  /* On mobile the two circles sit apart (no true overlap — trying to
+     make text and a center bubble share a shrinking lens is what
+     broke this before). The bubble instead sits between them as a
+     normal, non-overlapping connector. */
+  .vp-circle-center {
+    order: 2;
+    position: static;
+    transform: none;
+    margin: 0 auto;
+    width: 92px;
+    height: 92px;
+  }
 }
 
 /* ---- SwissGear proof line: plain sentence, small inline wordmark ---- */
