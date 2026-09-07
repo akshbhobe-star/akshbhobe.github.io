@@ -454,6 +454,9 @@ ul { list-style: none; }
   animation: riseIn 0.7s ease 0.56s forwards;
 }
 
+.hero-v2 .hero-seeking { text-align: center; }
+.hero-v2 .hero-cta { justify-content: center; }
+
 .btn {
   font-family: var(--font-body);
   font-weight: 600;
@@ -2799,62 +2802,114 @@ button:focus-visible {
   .brand-logo { height: 32px; }
 }
 
-/* ---- What Drives Me: quote first, then the fuller story on its own
-   red panel (same red as the nav) — no scroll-pinning. Rendered
-   in normal document flow so it's the same on every browser and
-   device, just a quiet fade-in like every other section. Both
-   layers use the full section width, no narrow centered column. ---- */
+/* ---- What Drives Me: editorial photo grid (three sports, three
+   traits), an arrow transition, then a closing pull-quote. Full
+   section width, no narrow centered column. ---- */
 .drives-scroll {
   border-top: 1px solid var(--line);
-  padding: 100px 0 0;
+  padding: 100px 0 90px;
 }
 
 .drives-stage { width: 100%; }
 
 .drives-eyebrow { color: var(--ink-soft); margin-bottom: 20px; }
 
-.drives-quote {
+.drives-intro {
+  font-size: clamp(17px, 1.8vw, 19px);
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 62ch;
+  margin-bottom: 56px;
+}
+
+.drives-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-bottom: 64px;
+}
+
+.drives-card-mid { margin-top: 64px; }
+
+.drives-card-photo {
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+.drives-card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.drives-card-sport {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+.drives-card-trait {
   font-family: var(--font-display);
   font-style: italic;
-  font-weight: 500;
-  font-size: clamp(30px, 4vw, 52px);
-  line-height: 1.25;
-  max-width: 18em;
-  color: var(--ink);
-  margin-bottom: 48px;
-}
-
-.drives-story {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px 64px;
-  background: #820108;
-  margin: 0 -32px;
-  padding: 56px 32px;
-}
-.drives-story-col p {
-  font-size: 16.5px;
-  line-height: 1.7;
-  color: var(--paper);
-  margin-bottom: 20px;
-}
-.drives-story-col p:last-child { margin-bottom: 0; }
-
-.emphasis-word {
-  font-style: italic;
-  color: #F2C9C0;
   font-weight: 600;
+  font-size: 26px;
+  color: var(--olive-deep);
+  margin-bottom: 10px;
+}
+.drives-card-desc {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 30ch;
+}
+
+.drives-arrow-divider {
+  text-align: center;
+  font-size: 26px;
+  color: var(--line);
+  margin-bottom: 14px;
+}
+.drives-today-label {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 18px;
+}
+
+.drives-closing-quote {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(26px, 3.6vw, 38px);
+  line-height: 1.35;
+  color: var(--ink);
+  text-align: center;
+  max-width: 30ch;
+  margin: 0 auto 40px;
+}
+
+.drives-followup {
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  max-width: 62ch;
+  margin: 0 auto;
+  text-align: center;
+}
+
+@media (max-width: 780px) {
+  .drives-grid { grid-template-columns: 1fr; gap: 36px; }
+  .drives-card-mid { margin-top: 0; }
+  .drives-card-desc { max-width: none; }
 }
 
 @media (max-width: 700px) {
-  .drives-scroll { padding: 76px 0 0; }
-  .drives-quote { margin-bottom: 40px; }
-  .drives-story {
-    display: block;
-    margin: 0 -24px;
-    padding: 44px 24px;
-  }
-  .drives-story-col + .drives-story-col { margin-top: 4px; }
+  .drives-scroll { padding: 76px 0 64px; }
+  .drives-intro { margin-bottom: 40px; }
 }
 
 /* ---- What I Bring to the Table: a quiet 2x2, divided by thin
