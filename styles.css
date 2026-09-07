@@ -2952,7 +2952,7 @@ button:focus-visible {
 /* ============================================
    HERO v2 — value-proposition redesign
    ============================================ */
-.hero-v2 { padding-bottom: 90px; }
+.hero-v2 { padding-bottom: 70px; }
 
 .hero-inner-v2 {
   max-width: 1100px;
@@ -2967,23 +2967,23 @@ button:focus-visible {
   letter-spacing: -0.01em;
   color: var(--ink);
   max-width: 900px;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
   opacity: 0;
   animation: riseIn 0.7s ease 0s forwards;
 }
 
-/* ---- Photo + intro row ---- */
+/* ---- Photo + intro row (name intro + intersection line, stacked) ---- */
 .hero-photo-row {
   display: flex;
   align-items: center;
   gap: 48px;
-  margin-bottom: 32px;
+  margin-bottom: 36px;
   opacity: 0;
   animation: riseIn 0.7s ease 0.1s forwards;
 }
 .hero-photo-col {
   flex: 0 0 auto;
-  width: 260px;
+  width: 240px;
 }
 .hero-photo-col img {
   width: 100%;
@@ -2995,38 +2995,44 @@ button:focus-visible {
   display: block;
 }
 
+.hero-intro-col { flex: 1 1 auto; }
+
 .hero-sub-v2 {
   font-size: clamp(17px, 2vw, 20px);
   line-height: 1.6;
   color: var(--ink-soft);
-  flex: 1 1 auto;
+  margin-bottom: 14px;
 }
 .hero-sub-v2 strong { color: var(--olive); font-weight: 700; }
 .accent-name { color: var(--olive); font-weight: 700; }
 
 .hero-tagline-v2 {
-  font-size: clamp(17px, 1.8vw, 19px);
-  line-height: 1.65;
+  font-size: clamp(15px, 1.6vw, 17px);
+  line-height: 1.6;
   color: var(--ink-soft);
-  max-width: 900px;
-  margin-bottom: 44px;
-  opacity: 0;
-  animation: riseIn 0.7s ease 0.18s forwards;
 }
+.vp-tie-a { color: var(--amber); font-weight: 700; }
+.vp-tie-b { color: var(--olive-deep); font-weight: 700; }
 
 @media (max-width: 760px) {
-  .hero-photo-row { flex-direction: column; align-items: center; text-align: center; gap: 24px; }
-  .hero-photo-col { width: 220px; }
+  .hero-photo-row { flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+  .hero-photo-col { width: 200px; }
 }
 
-/* ---- Value proposition: Venn diagram + equation ---- */
+/* ---- Value proposition: Venn diagram + equation ----
+   Geometry note: circle 320px, overlap 100px (50px negative
+   margin each side), center bubble 100px — chosen so the bubble
+   sits inside the lens with ~30px clearance from each circle's
+   text column (128px inner padding). Change these four numbers
+   together, not in isolation, or the bubble will crowd the text
+   again. */
 .vp-panel {
-  margin-bottom: 48px;
-  padding: 48px 32px;
+  margin-bottom: 36px;
+  padding: 44px 32px;
   background: var(--paper-raised);
   border-radius: var(--radius);
   opacity: 0;
-  animation: riseIn 0.7s ease 0.26s forwards;
+  animation: riseIn 0.7s ease 0.2s forwards;
 }
 
 .vp-venn {
@@ -3034,68 +3040,67 @@ button:focus-visible {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 780px;
   margin: 0 auto;
 }
 
 .vp-circle {
-  width: 300px;
-  min-height: 300px;
+  width: 320px;
+  height: 320px;
   border-radius: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 24px 34px;
+  padding: 24px 30px;
   color: var(--paper);
 }
 .vp-circle-left {
   background: var(--amber);
-  margin-right: -66px;
-  padding-right: 88px;
+  margin-right: -50px;
+  padding-right: 128px;
 }
 .vp-circle-right {
   background: var(--olive-deep);
-  margin-left: -66px;
-  padding-left: 88px;
+  margin-left: -50px;
+  padding-left: 128px;
 }
 
 .vp-circle-icon {
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   color: var(--paper);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 .vp-circle-icon svg { width: 100%; height: 100%; }
 
 .vp-circle-title {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--paper);
-  line-height: 1.4;
-  margin-bottom: 12px;
+  line-height: 1.35;
+  margin-bottom: 10px;
 }
 
 .vp-circle-list {
   list-style: none;
-  font-size: 13.5px;
+  font-size: 13px;
   color: var(--paper);
-  opacity: 0.9;
-  line-height: 1.8;
+  opacity: 0.92;
+  line-height: 1.75;
 }
 
-/* Center bubble sits precisely in the overlap (lens) of the two circles */
+/* Center bubble: sits exactly in the lens (see geometry note above) */
 .vp-circle-center {
   position: absolute;
   z-index: 2;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 108px;
-  height: 108px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   background: var(--paper);
   border: 3px solid var(--blue);
@@ -3107,7 +3112,7 @@ button:focus-visible {
 .vp-center-label {
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   text-align: center;
   color: var(--olive-deep);
@@ -3116,7 +3121,7 @@ button:focus-visible {
 
 .vp-equation {
   text-align: center;
-  margin-top: 32px;
+  margin-top: 28px;
   font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(19px, 2.4vw, 24px);
@@ -3133,79 +3138,39 @@ button:focus-visible {
 }
 
 @media (max-width: 700px) {
-  .vp-panel { padding: 36px 20px; }
+  .vp-panel { padding: 32px 20px; }
   .vp-venn { flex-direction: column; }
-  .vp-circle { margin: 0 0 -60px !important; padding: 28px !important; width: 240px; min-height: 240px; }
+  .vp-circle { margin: 0 0 -50px !important; padding: 28px !important; width: 240px; height: 240px; }
   .vp-circle-left, .vp-circle-right { padding-right: 28px; padding-left: 28px; }
-  .vp-circle-center { position: static; transform: none; margin: -30px 0 20px; }
+  .vp-circle-center { position: static; transform: none; margin: -30px 0 16px; }
 }
 
-/* ---- SwissGear proof bar: smaller, real wordmark ---- */
-.swiss-bar {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+/* ---- SwissGear proof line: plain sentence, small inline wordmark ---- */
+.swiss-line {
+  display: flex;
   align-items: center;
-  gap: 28px;
-  padding: 20px 24px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  margin-bottom: 44px;
-  opacity: 0;
-  animation: riseIn 0.7s ease 0.32s forwards;
-}
-
-.swiss-bar-brand { text-align: left; }
-.swiss-eyebrow { font-size: 11px; margin-bottom: 8px; }
-.swiss-logo { height: 22px; width: auto; display: block; }
-
-.swiss-bar-copy p:first-child {
-  font-size: 14px;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: clamp(15px, 1.6vw, 17px);
+  line-height: 1.6;
   color: var(--ink-soft);
-  line-height: 1.5;
-  margin-bottom: 6px;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: riseIn 0.7s ease 0.3s forwards;
 }
-.swiss-figure { display: flex; align-items: baseline; gap: 10px; }
-.swiss-figure-amount {
+.swiss-line strong {
+  color: var(--olive-deep);
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 34px;
-  color: var(--olive-deep);
+  font-size: 1.2em;
 }
-.swiss-figure-label {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--ink);
-  line-height: 1.3;
+.swiss-logo-inline {
+  height: 18px;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
 }
 
-.swiss-bar-steps {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  border-left: 1px solid var(--line);
-  padding-left: 24px;
-}
-.swiss-step {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  color: var(--ink-soft);
-}
-.swiss-step-icon {
-  width: 16px;
-  height: 16px;
-  color: var(--olive-deep);
-  flex: 0 0 auto;
-}
-.swiss-step-icon svg { width: 100%; height: 100%; }
-
-@media (max-width: 760px) {
-  .swiss-bar { grid-template-columns: 1fr; text-align: center; }
-  .swiss-bar-copy p:first-child { text-align: center; }
-  .swiss-figure { justify-content: center; }
-  .swiss-bar-steps { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 16px; align-items: center; }
+@media (max-width: 500px) {
+  .swiss-line { justify-content: center; text-align: center; }
 }
