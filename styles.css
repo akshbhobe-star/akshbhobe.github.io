@@ -3252,29 +3252,33 @@ button:focus-visible {
    SKILLS PAGE — solid-color capability cards
    ============================================ */
 .skills-hero {
-  padding: 90px 32px 20px;
-  max-width: 1320px;
+  padding: 160px 32px 0;
+  max-width: 1600px;
   margin: 0 auto;
 }
 .skills-hero-title {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(48px, 8vw, 96px);
-  line-height: 1;
+  font-size: clamp(30px, 4.4vw, 48px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
   color: var(--ink);
 }
 .skills-hero-rule {
-  width: 90px;
-  height: 5px;
+  width: 60px;
+  height: 4px;
   background: var(--olive);
   border-radius: 3px;
-  margin-top: 22px;
+  margin-top: 16px;
+}
+@media (max-width: 1059px) {
+  .skills-hero { padding: 130px 24px 0; }
 }
 
 .skills-grid-section {
-  max-width: 1320px;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 36px 32px 100px;
+  padding: 40px 32px 100px;
 }
 .skills-grid {
   display: grid;
@@ -3362,23 +3366,17 @@ button:focus-visible {
 .skills-card-tools .mono { color: var(--paper); font-weight: 500; opacity: 1; }
 
 .methodology-intro {
-  max-width: 1320px;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 0 32px 44px;
+  padding: 0 32px 48px;
+  border-top: 1px solid var(--line);
+  padding-top: 48px;
 }
-.methodology-eyebrow { color: var(--ink-soft); margin-bottom: 14px; }
 .methodology-title {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(28px, 4vw, 42px);
-  line-height: 1.2;
+  font-size: clamp(26px, 3.6vw, 38px);
+  line-height: 1.25;
   max-width: 900px;
-  margin-bottom: 16px;
 }
-.methodology-sub {
-  max-width: 640px;
-  font-size: 16px;
-  line-height: 1.55;
-  color: var(--ink-soft);
-}
-.skills-page .projects .section-inner { max-width: 1320px; }
+.skills-page .projects .section-inner { max-width: 1600px; }
