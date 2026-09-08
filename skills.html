@@ -136,11 +136,12 @@
 <section class="projects">
   <div class="section-inner">
     <div class="process-block" id="processBlock">
+      <p class="process-hint">Click a stage to see how I worked through it &rarr;</p>
       <div class="process-rail-outer">
-        <div class="process-rail-track">
+        <div class="process-rail-track" role="tablist" aria-label="Process stages">
           <div class="process-rail-line"><div class="process-rail-fill" id="processRailFill"></div></div>
 
-          <button class="process-node active" data-index="0" type="button">
+          <button class="process-node active" data-index="0" type="button" aria-current="step">
             <span class="process-node-dot mono">01</span>
             <span class="process-node-label">Client &amp;<br>Commercial</span>
           </button>
@@ -163,7 +164,7 @@
         </div>
       </div>
 
-      <div class="process-panel" id="processPanel"></div>
+      <div class="process-panel" id="processPanel" aria-live="polite"></div>
     </div>
   </div>
 </section>
@@ -269,6 +270,8 @@
 
     nodes.forEach(function (n, idx) {
       n.classList.toggle('active', idx === i);
+      if (idx === i) { n.setAttribute('aria-current', 'step'); }
+      else { n.removeAttribute('aria-current'); }
     });
     railFill.style.width = (i / (processStages.length - 1) * 100) + '%';
   }
