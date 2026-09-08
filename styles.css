@@ -3294,7 +3294,7 @@ button:focus-visible {
    ============================================ */
 .skills-hero {
   padding: 160px 32px 0;
-  max-width: 1600px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 .skills-hero-title {
@@ -3316,22 +3316,22 @@ button:focus-visible {
   .skills-hero { padding: 130px 24px 0; }
 }
 
-.skills-grid-section {
-  max-width: 1600px;
+.capabilities-grid-section {
+  max-width: 1400px;
   margin: 0 auto;
   padding: 40px 32px 100px;
 }
-.skills-grid {
+.capabilities-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-  align-items: start;
+  align-items: stretch;
 }
 @media (max-width: 1100px) {
-  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  .capabilities-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 620px) {
-  .skills-grid { grid-template-columns: 1fr; }
+  .capabilities-grid { grid-template-columns: 1fr; }
 }
 
 .skills-card {
@@ -3404,21 +3404,25 @@ button:focus-visible {
 .skills-card-tools .mono { color: var(--paper); font-weight: 500; opacity: 1; }
 
 .methodology-intro {
-  max-width: 1600px;
+  max-width: 1040px;
   margin: 0 auto;
   padding: 0 32px 56px;
   border-top: 1px solid var(--line);
   padding-top: 56px;
+  text-align: center;
 }
 .methodology-title {
   font-family: var(--font-display);
   font-weight: 500;
   font-size: clamp(26px, 3.6vw, 38px);
   line-height: 1.25;
-  max-width: 900px;
+  max-width: 780px;
+  margin: 0 auto;
 }
 .skills-page .projects {
   border-top: none;
   padding-top: 40px;
 }
-.skills-page .projects .section-inner { max-width: 1600px; }
+.skills-page .projects .section-inner { max-width: 1040px; }
+.skills-page .process-block { text-align: center; }
+.skills-page .process-panel { text-align: left; }
