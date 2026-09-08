@@ -3247,3 +3247,138 @@ button:focus-visible {
 @media (max-width: 500px) {
   .swiss-line { justify-content: center; text-align: center; }
 }
+
+/* ============================================
+   SKILLS PAGE — solid-color capability cards
+   ============================================ */
+.skills-hero {
+  padding: 90px 32px 20px;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+.skills-hero-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(48px, 8vw, 96px);
+  line-height: 1;
+  color: var(--ink);
+}
+.skills-hero-rule {
+  width: 90px;
+  height: 5px;
+  background: var(--olive);
+  border-radius: 3px;
+  margin-top: 22px;
+}
+
+.skills-grid-section {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 36px 32px 100px;
+}
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+@media (max-width: 1100px) {
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 620px) {
+  .skills-grid { grid-template-columns: 1fr; }
+}
+
+.skills-card {
+  border-radius: var(--radius);
+  padding: 32px 26px;
+  color: var(--paper);
+  display: flex;
+  flex-direction: column;
+  min-height: 480px;
+  box-shadow: 0 14px 34px rgba(36, 19, 17, 0.16);
+  transition: transform 0.2s ease;
+}
+.skills-card:hover { transform: translateY(-4px); }
+
+.skills-card--ink   { background: var(--ink); }
+.skills-card--olive { background: var(--olive); }
+.skills-card--blue  { background: var(--blue); }
+.skills-card--amber { background: var(--amber); }
+
+.skills-card-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(247, 238, 236, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+.skills-card-icon svg { width: 22px; height: 22px; stroke: var(--paper); }
+
+.skills-card-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.skills-card-desc {
+  font-size: 14.5px;
+  line-height: 1.5;
+  opacity: 0.92;
+  margin-bottom: 18px;
+}
+.skills-card-list {
+  list-style: none;
+  margin-bottom: auto;
+  padding-bottom: 18px;
+}
+.skills-card-list li {
+  font-size: 13.5px;
+  line-height: 1.6;
+  padding-left: 16px;
+  position: relative;
+  opacity: 0.95;
+}
+.skills-card-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--paper);
+  opacity: 0.7;
+}
+.skills-card-tools {
+  font-size: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(247, 238, 236, 0.25);
+  opacity: 0.8;
+}
+.skills-card-tools .mono { color: var(--paper); font-weight: 500; opacity: 1; }
+
+.methodology-intro {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 32px 44px;
+}
+.methodology-eyebrow { color: var(--ink-soft); margin-bottom: 14px; }
+.methodology-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.2;
+  max-width: 900px;
+  margin-bottom: 16px;
+}
+.methodology-sub {
+  max-width: 640px;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.skills-page .projects .section-inner { max-width: 1320px; }
