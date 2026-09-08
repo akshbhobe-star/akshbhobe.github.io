@@ -2027,6 +2027,34 @@ ul { list-style: none; }
 .acc-case .contribution .case-section-label { color: rgba(247,238,236,0.68); }
 .acc-case .contribution .case-section-text { color: var(--paper); }
 
+.contribution-list {
+  list-style: none;
+  display: grid;
+  gap: 14px;
+}
+.contribution-list li {
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: rgba(247, 238, 236, 0.85);
+  padding-left: 18px;
+  position: relative;
+}
+.contribution-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--paper);
+  opacity: 0.6;
+}
+.contribution-list strong {
+  color: var(--paper);
+  font-weight: 600;
+}
+
 /* ---- Apple-style case nav: one quiet control under the title, no boxed pill ---- */
 .acc-nav-top {
   display: inline-flex;
