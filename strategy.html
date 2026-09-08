@@ -97,11 +97,15 @@
       gradient: "linear-gradient(135deg, var(--olive), var(--olive-deep))",
       cases: [
         {
-          tag: "CLIENT — SWISSGEAR × GROUP III INTERNATIONAL", status: "LIVE ENGAGEMENT · NORTHWESTERN IQ CONSULTING", title: "Whitespace Opportunity &amp; Brand Strategy", pills: ["Brand Audit", "Strategy"],
-          problem: "SWISSGEAR needed to find an underserved whitespace in the mobility/travel gear category, where most competitor innovation is built narrowly around air travel.",
-          solution: "Built a whitespace framework mapping mobility along two axes — scarcity-driven vs. optionality-driven need states, single-occasion vs. cross-occasion adaptability — layered with TAM/SAM/SOM sizing and a category PESTLE scan.",
-          impact: "Gave the client a sharper, non-obvious lens for evaluating whitespace, grounded in U.S. consumer and market sentiment rather than a standard profit-driven competitor grid — surfacing a core cultural tension the client hadn't previously considered.",
-          contribution: "I led the framework development end-to-end: built the 2×2 from a psychology-first hypothesis, ran the TAM/SAM/SOM sizing, and managed data requests with the client contact under NDA."
+          tag: "CLIENT — SWISSGEAR × GROUP III INTERNATIONAL", status: "LIVE ENGAGEMENT · NORTHWESTERN IQ CONSULTING", title: "Whitespace Opportunity &amp; Brand Strategy", pills: ["Strategy", "Quant"],
+          problem: "SWISSGEAR wanted to identify new, high-revenue product categories outside their current catalog. Instead of a standard competitor benchmarking exercise, they needed hard proof of actual market size and consumer demand before investing in a new direction.",
+          solution: "My team and I built a seven-criteria weighted scorecard to evaluate six potential product categories, then stress-tested the top three using primary research. We surveyed over 2,400 consumers, calculated the addressable market sizes, and ran a k-means segmentation analysis to isolate the exact buyer profiles most likely to purchase. To ensure absolute data integrity for the CEO and executive stakeholders, we ensured every data point was verified by three independent sources before being used as evidence.",
+          impact: "We narrowed the six initial categories down to three final, client-approved opportunities, each backed by clear data on consumer purchase intent and willingness to pay. The executive team was so impressed by the rigor of the research that they requested an immediate, independent product brief for the top-performing category, which ultimately unlocked a collective $56M revenue opportunity.",
+          contributionItems: [
+            { title: "Market Sizing &amp; Data Modeling", text: "Owned the entire market-sizing methodology, including data source vetting, logic building, and cross-referencing conflicting industry reports." },
+            { title: "Consumer Research", text: "Designed the consumer survey instrument and built the R data analysis pipeline (k-means clustering, factor analysis, and chi-square testing) to turn raw survey responses into distinct, actionable buyer segments." },
+            { title: "Project &amp; Client Leadership", text: "Managed day-to-day client communications, kept the cross-functional team aligned across the 10-week sprint, and personally authored the final product brief that laid the groundwork for the $36M project." }
+          ]
         }
       ]
     },
@@ -207,6 +211,11 @@
       '</button>' : '';
 
     var statusHtml = c.status ? '<p class="case-status mono">' + c.status + '</p>' : '';
+    var contributionHtml = c.contributionItems
+      ? '<ul class="contribution-list">' + c.contributionItems.map(function (item) {
+          return '<li><strong>' + item.title + ':</strong> ' + item.text + '</li>';
+        }).join('') + '</ul>'
+      : '<p class="case-section-text">' + c.contribution + '</p>';
     panelInner.innerHTML =
       '<div class="acc-case">' +
         backHtml +
@@ -221,7 +230,7 @@
           '<div class="case-section"><p class="case-section-label mono">The Solution</p><p class="case-section-text">' + c.solution + '</p></div>' +
           '<div class="case-section"><p class="case-section-label mono">The Impact</p><p class="case-section-text">' + c.impact + '</p></div>' +
         '</div>' +
-        '<div class="case-section contribution"><p class="case-section-label mono">My Contribution</p><p class="case-section-text">' + c.contribution + '</p></div>' +
+        '<div class="case-section contribution"><p class="case-section-label mono">My Contribution</p>' + contributionHtml + '</div>' +
         navHtmlBottom +
       '</div>';
 
